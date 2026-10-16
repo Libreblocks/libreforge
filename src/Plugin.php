@@ -11,6 +11,7 @@ use LibreBlocks\Core\Plugin as Core;
 use LibreBlocks\Forge\Admin\Screens;
 use LibreBlocks\Forge\Blocks\Blocks;
 use LibreBlocks\Forge\Render\Renderer;
+use LibreBlocks\Forge\Render\Shortcodes;
 use LibreBlocks\Forge\Render\Values;
 use LibreBlocks\Forge\Rest\BlocksController;
 use LibreBlocks\Forge\Content\ContentTypes;
@@ -116,6 +117,7 @@ final class Plugin {
 		) );
 
 		( new Blocks( $core->get( 'forge.renderer' ), $templates, $core->context() ) )->hook();
+		( new Shortcodes( $core->get( 'forge.renderer' ), $templates ) )->hook();
 
 		// Elementor loads after plugins_loaded; its integration hooks in on its own action.
 		add_action( 'elementor/init', [ $this, 'boot_elementor' ] );

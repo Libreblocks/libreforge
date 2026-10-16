@@ -5,7 +5,7 @@ Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: libreblocks-core
-Stable tag: 0.5.0
+Stable tag: 0.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,15 @@ Values are stored in the native WordPress tables (post, term and user meta, opti
 
 Requires the LibreBlocks Core plugin.
 
+== Shortcodes ==
+
+For themes and builders other than the block editor and Elementor:
+
+* `[libreforge_loop query="12" template="34" columns="3" pagination="numbers"]` - a listing from a saved query.
+* `[libreforge_loop post_type="team" per_page="6" template="34"]` - a listing of a post type.
+* `[libreforge_field key="price" format="currency"]` - a field of the current item.
+* `[libreforge_template id="34"]` - an item template for the current item.
+
 == Frequently Asked Questions ==
 
 = Is my data removed when I uninstall? =
@@ -32,6 +41,10 @@ Requires the LibreBlocks Core plugin.
 No. Definitions are kept so a reinstall brings everything back. Add `define( 'LIBREFORGE_DELETE_DATA', true );` to wp-config.php before uninstalling to remove them.
 
 == Changelog ==
+
+= 0.6.0 =
+* Page of each item: pick an item template for the single pages of a post type.
+* Shortcodes for any theme or builder: [libreforge_loop], [libreforge_field] and [libreforge_template].
 
 = 0.5.0 =
 * Relations: one to one, one to many and many to many between post types, terms and users, with a picker box on each side.

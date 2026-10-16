@@ -27,12 +27,47 @@ final class Templates {
 	/** @var int[] Templates being rendered right now. */
 	private array $rendering = [];
 
+	/** @var array<string, int> Post type => template used on single item pages. */
+	private array $singles = [];
+
 	public function __construct( private ObjectStack $context ) {}
 
 	public function hook(): void {
 		add_action( 'init', [ $this, 'register' ] );
 		add_action( 'template_redirect', [ $this, 'protect_single' ] );
 		add_filter( 'template_include', [ $this, 'single_template' ], 99 );
+		add_filter( 'the_content', [ $this, 'single_content' ], 1 );
+	}
+
+	/**
+	 * Uses $template_id as the content of every single page of $post_type.
+	 */
+	public function use_for_singles( string $post_type, int $template_id ): void {
+		if ( $template_id > 0 ) {
+			$this->singles[ $post_type ] = $template_id;
+		}
+	}
+
+	/**
+	 * On a single item page, the theme keeps its header, footer and title area,
+	 * and the content becomes the chosen item template.
+	 */
+	public function single_content( $content ) {
+		$post = get_post();
+
+		if (
+			! $post
+			|| ! isset( $this->singles[ $post->post_type ] )
+			|| $this->rendering
+			|| ! is_singular( $post->post_type )
+			|| ! in_the_loop()
+			|| ! is_main_query()
+			|| (int) $post->ID !== get_queried_object_id()
+		) {
+			return $content;
+		}
+
+		return $this->context->with( $post, fn() => $this->render( $this->singles[ $post->post_type ], $post ) );
 	}
 
 	public function register(): void {

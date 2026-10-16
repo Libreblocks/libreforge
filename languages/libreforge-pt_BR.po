@@ -2342,3 +2342,13 @@ msgstr "relação"
 
 msgid "— Any item —"
 msgstr "— Qualquer item —"
+
+# Página individual
+msgid "Design of the page that opens when someone clicks an item. The theme keeps its header and footer."
+msgstr "Design da página que abre quando alguém clica em um item. O tema mantém o cabeçalho e o rodapé."
+
+msgid "Page of each item"
+msgstr "Página de cada item"
+
+msgid "Theme default"
+msgstr "Padrão do tema"

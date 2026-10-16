@@ -357,7 +357,13 @@ final class DefinitionsController extends Controller {
 			$this->forge()->repository()->active( RelationKind::ID )
 		);
 
+		$templates = array_map(
+			fn( \WP_Post $post ) => [ 'value' => $post->ID, 'label' => get_the_title( $post ) ?: '#' . $post->ID, 'source' => libreblocks()->get( 'forge.templates' )->source( $post->ID ) ],
+			libreblocks()->get( 'forge.templates' )->all()
+		);
+
 		return new WP_REST_Response( [
+			'templates'      => $templates,
 			'objects'        => $objects,
 			'relations'      => $relations,
 			'queries'        => $queries,

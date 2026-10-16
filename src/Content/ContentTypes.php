@@ -34,6 +34,10 @@ final class ContentTypes {
 
 		foreach ( $this->repository->active( PostTypeKind::ID ) as $definition ) {
 			register_post_type( $definition->slug, PostTypeKind::to_args( $definition ) );
+
+			if ( $definition->get( 'single_template' ) ) {
+				libreblocks()->get( 'forge.templates' )->use_for_singles( $definition->slug, (int) $definition->get( 'single_template' ) );
+			}
 		}
 	}
 

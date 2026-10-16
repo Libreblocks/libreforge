@@ -210,6 +210,18 @@ export function postTypeSections( { config, set, errors, environment, slug, setS
 						<IconPicker value={ config.menu_icon } onChange={ ( menu_icon ) => set( { menu_icon } ) } />
 					</SettingRow>
 					<Chips label={ __( 'What each item has', 'libreforge' ) } help={ __( 'Boxes shown when writing an item.', 'libreforge' ) } options={ SUPPORTS } value={ config.supports } onChange={ ( supports ) => set( { supports } ) } />
+					<Choose
+						label={ __( 'Page of each item', 'libreforge' ) }
+						help={ __( 'Design of the page that opens when someone clicks an item. The theme keeps its header and footer.', 'libreforge' ) }
+						value={ String( config.single_template || '' ) }
+						options={ [
+							{ value: '', label: __( 'Theme default', 'libreforge' ) },
+							...( environment.templates || [] )
+								.filter( ( template ) => ! slug || template.source === slug || template.source === 'post' )
+								.map( ( template ) => ( { value: String( template.value ), label: template.label } ) ),
+						] }
+						onChange={ ( value ) => set( { single_template: Number( value ) || 0 } ) }
+					/>
 				</>
 			),
 		},

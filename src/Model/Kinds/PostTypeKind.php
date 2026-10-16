@@ -64,6 +64,8 @@ final class PostTypeKind extends Kind {
 			'fields'              => $this->fields->sanitize( $input['fields'] ?? [] ),
 			'fields_title'        => self::text( $input, 'fields_title' ),
 			'fields_context'      => 'side' === ( $input['fields_context'] ?? '' ) ? 'side' : 'normal',
+			// Item template used as the content of each item's own page (0 = theme default).
+			'single_template'     => absint( $input['single_template'] ?? 0 ),
 		];
 	}
 
