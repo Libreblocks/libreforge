@@ -2352,3 +2352,10 @@ msgstr "Página de cada item"
 
 msgid "Theme default"
 msgstr "Padrão do tema"
+
+# ID da listagem
+msgid "Listing ID (for filters)"
+msgstr "ID da listagem (para filtros)"
+
+msgid "Optional. Give the same ID to the LibreSift filters that should control only this listing."
+msgstr "Opcional. Use o mesmo ID nos filtros do LibreSift que devem controlar só esta listagem."

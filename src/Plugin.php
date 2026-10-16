@@ -153,6 +153,18 @@ final class Plugin {
 		return $this->core->get( 'forge.queries' );
 	}
 
+	/**
+	 * Lets other LibreBlocks plugins store their own definitions (e.g. LibreSift filters)
+	 * through the same table, REST API and validation flow.
+	 */
+	public function register_kind( Kind $kind ): void {
+		$this->kinds[ $kind->id() ] = $kind;
+	}
+
+	public function field_list(): FieldList {
+		return new FieldList( $this->core->fields() );
+	}
+
 	public function repository(): DefinitionRepository {
 		return $this->repository;
 	}

@@ -119,6 +119,13 @@ final class LoopGridWidget extends Widget {
 			'placeholder' => __( 'Nothing found.', 'libreforge' ),
 		] );
 
+		$this->add_control( 'listing_id', [
+			'label'       => __( 'Listing ID (for filters)', 'libreforge' ),
+			'type'        => Controls_Manager::TEXT,
+			'placeholder' => 'imoveis',
+			'description' => __( 'Optional. Give the same ID to the LibreSift filters that should control only this listing.', 'libreforge' ),
+		] );
+
 		$this->end_controls_section();
 	}
 
@@ -140,6 +147,7 @@ final class LoopGridWidget extends Widget {
 			'gap'            => (int) ( $s['gap'] ?? 24 ),
 			'pagination'     => (string) ( $s['pagination'] ?? 'none' ),
 			'empty_text'     => (string) ( $s['empty_text'] ?? '' ),
+			'listing_id'     => sanitize_key( (string) ( $s['listing_id'] ?? '' ) ),
 			'instance'       => $this->get_id(),
 		] ) );
 	}

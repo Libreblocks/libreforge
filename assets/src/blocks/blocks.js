@@ -203,6 +203,14 @@ function LoopGridEdit( { attributes, setAttributes, name } ) {
 						__nextHasNoMarginBottom
 					/>
 					<TextControl label={ __( 'Message when empty', 'libreforge' ) } value={ attributes.emptyText } placeholder={ __( 'Nothing found.', 'libreforge' ) } onChange={ set( 'emptyText' ) } __nextHasNoMarginBottom />
+					<TextControl
+						label={ __( 'Listing ID (for filters)', 'libreforge' ) }
+						help={ __( 'Optional. Give the same ID to the LibreSift filters that should control only this listing.', 'libreforge' ) }
+						value={ attributes.listingId }
+						placeholder="imoveis"
+						onChange={ ( value ) => setAttributes( { listingId: value.toLowerCase().replace( /[^a-z0-9_-]/g, '' ) } ) }
+						__nextHasNoMarginBottom
+					/>
 				</PanelBody>
 			</InspectorControls>
 

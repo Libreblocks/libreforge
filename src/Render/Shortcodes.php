@@ -59,7 +59,7 @@ final class Shortcodes {
 			'gap'            => (int) $a['gap'],
 			'pagination'     => sanitize_key( $a['pagination'] ),
 			'empty_text'     => sanitize_text_field( $a['empty'] ),
-			'instance'       => sanitize_key( $a['id'] ),
+			'listing_id'     => sanitize_key( $a['id'] ),
 		] );
 	}
 

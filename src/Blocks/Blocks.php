@@ -111,6 +111,7 @@ final class Blocks {
 						'gap'            => $a['gap'] ?? 24,
 						'pagination'     => $a['pagination'] ?? 'none',
 						'empty_text'     => $a['emptyText'] ?? '',
+						'listing_id'     => $a['listingId'] ?? '',
 					] );
 					break;
 

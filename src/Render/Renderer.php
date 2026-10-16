@@ -234,7 +234,8 @@ final class Renderer {
 	/**
 	 * @param array<string, mixed> $s query_id or inline (post_type, per_page, orderby, order), template_id,
 	 *                                columns, columns_tablet, columns_mobile, gap, pagination
-	 *                                (none|numbers|prev_next), empty_text, instance, class.
+	 *                                (none|numbers|prev_next), empty_text, listing_id (stable id used by
+	 *                                filters), instance, class.
 	 */
 	public function loop( array $s ): string {
 		$config = $this->loop_query( $s );
@@ -243,22 +244,29 @@ final class Renderer {
 			return $this->notice( __( 'Choose a query or a post type for this listing.', 'libreforge' ) );
 		}
 
-		$instance = sanitize_key( (string) ( $s['instance'] ?? '' ) ) ?: substr( md5( (string) wp_json_encode( [ $config, $s['template_id'] ?? 0 ] ) ), 0, 8 );
-		$page_var = 'lfp_' . $instance;
-		$page     = isset( $_GET[ $page_var ] ) ? max( 1, absint( $_GET[ $page_var ] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$result   = $this->queries->run( $config, $page, [], (string) ( $s['query_id'] ?? $instance ) );
+		$instance = sanitize_key( (string) ( $s['listing_id'] ?? '' ) )
+			?: sanitize_key( (string) ( $s['instance'] ?? '' ) )
+			?: substr( md5( (string) wp_json_encode( [ $config, $s['template_id'] ?? 0 ] ) ), 0, 8 );
 
-		if ( $result->is_empty() ) {
-			$empty = (string) ( $s['empty_text'] ?? '' );
-
-			return '' === $empty ? '' : sprintf( '<div class="lf-loop lf-loop--empty" data-libreforge-loop="%s"><p>%s</p></div>', esc_attr( $instance ), esc_html( $empty ) );
-		}
-
-		$template = (int) ( $s['template_id'] ?? 0 );
-		$items    = '';
+		$s['instance'] = $instance;
+		$page_var      = 'lfp_' . $instance;
+		$page          = isset( $_GET[ $page_var ] ) ? max( 1, absint( $_GET[ $page_var ] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$result        = $this->queries->run( $config, $page, [], $instance );
+		$items         = '';
 
 		foreach ( $result->items as $item ) {
-			$items .= '<div class="lf-loop__item">' . $this->render_item( $item, $template ) . '</div>';
+			$items .= '<div class="lf-loop__item">' . $this->render_item( $item, (int) ( $s['template_id'] ?? 0 ) ) . '</div>';
+		}
+
+		if ( $result->is_empty() ) {
+			/**
+			 * Filters the message of an empty listing (LibreSift shows one when filters match nothing).
+			 *
+			 * @param string               $message
+			 * @param array<string, mixed> $settings
+			 */
+			$empty = (string) apply_filters( 'libreforge/loop/empty_text', (string) ( $s['empty_text'] ?? '' ), $s );
+			$items = '' === $empty ? '' : '<p class="lf-loop__empty">' . esc_html( $empty ) . '</p>';
 		}
 
 		$style = sprintf(
@@ -269,16 +277,48 @@ final class Renderer {
 			$this->clamp( $s['gap'] ?? 24, 0, 120 )
 		);
 
+		// The wrapper is always printed (even when empty) so filters can refresh it.
+		[ $payload, $signature ] = self::sign( $s );
+
 		return $this->styles() . sprintf(
-			'<div class="%1$s" data-libreforge-loop="%2$s" data-page="%3$d" data-pages="%4$d"><div class="lf-loop__grid" style="%5$s">%6$s</div>%7$s</div>',
-			esc_attr( trim( 'lf-loop ' . ( $s['class'] ?? '' ) ) ),
+			'<div class="%1$s" data-libreforge-loop="%2$s" data-page="%3$d" data-pages="%4$d" data-total="%5$d" data-lf-settings="%6$s" data-lf-signature="%7$s"><div class="lf-loop__grid" style="%8$s">%9$s</div>%10$s</div>',
+			esc_attr( trim( 'lf-loop ' . ( $result->is_empty() ? 'lf-loop--empty ' : '' ) . ( $s['class'] ?? '' ) ) ),
 			esc_attr( $instance ),
 			$result->page,
 			$result->pages(),
+			$result->total,
+			esc_attr( $payload ),
+			esc_attr( $signature ),
 			esc_attr( $style ),
 			$items,
 			$this->pagination( $result, (string) ( $s['pagination'] ?? 'none' ), $page_var )
 		);
+	}
+
+	/**
+	 * Listing settings travel to the browser signed, so an AJAX refresh (LibreSift)
+	 * can re-render the same listing without trusting what the browser sends back.
+	 *
+	 * @param array<string, mixed> $settings
+	 * @return array{0: string, 1: string} Base64 payload and its signature.
+	 */
+	public static function sign( array $settings ): array {
+		$payload = base64_encode( (string) wp_json_encode( $settings ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+
+		return [ $payload, hash_hmac( 'sha256', $payload, wp_salt( 'auth' ) ) ];
+	}
+
+	/**
+	 * @return array<string, mixed>|null The settings, or null when the signature does not match.
+	 */
+	public static function verify( string $payload, string $signature ): ?array {
+		if ( ! hash_equals( hash_hmac( 'sha256', $payload, wp_salt( 'auth' ) ), $signature ) ) {
+			return null;
+		}
+
+		$settings = json_decode( (string) base64_decode( $payload, true ), true ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
+
+		return is_array( $settings ) ? $settings : null;
 	}
 
 	/**

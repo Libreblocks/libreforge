@@ -62,6 +62,10 @@
 		"emptyText": {
 			"type": "string",
 			"default": ""
+		},
+		"listingId": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"supports": {
