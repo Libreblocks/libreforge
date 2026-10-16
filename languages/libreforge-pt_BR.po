@@ -1,0 +1,1430 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LibreForge 0.1.0\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: libreforge\n"
+
+msgid "\"Add\" button text"
+msgstr "Texto do botão \"Adicionar\""
+
+msgid "%s archive"
+msgstr "Arquivo de %s"
+
+msgid "%s attributes"
+msgstr "Atributos: %s"
+
+msgid "%s link"
+msgstr "Link: %s"
+
+msgid "%s list"
+msgstr "Lista: %s"
+
+msgid "%s list navigation"
+msgstr "Navegação da lista: %s"
+
+msgid "%s published."
+msgstr "%s: publicado."
+
+msgid "%s reverted to draft."
+msgstr "%s: revertido para rascunho."
+
+msgid "%s scheduled."
+msgstr "%s: agendado."
+
+msgid "%s updated."
+msgstr "%s: atualizado."
+
+msgid "(no label)"
+msgstr "(sem rótulo)"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Active"
+msgstr "Ativo"
+
+msgid "Add %s"
+msgstr "Adicionar %s"
+
+msgid "Add at least one option."
+msgstr "Adicione pelo menos uma opção."
+
+msgid "Add field"
+msgstr "Adicionar campo"
+
+msgid "Add new"
+msgstr "Adicionar novo"
+
+msgid "Add or remove %s"
+msgstr "Adicionar ou remover %s"
+
+msgid "Add other fields to show this one conditionally."
+msgstr "Adicione outros campos para exibir este de forma condicional."
+
+msgid "Add rule"
+msgstr "Adicionar regra"
+
+msgid "all rules match"
+msgstr "todas as regras forem atendidas"
+
+msgid "All: %s"
+msgstr "Todos: %s"
+
+msgid "Allow multiple"
+msgstr "Permitir vários"
+
+msgid "Allowed files"
+msgstr "Arquivos permitidos"
+
+msgid "Another item already uses this slug."
+msgstr "Outro item já usa este slug."
+
+msgid "Another plugin or theme already registers a post type with this slug."
+msgstr "Outro plugin ou tema já registra um tipo de post com este slug."
+
+msgid "Another plugin or theme already registers a taxonomy with this slug."
+msgstr "Outro plugin ou tema já registra uma taxonomia com este slug."
+
+msgid "Any file"
+msgstr "Qualquer arquivo"
+
+msgid "any rule matches"
+msgstr "qualquer regra for atendida"
+
+msgid "Appearance"
+msgstr "Aparência"
+
+msgid "Archive URL"
+msgstr "URL do arquivo"
+
+msgid "Audio"
+msgstr "Áudio"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Available in the REST API and block editor"
+msgstr "Disponível na API REST e no editor de blocos"
+
+msgid "Basic"
+msgstr "Básico"
+
+msgid "Below the content"
+msgstr "Abaixo do conteúdo"
+
+msgid "Changing the slug of an existing item disconnects the content already saved with the old slug."
+msgstr "Alterar o slug de um item existente desconecta o conteúdo já salvo com o slug antigo."
+
+msgid "Choice"
+msgstr "Escolha"
+
+msgid "Choose at least one post type."
+msgstr "Escolha pelo menos um tipo de post."
+
+msgid "Choose at least one taxonomy."
+msgstr "Escolha pelo menos uma taxonomia."
+
+msgid "Choose from the most used: %s"
+msgstr "Escolher entre os mais usados: %s"
+
+msgid "Comments"
+msgstr "Comentários"
+
+msgid "Conditional logic"
+msgstr "Lógica condicional"
+
+msgid "contains"
+msgstr "contém"
+
+msgid "Content (HTML)"
+msgstr "Conteúdo (HTML)"
+
+msgid "Content editor"
+msgstr "Editor de conteúdo"
+
+msgid "Could not save."
+msgstr "Não foi possível salvar."
+
+msgid "Create %s"
+msgstr "Criar %s"
+
+msgid "Create a field group to add custom fields to posts, terms or users."
+msgstr "Crie um grupo de campos para adicionar campos personalizados a posts, termos ou usuários."
+
+msgid "Create a glossary to reuse the same list of options in many fields."
+msgstr "Crie um glossário para reutilizar a mesma lista de opções em vários campos."
+
+msgid "Create a taxonomy to classify content, for example \"Cities\" or \"Property types\"."
+msgstr "Crie uma taxonomia para classificar conteúdo, por exemplo \"Cidades\" ou \"Tipos de imóvel\"."
+
+msgid "Create an options page for site-wide settings, like contact details or social links."
+msgstr "Crie uma página de opções para configurações gerais do site, como contatos ou redes sociais."
+
+msgid "Create your first post type, for example \"Properties\" or \"Courses\"."
+msgstr "Crie seu primeiro tipo de post, por exemplo \"Imóveis\" ou \"Cursos\"."
+
+msgid "Custom fields panel (needed for fields in the REST API)"
+msgstr "Painel de campos personalizados (necessário para campos na API REST)"
+
+msgid "Default"
+msgstr "Padrão"
+
+msgid "Default value"
+msgstr "Valor padrão"
+
+msgid "Delete"
+msgstr "Excluir"
+
+msgid "Delete field"
+msgstr "Excluir campo"
+
+msgid "Delete this definition? The content already created stays in the database but will no longer be visible until you recreate it with the same slug."
+msgstr "Excluir esta definição? O conteúdo já criado continua no banco de dados, mas só voltará a aparecer se você recriá-la com o mesmo slug."
+
+msgid "Delete this definition? Values already saved stay in the database."
+msgstr "Excluir esta definição? Os valores já salvos continuam no banco de dados."
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Draft"
+msgstr "Rascunho"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Edit %s"
+msgstr "Editar %s"
+
+msgid "Editor"
+msgstr "Editor"
+
+msgid "Excerpt"
+msgstr "Resumo"
+
+msgid "Exclude from search results"
+msgstr "Excluir dos resultados de busca"
+
+msgid "Featured image"
+msgstr "Imagem destacada"
+
+msgid "Features"
+msgstr "Recursos"
+
+msgid "field group"
+msgstr "grupo de campos"
+
+msgid "Field groups"
+msgstr "Grupos de campos"
+
+msgid "Fields"
+msgstr "Campos"
+
+msgid "Fields of each item"
+msgstr "Campos de cada item"
+
+msgid "Fields of the group"
+msgstr "Campos do grupo"
+
+msgid "Filter %s list"
+msgstr "Filtrar lista: %s"
+
+msgid "General"
+msgstr "Geral"
+
+msgid "Glossaries"
+msgstr "Glossários"
+
+msgid "Glossary"
+msgstr "Glossário"
+
+msgid "glossary"
+msgstr "glossário"
+
+msgid "Glossary: %s"
+msgstr "Glossário: %s"
+
+msgid "greater than"
+msgstr "maior que"
+
+msgid "Has an archive page"
+msgstr "Tem página de arquivo"
+
+msgid "Hierarchical (items can have parents, like pages)"
+msgstr "Hierárquico (itens podem ter pai, como páginas)"
+
+msgid "Hierarchical (like categories; off = like tags)"
+msgstr "Hierárquica (como categorias; desligado = como tags)"
+
+msgid "High"
+msgstr "Alta"
+
+msgid "Images"
+msgstr "Imagens"
+
+msgid "Include parent terms in the URL"
+msgstr "Incluir termos pai na URL"
+
+msgid "Insert into item"
+msgstr "Inserir no item"
+
+msgid "is"
+msgstr "é"
+
+msgid "is empty"
+msgstr "está vazio"
+
+msgid "is none of (comma separated)"
+msgstr "não é nenhum de (separados por vírgula)"
+
+msgid "is not"
+msgstr "não é"
+
+msgid "is not empty"
+msgstr "não está vazio"
+
+msgid "is one of (comma separated)"
+msgstr "é um de (separados por vírgula)"
+
+msgid "Item not found."
+msgstr "Item não encontrado."
+
+msgid "Label"
+msgstr "Rótulo"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "less than"
+msgstr "menor que"
+
+msgid "LibreBlocks menu"
+msgstr "Menu LibreBlocks"
+
+msgid "LibreForge needs the LibreBlocks Core plugin. Please install and activate it."
+msgstr "O LibreForge precisa do plugin LibreBlocks Core. Instale e ative-o."
+
+msgid "Limit to (leave empty for all)"
+msgstr "Limitar a (deixe vazio para todos)"
+
+msgid "Load values on every page (autoload)"
+msgstr "Carregar valores em todas as páginas (autoload)"
+
+msgid "Low"
+msgstr "Baixa"
+
+msgid "Lowercase letters, numbers and _. Used in tokens and code."
+msgstr "Letras minúsculas, números e _. Usado em tokens e no código."
+
+msgid "Maximum"
+msgstr "Máximo"
+
+msgid "Maximum items"
+msgstr "Máximo de itens"
+
+msgid "Maximum length"
+msgstr "Tamanho máximo"
+
+msgid "Media"
+msgstr "Mídia"
+
+msgid "Menu icon (dashicons-…)"
+msgstr "Ícone do menu (dashicons-…)"
+
+msgid "Menu location"
+msgstr "Local no menu"
+
+msgid "Menu of: %s"
+msgstr "Menu de: %s"
+
+msgid "Menu position"
+msgstr "Posição no menu"
+
+msgid "Menu title"
+msgstr "Título no menu"
+
+msgid "Minimum"
+msgstr "Mínimo"
+
+msgid "Minimum items"
+msgstr "Mínimo de itens"
+
+msgid "Most used: %s"
+msgstr "Mais usados: %s"
+
+msgid "Move down"
+msgstr "Mover para baixo"
+
+msgid "Move up"
+msgstr "Mover para cima"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Name (meta key)"
+msgstr "Nome (meta key)"
+
+msgid "Name of the new item: %s"
+msgstr "Nome do novo item: %s"
+
+msgid "New %s"
+msgstr "Adicionar %s"
+
+msgid "New item: %s"
+msgstr "Novo item: %s"
+
+msgid "No %s"
+msgstr "Nenhum item em %s"
+
+msgid "No fields yet."
+msgstr "Nenhum campo ainda."
+
+msgid "Nothing found in %s in the trash."
+msgstr "Nada encontrado em %s na lixeira."
+
+msgid "Nothing found in %s."
+msgstr "Nada encontrado em %s."
+
+msgid "One option per line as \"value : label\". Example: sp : São Paulo"
+msgstr "Uma opção por linha no formato \"valor : rótulo\". Exemplo: sp : São Paulo"
+
+msgid "Only for these roles (leave empty for everyone)"
+msgstr "Apenas para estas funções (deixe vazio para todos)"
+
+msgid "Options"
+msgstr "Opções"
+
+msgid "Options (one per line, \"value : label\")"
+msgstr "Opções (uma por linha, \"valor : rótulo\")"
+
+msgid "Options come from"
+msgstr "As opções vêm de"
+
+msgid "options page"
+msgstr "página de opções"
+
+msgid "Options pages"
+msgstr "Páginas de opções"
+
+msgid "Order and parent"
+msgstr "Ordem e item pai"
+
+msgid "Own top-level menu"
+msgstr "Menu próprio no nível principal"
+
+msgid "Page"
+msgstr "Página"
+
+msgid "Page title"
+msgstr "Título da página"
+
+msgid "Parent %s"
+msgstr "%s pai"
+
+msgid "Parent %s:"
+msgstr "%s pai:"
+
+msgid "Placeholder"
+msgstr "Texto de exemplo (placeholder)"
+
+msgid "Please fix the highlighted fields."
+msgstr "Corrija os campos destacados."
+
+msgid "Plural name"
+msgstr "Nome no plural"
+
+msgid "Position"
+msgstr "Posição"
+
+msgid "post type"
+msgstr "tipo de post"
+
+msgid "Post Types"
+msgstr "Tipos de post"
+
+msgid "Post types"
+msgstr "Tipos de post"
+
+msgid "Posts / post types"
+msgstr "Posts / tipos de post"
+
+msgid "Prefix with the permalink base (with_front)"
+msgstr "Prefixar com a base dos links permanentes (with_front)"
+
+msgid "Priority"
+msgstr "Prioridade"
+
+msgid "Public"
+msgstr "Público"
+
+msgid "Relational"
+msgstr "Relacional"
+
+msgid "Remove featured image"
+msgstr "Remover imagem destacada"
+
+msgid "Remove rule"
+msgstr "Remover regra"
+
+msgid "Required"
+msgstr "Obrigatório"
+
+msgid "required"
+msgstr "obrigatório"
+
+msgid "Required capability"
+msgstr "Permissão necessária (capability)"
+
+msgid "Revisions"
+msgstr "Revisões"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "Saved."
+msgstr "Salvo."
+
+msgid "Search %s"
+msgstr "Buscar %s"
+
+msgid "Separate %s with commas"
+msgstr "Separe %s com vírgulas"
+
+msgid "Set featured image"
+msgstr "Definir imagem destacada"
+
+msgid "Settings"
+msgstr "Configurações"
+
+msgid "Settings saved."
+msgstr "Configurações salvas."
+
+msgid "Show a column in the post list"
+msgstr "Mostrar coluna na lista de posts"
+
+msgid "Show in quick edit"
+msgstr "Mostrar na edição rápida"
+
+msgid "Show in the admin menu"
+msgstr "Mostrar no menu do painel"
+
+msgid "Show on"
+msgstr "Exibir em"
+
+msgid "Show only when…"
+msgstr "Exibir somente quando…"
+
+msgid "Show when"
+msgstr "Exibir quando"
+
+msgid "Sidebar"
+msgstr "Barra lateral"
+
+msgid "Singular name"
+msgstr "Nome no singular"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Some fields need attention:"
+msgstr "Alguns campos precisam de atenção:"
+
+msgid "Step (0.01 allows decimals)"
+msgstr "Incremento (0.01 permite decimais)"
+
+msgid "Store as"
+msgstr "Salvar como"
+
+msgid "Structure"
+msgstr "Estrutura"
+
+msgid "Taxonomies"
+msgstr "Taxonomias"
+
+msgid "taxonomy"
+msgstr "taxonomia"
+
+msgid "Taxonomy terms"
+msgstr "Termos de taxonomia"
+
+msgid "Text (recommended for sorting and filters)"
+msgstr "Texto (recomendado para ordenação e filtros)"
+
+msgid "Text next to the switch"
+msgstr "Texto ao lado do botão"
+
+msgid "The field \"%s\" needs a name."
+msgstr "O campo \"%s\" precisa de um nome."
+
+msgid "The list below"
+msgstr "A lista abaixo"
+
+msgid "The name \"%s\" is reserved by WordPress."
+msgstr "O nome \"%s\" é reservado pelo WordPress."
+
+msgid "The name \"%s\" is used by more than one field."
+msgstr "O nome \"%s\" é usado por mais de um campo."
+
+msgid "The plural name is required."
+msgstr "O nome no plural é obrigatório."
+
+msgid "The singular name is required."
+msgstr "O nome no singular é obrigatório."
+
+msgid "The slug is required."
+msgstr "O slug é obrigatório."
+
+msgid "The slug must have at most %d characters."
+msgstr "O slug pode ter no máximo %d caracteres."
+
+msgid "The title is required."
+msgstr "O título é obrigatório."
+
+msgid "This options page does not exist."
+msgstr "Esta página de opções não existe."
+
+msgid "This slug is reserved by WordPress. Choose another one."
+msgstr "Este slug é reservado pelo WordPress. Escolha outro."
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Tools"
+msgstr "Ferramentas"
+
+msgid "Turn off to use the classic editor."
+msgstr "Desligue para usar o editor clássico."
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Unix timestamp"
+msgstr "Timestamp Unix"
+
+msgid "Unknown definition kind."
+msgstr "Tipo de definição desconhecido."
+
+msgid "Unknown field type \"%s\"."
+msgstr "Tipo de campo desconhecido: \"%s\"."
+
+msgid "Up to 20 characters. Used in code and as the default URL base."
+msgstr "Até 20 caracteres. Usado no código e como base padrão da URL."
+
+msgid "Up to 32 characters."
+msgstr "Até 32 caracteres."
+
+msgid "Update %s"
+msgstr "Atualizar %s"
+
+msgid "Uploaded to this item"
+msgstr "Enviado para este item"
+
+msgid "URL base"
+msgstr "Base da URL"
+
+msgid "URL base for items"
+msgstr "Base da URL dos itens"
+
+msgid "URLs"
+msgstr "URLs"
+
+msgid "Use as featured image"
+msgstr "Usar como imagem destacada"
+
+msgid "Used by"
+msgstr "Usada por"
+
+msgid "User profiles"
+msgstr "Perfis de usuário"
+
+msgid "Users"
+msgstr "Usuários"
+
+msgid "Values are saved in the option \"%1$s\". Use them in tokens like %2$s."
+msgstr "Os valores são salvos na opção \"%1$s\". Use-os em tokens como %2$s."
+
+msgid "Videos"
+msgstr "Vídeos"
+
+msgid "View %s"
+msgstr "Ver %s"
+
+msgid "Visibility"
+msgstr "Visibilidade"
+
+msgid "Where to show"
+msgstr "Onde exibir"
+
+msgid "Width"
+msgstr "Largura"
+
+msgid "You are not allowed to change these settings."
+msgstr "Você não tem permissão para alterar estas configurações."
+
+msgid "← %s"
+msgstr "← %s"
+
+msgid "← Back"
+msgstr "← Voltar"
+
+# Novo visual
+msgid "\"Add new\" title"
+msgstr "Título \"Adicionar novo\""
+
+msgid "\"All items\" link"
+msgstr "Link \"Todos os itens\""
+
+msgid "\"Back\" link"
+msgstr "Link \"Voltar\""
+
+msgid "\"Edit\" title"
+msgstr "Título \"Editar\""
+
+msgid "%1$d in total · %2$d active"
+msgstr "%1$d no total · %2$d ativos"
+
+msgid "A list of options you can reuse in select, radio and checkbox fields."
+msgstr "Uma lista de opções para reutilizar em campos de seleção, opção única e caixas de seleção."
+
+msgid "A page listing all items, like /properties/."
+msgstr "Uma página que lista todos os itens, como /imoveis/."
+
+msgid "A settings screen for site-wide information."
+msgstr "Uma tela de configurações para informações gerais do site."
+
+msgid "A typical setup for a real estate site, a course catalog or a team page."
+msgstr "Uma configuração típica para um site de imóveis, um catálogo de cursos ou uma página de equipe."
+
+msgid "Add a taxonomy"
+msgstr "Adicione uma taxonomia"
+
+msgid "Add custom fields"
+msgstr "Adicione campos personalizados"
+
+msgid "Add option"
+msgstr "Adicionar opção"
+
+msgid "Add to the list"
+msgstr "Adicionar à lista"
+
+msgid "Addresses of the items and of the archive."
+msgstr "Endereços dos itens e da página de arquivo."
+
+msgid "Adds the prefix from Settings > Permalinks (for example /blog/)."
+msgstr "Adiciona o prefixo de Configurações > Links permanentes (por exemplo /blog/)."
+
+msgid "Advanced"
+msgstr "Avançado"
+
+msgid "Allows front-end queries by URL parameters."
+msgstr "Permite consultas no site por parâmetros de URL."
+
+msgid "Archive page"
+msgstr "Página de arquivo"
+
+msgid "Autoload"
+msgstr "Carregamento automático"
+
+msgid "Automatic"
+msgstr "Automático"
+
+msgid "Available in navigation menus"
+msgstr "Disponível nos menus de navegação"
+
+msgid "Block editor and REST API"
+msgstr "Editor de blocos e API REST"
+
+msgid "Build the content structure of your site: post types, taxonomies, fields and settings pages."
+msgstr "Monte a estrutura de conteúdo do seu site: tipos de post, taxonomias, campos e páginas de configurações."
+
+msgid "Calendar"
+msgstr "Calendário"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Capability type"
+msgstr "Tipo de permissão (capability)"
+
+msgid "Click a field to edit it. Use the arrows to reorder."
+msgstr "Clique em um campo para editá-lo. Use as setas para reordenar."
+
+msgid "Column in the post list"
+msgstr "Coluna na lista de posts"
+
+msgid "Coming soon"
+msgstr "Em breve"
+
+msgid "Coming with LibreBlocks Pro"
+msgstr "Chegando no LibreBlocks Pro"
+
+msgid "Connect posts, terms and users to each other."
+msgstr "Conecte posts, termos e usuários entre si."
+
+msgid "Contact details"
+msgstr "Dados de contato"
+
+msgid "Content tables"
+msgstr "Tabelas de conteúdo"
+
+msgid "Create"
+msgstr "Criar"
+
+msgid "Create a post type"
+msgstr "Crie um tipo de post"
+
+msgid "Create field group"
+msgstr "Criar grupo de campos"
+
+msgid "Create glossary"
+msgstr "Criar glossário"
+
+msgid "Create options page"
+msgstr "Criar página de opções"
+
+msgid "Create post type"
+msgstr "Criar tipo de post"
+
+msgid "Create taxonomy"
+msgstr "Criar taxonomia"
+
+msgid "Create your first field group"
+msgstr "Crie seu primeiro grupo de campos"
+
+msgid "Create your first glossary"
+msgstr "Crie seu primeiro glossário"
+
+msgid "Create your first options page"
+msgstr "Crie sua primeira página de opções"
+
+msgid "Create your first post type"
+msgstr "Crie seu primeiro tipo de post"
+
+msgid "Create your first taxonomy"
+msgstr "Crie sua primeira taxonomia"
+
+msgid "Custom fields panel"
+msgstr "Painel de campos personalizados"
+
+msgid "Dashboard"
+msgstr "Painel"
+
+msgid "Delete items with their author"
+msgstr "Excluir itens junto com o autor"
+
+msgid "Dynamic visibility"
+msgstr "Visibilidade dinâmica"
+
+msgid "Each term has its own archive page."
+msgstr "Cada termo tem sua própria página de arquivo."
+
+msgid "Favorites and compare"
+msgstr "Favoritos e comparação"
+
+msgid "Field groups add custom fields, like price, gallery or address, to posts, terms or user profiles."
+msgstr "Grupos de campos adicionam campos personalizados, como preço, galeria ou endereço, a posts, termos ou perfis de usuário."
+
+msgid "Fields (%d)"
+msgstr "Campos (%d)"
+
+msgid "For example \"Cities\", to classify and filter."
+msgstr "Por exemplo \"Cidades\", para classificar e filtrar."
+
+msgid "For example \"Properties\". It gets its own menu."
+msgstr "Por exemplo \"Imóveis\". Ele ganha um menu próprio."
+
+msgid "Front-end account area for members."
+msgstr "Área de conta no site para membros."
+
+msgid "Generated from the singular and plural names. Fill only what you want to change."
+msgstr "Gerados a partir dos nomes no singular e no plural. Preencha só o que quiser mudar."
+
+msgid "Get started in three steps"
+msgstr "Comece em três passos"
+
+msgid "Glossaries are option lists, like States or Amenities, reused by many fields."
+msgstr "Glossários são listas de opções, como Estados ou Comodidades, reutilizadas por vários campos."
+
+msgid "Group title"
+msgstr "Título do grupo"
+
+msgid "Hierarchical"
+msgstr "Hierárquico"
+
+msgid "How to use the values"
+msgstr "Como usar os valores"
+
+msgid "Items"
+msgstr "Itens"
+
+msgid "Items can have a parent, like pages."
+msgstr "Itens podem ter um item pai, como as páginas."
+
+msgid "Items have their own page on the site."
+msgstr "Os itens têm página própria no site."
+
+msgid "Label (shown)"
+msgstr "Rótulo (exibido)"
+
+msgid "Labels"
+msgstr "Rótulos"
+
+msgid "Large datasets in their own fast database table."
+msgstr "Grandes volumes de dados em uma tabela própria e rápida."
+
+msgid "Leave empty to show on every profile."
+msgstr "Deixe vazio para exibir em todos os perfis."
+
+msgid "LibreForge menu"
+msgstr "Menu LibreForge"
+
+msgid "List items by date in a monthly calendar."
+msgstr "Liste itens por data em um calendário mensal."
+
+msgid "Loads the values on every page. Turn off for pages with many fields used rarely."
+msgstr "Carrega os valores em todas as páginas. Desligue em páginas com muitos campos pouco usados."
+
+msgid "Location"
+msgstr "Local"
+
+msgid "Maps"
+msgstr "Mapas"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Menu icon"
+msgstr "Ícone do menu"
+
+msgid "Menu name"
+msgstr "Nome no menu"
+
+msgid "Menu preview"
+msgstr "Prévia do menu"
+
+msgid "Modules"
+msgstr "Módulos"
+
+msgid "Names and identity of the post type."
+msgstr "Nomes e identidade do tipo de post."
+
+msgid "Names and where the taxonomy is used."
+msgstr "Nomes e onde a taxonomia é usada."
+
+msgid "New field group"
+msgstr "Novo grupo de campos"
+
+msgid "New glossary"
+msgstr "Novo glossário"
+
+msgid "New options page"
+msgstr "Nova página de opções"
+
+msgid "New post type"
+msgstr "Novo tipo de post"
+
+msgid "New taxonomy"
+msgstr "Nova taxonomia"
+
+msgid "Nothing found message"
+msgstr "Mensagem de nada encontrado"
+
+msgid "Nothing matches your search."
+msgstr "Nada corresponde à sua busca."
+
+msgid "On: like categories, with parent terms. Off: like tags."
+msgstr "Ligado: como categorias, com termos pai. Desligado: como tags."
+
+msgid "Only for these roles"
+msgstr "Apenas para estas funções"
+
+msgid "Open the items"
+msgstr "Abrir os itens"
+
+msgid "Options (%d)"
+msgstr "Opções (%d)"
+
+msgid "Options pages hold site-wide settings, like contact details, social links or a promo banner."
+msgstr "Páginas de opções guardam configurações gerais, como contatos, redes sociais ou um banner promocional."
+
+msgid "Parent item"
+msgstr "Item pai"
+
+msgid "Paste many"
+msgstr "Colar vários"
+
+msgid "Position on the screen"
+msgstr "Posição na tela"
+
+msgid "Post types are content of their own, like Properties, Courses or Team members, each with its own menu."
+msgstr "Tipos de post são conteúdos próprios, como Imóveis, Cursos ou Equipe, cada um com seu menu."
+
+msgid "Price, gallery, address: everything each item needs."
+msgstr "Preço, galeria, endereço: tudo o que cada item precisa."
+
+msgid "Properties"
+msgstr "Imóveis"
+
+msgid "Property"
+msgstr "Imóvel"
+
+msgid "Property details"
+msgstr "Dados do imóvel"
+
+msgid "Publicly queryable"
+msgstr "Consultável publicamente"
+
+msgid "Quick edit"
+msgstr "Edição rápida"
+
+msgid "REST base"
+msgstr "Base REST"
+
+msgid "Relations"
+msgstr "Relações"
+
+msgid "Remove"
+msgstr "Remover"
+
+msgid "Save changes"
+msgstr "Salvar alterações"
+
+msgid "Saved in the option \"%s\". In tokens:"
+msgstr "Salvo na opção \"%s\". Em tokens:"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Search button"
+msgstr "Botão de busca"
+
+msgid "Settings for developers."
+msgstr "Configurações para desenvolvedores."
+
+msgid "Show listing items as pins on a map."
+msgstr "Mostre os itens como marcadores em um mapa."
+
+msgid "Show or hide any block by rules."
+msgstr "Mostre ou esconda qualquer bloco por regras."
+
+msgid "States"
+msgstr "Estados"
+
+msgid "Tables and charts"
+msgstr "Tabelas e gráficos"
+
+msgid "Tag cloud widget"
+msgstr "Widget de nuvem de tags"
+
+msgid "Tag-like"
+msgstr "Como tags"
+
+msgid "Taxonomies classify content, like Cities or Property types, and power filters."
+msgstr "Taxonomias classificam o conteúdo, como Cidades ou Tipos de imóvel, e alimentam os filtros."
+
+msgid "The custom fields panel is needed to read fields through the REST API."
+msgstr "O painel de campos personalizados é necessário para ler os campos pela API REST."
+
+msgid "Turn queries into tables and charts."
+msgstr "Transforme consultas em tabelas e gráficos."
+
+msgid "Use the permalink base"
+msgstr "Usar a base dos links permanentes"
+
+msgid "User profile"
+msgstr "Perfil de usuário"
+
+msgid "Value (saved)"
+msgstr "Valor (salvo)"
+
+msgid "Visitors save and compare items."
+msgstr "Visitantes salvam e comparam itens."
+
+msgid "What appears on the edit screen of each item."
+msgstr "O que aparece na tela de edição de cada item."
+
+msgid "Where the page appears in the admin menu and who can open it."
+msgstr "Onde a página aparece no menu do painel e quem pode abri-la."
+
+msgid "Where this group of fields appears."
+msgstr "Onde este grupo de campos aparece."
+
+msgid "Who can see the items and where they appear."
+msgstr "Quem pode ver os itens e onde eles aparecem."
+
+msgid "Your content"
+msgstr "Seu conteúdo"
+
+msgid "item-name"
+msgstr "nome-do-item"
+
+msgid "term-name"
+msgstr "nome-do-termo"
+
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d item"
+msgstr[1] "%d itens"
+
+msgid "%d taxonomy"
+msgid_plural "%d taxonomies"
+msgstr[0] "%d taxonomia"
+msgstr[1] "%d taxonomias"
+
+msgid "%d field group"
+msgid_plural "%d field groups"
+msgstr[0] "%d grupo de campos"
+msgstr[1] "%d grupos de campos"
+
+msgid "%d term"
+msgid_plural "%d terms"
+msgstr[0] "%d termo"
+msgstr[1] "%d termos"
+
+msgid "%d field"
+msgid_plural "%d fields"
+msgstr[0] "%d campo"
+msgstr[1] "%d campos"
+
+msgid "%d option"
+msgid_plural "%d options"
+msgstr[0] "%d opção"
+msgstr[1] "%d opções"
+
+# Editor simplificado
+msgid "%s (copy)"
+msgstr "%s (cópia)"
+
+msgid "1 = whole numbers. 0.01 = allows cents."
+msgstr "1 = números inteiros. 0.01 = permite centavos."
+
+msgid "A fixed text or notice shown between the fields."
+msgstr "Um texto fixo ou aviso exibido entre os campos."
+
+msgid "Address of the archive"
+msgstr "Endereço da página de arquivo"
+
+msgid "Address of the items"
+msgstr "Endereço dos itens"
+
+msgid "Address of the terms"
+msgstr "Endereço dos termos"
+
+msgid "Advanced settings"
+msgstr "Configurações avançadas"
+
+msgid "All changes saved"
+msgstr "Todas as alterações salvas"
+
+msgid "Allow choosing more than one"
+msgstr "Permitir escolher mais de um"
+
+msgid "Available in the REST API"
+msgstr "Disponível na API REST"
+
+msgid "Block editor"
+msgstr "Editor de blocos"
+
+msgid "Box title"
+msgstr "Título da caixa"
+
+msgid "Boxes shown when writing an item."
+msgstr "Caixas exibidas ao escrever um item."
+
+msgid "Changing it later disconnects the content saved with the old one."
+msgstr "Mudar depois desconecta o conteúdo salvo com o anterior."
+
+msgid "Character limit"
+msgstr "Limite de caracteres"
+
+msgid "Cities"
+msgstr "Cidades"
+
+msgid "City"
+msgstr "Cidade"
+
+msgid "Condition"
+msgstr "Condição"
+
+msgid "Copy this token into any text or dynamic field."
+msgstr "Copie este token em qualquer texto ou campo dinâmico."
+
+msgid "Created automatically from the names above. Fill only what you want to change."
+msgstr "Criados automaticamente a partir dos nomes acima. Preencha só o que quiser mudar."
+
+msgid "Custom fields"
+msgstr "Campos personalizados"
+
+msgid "Delete this field? Values already saved stay in the database."
+msgstr "Excluir este campo? Os valores já salvos continuam no banco de dados."
+
+msgid "Discard changes"
+msgstr "Descartar alterações"
+
+msgid "Duplicate field"
+msgstr "Duplicar campo"
+
+msgid "Each field needs a label (what people see) and a name (how it is saved)."
+msgstr "Cada campo precisa de um rótulo (o que as pessoas veem) e de um nome (como é salvo)."
+
+msgid "Each item has its own page on the site."
+msgstr "Cada item tem sua própria página no site."
+
+msgid "Ex.: Accepts pets"
+msgstr "Ex.: Aceita animais"
+
+msgid "Ex.: Add room"
+msgstr "Ex.: Adicionar cômodo"
+
+msgid "Ex.: Contact details, Social networks, Promo banner."
+msgstr "Ex.: Dados de contato, Redes sociais, Banner promocional."
+
+msgid "Ex.: States, Amenities, Sizes."
+msgstr "Ex.: Estados, Comodidades, Tamanhos."
+
+msgid "Extra information for each item, like price, address or gallery. Each field needs a label (what people see) and a name (how it is saved)."
+msgstr "Informações extras de cada item, como preço, endereço ou galeria. Cada campo precisa de um rótulo (o que as pessoas veem) e de um nome (como é salvo)."
+
+msgid "Extra information for each term, like an image or a color."
+msgstr "Informações extras de cada termo, como uma imagem ou uma cor."
+
+msgid "Field"
+msgstr "Campo"
+
+msgid "Field type"
+msgstr "Tipo de campo"
+
+msgid "Field width"
+msgstr "Largura do campo"
+
+msgid "Fill in the open sections and click the save button. Everything else already has a value that works."
+msgstr "Preencha as seções abertas e clique no botão de salvar. O resto já vem com um valor que funciona."
+
+msgid "Filled in automatically from the name. Only lowercase letters, numbers and _."
+msgstr "Preenchido automaticamente a partir do nome. Só letras minúsculas, números e _."
+
+msgid "First link under the menu item."
+msgstr "Primeiro link abaixo do item do menu."
+
+msgid "For developers."
+msgstr "Para desenvolvedores."
+
+msgid "For developers. Keep \"post\" if unsure."
+msgstr "Para desenvolvedores. Deixe \"post\" se não tiver certeza."
+
+msgid "Full width (100%)"
+msgstr "Largura total (100%)"
+
+msgid "General settings"
+msgstr "Configurações gerais"
+
+msgid "Glossary name"
+msgstr "Nome do glossário"
+
+msgid "Grey example text inside the empty box."
+msgstr "Texto de exemplo em cinza dentro da caixa vazia."
+
+msgid "Half (50%)"
+msgstr "Metade (50%)"
+
+msgid "Higher priority boxes appear first."
+msgstr "Caixas com prioridade maior aparecem primeiro."
+
+msgid "How it appears in the menu. Ex.: %s"
+msgstr "Como aparece no menu. Ex.: %s"
+
+msgid "How the value is saved. Filled in from the label. Only lowercase letters, numbers and _."
+msgstr "Como o valor é salvo. Preenchido a partir do rótulo. Só letras minúsculas, números e _."
+
+msgid "Identifier (slug)"
+msgstr "Identificador (slug)"
+
+msgid "Internal note. Some themes show it."
+msgstr "Nota interna. Alguns temas exibem."
+
+msgid "Keep \"text\" unless a developer asks for timestamps."
+msgstr "Deixe \"texto\", a menos que um desenvolvedor peça timestamp."
+
+msgid "Label of the parent selector."
+msgstr "Rótulo do seletor de item pai."
+
+msgid "Leave empty for no limit."
+msgstr "Deixe vazio para não ter limite."
+
+msgid "Leave empty to allow all."
+msgstr "Deixe vazio para permitir todos."
+
+msgid "Lets apps and the block editor read and save this field."
+msgstr "Permite que apps e o editor de blocos leiam e salvem este campo."
+
+msgid "Limit to"
+msgstr "Limitar a"
+
+msgid "Maximum length. Leave empty for no limit."
+msgstr "Tamanho máximo. Deixe vazio para não ter limite."
+
+msgid "Name (plural)"
+msgstr "Nome (plural)"
+
+msgid "Name (singular)"
+msgstr "Nome (singular)"
+
+msgid "Name / ID"
+msgstr "Nome / ID"
+
+msgid "New field"
+msgstr "Novo campo"
+
+msgid "New sub-field"
+msgstr "Novo subcampo"
+
+msgid "No fields yet. Click \"New field\" to add the first one."
+msgstr "Nenhum campo ainda. Clique em \"Novo campo\" para adicionar o primeiro."
+
+msgid "Number. 5 = below Posts, 20 = below Pages."
+msgstr "Número. 5 = abaixo de Posts, 20 = abaixo de Páginas."
+
+msgid "Off = classic editor. Also controls the REST API."
+msgstr "Desligado = editor clássico. Também controla a API REST."
+
+msgid "One third (33%)"
+msgstr "Um terço (33%)"
+
+msgid "Only on post type lists."
+msgstr "Somente nas listas de tipos de post."
+
+msgid "Part of the URL before each item: %s"
+msgstr "Parte da URL antes de cada item: %s"
+
+msgid "Part of the URL before each term: %s"
+msgstr "Parte da URL antes de cada termo: %s"
+
+msgid "Position of the fields box"
+msgstr "Posição da caixa de campos"
+
+msgid "Save as"
+msgstr "Salvar como"
+
+msgid "Shorter text for the menu. Empty = same as the page title."
+msgstr "Texto mais curto para o menu. Vazio = igual ao título da página."
+
+msgid "Show as a column in the admin list"
+msgstr "Mostrar como coluna na lista do painel"
+
+msgid "Show this field only when another field has a certain value."
+msgstr "Mostrar este campo só quando outro campo tiver um certo valor."
+
+msgid "Shown after editing a term."
+msgstr "Exibido depois de editar um termo."
+
+msgid "Shown when the list is empty."
+msgstr "Exibido quando a lista está vazia."
+
+msgid "Shows the taxonomy in the block editor. Also controls the REST API."
+msgstr "Mostra a taxonomia no editor de blocos. Também controla a API REST."
+
+msgid "Small help text shown under the field."
+msgstr "Pequeno texto de ajuda exibido abaixo do campo."
+
+msgid "Step"
+msgstr "Incremento"
+
+msgid "Text of the item in the side menu."
+msgstr "Texto do item no menu lateral."
+
+msgid "Text of the search button in the list."
+msgstr "Texto do botão de busca na lista."
+
+msgid "The \"value\" is saved; the \"label\" is shown."
+msgstr "O \"valor\" é salvo; o \"rótulo\" é exibido."
+
+msgid "The \"value\" is what gets saved; the \"label\" is what people see. Ex.: sp → São Paulo."
+msgstr "O \"valor\" é o que fica salvo; o \"rótulo\" é o que as pessoas veem. Ex.: sp → São Paulo."
+
+msgid "The defaults work for most sites. Change only if you need to."
+msgstr "Os padrões funcionam para a maioria dos sites. Mude só se precisar."
+
+msgid "The field cannot be left empty."
+msgstr "O campo não pode ficar vazio."
+
+msgid "The information this page stores, like phone, e-mail or address."
+msgstr "As informações que esta página guarda, como telefone, e-mail ou endereço."
+
+msgid "The kind of information: text, number, date, image…"
+msgstr "O tipo de informação: texto, número, data, imagem…"
+
+msgid "The little picture next to the name in the menu."
+msgstr "A figurinha ao lado do nome no menu."
+
+msgid "Tips"
+msgstr "Dicas"
+
+msgid "Title of the box that shows these fields on the edit screen."
+msgstr "Título da caixa que mostra estes campos na tela de edição."
+
+msgid "Title of the box with the fields. Ex.: Property details"
+msgstr "Título da caixa com os campos. Ex.: Dados do imóvel"
+
+msgid "Title of the screen that creates an item."
+msgstr "Título da tela que cria um item."
+
+msgid "Title of the screen that edits an item."
+msgstr "Título da tela que edita um item."
+
+msgid "Turn off to keep it as a draft without showing it on the site."
+msgstr "Desligue para manter como rascunho, sem aparecer no site."
+
+msgid "Two fields of 50% sit side by side."
+msgstr "Dois campos de 50% ficam lado a lado."
+
+msgid "Two thirds (66%)"
+msgstr "Dois terços (66%)"
+
+msgid "Type the options here or reuse a glossary."
+msgstr "Digite as opções aqui ou reutilize um glossário."
+
+msgid "Unsaved changes"
+msgstr "Alterações não salvas"
+
+msgid "Used in buttons like \"Add new\". Ex.: %s"
+msgstr "Usado em botões como \"Adicionar novo\". Ex.: %s"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "Value filled in automatically on new items."
+msgstr "Valor preenchido automaticamente em novos itens."
+
+msgid "Values are saved in the option \"%s\"."
+msgstr "Os valores são salvos na opção \"%s\"."
+
+msgid "Ways to classify the items, like categories."
+msgstr "Formas de classificar os itens, como categorias."
+
+msgid "What each item has"
+msgstr "O que cada item tem"
+
+msgid "What people see next to the field. Ex.: Price"
+msgstr "O que as pessoas veem ao lado do campo. Ex.: Preço"
+
+msgid "Where it appears in the menu"
+msgstr "Onde aparece no menu"
+
+msgid "Which content can be classified with it."
+msgstr "Qual conteúdo pode ser classificado com ela."
+
+msgid "Which edit screens get these fields."
+msgstr "Quais telas de edição recebem estes campos."
+
+msgid "Who can open the page. Keep \"manage_options\" for administrators only."
+msgstr "Quem pode abrir a página. Deixe \"manage_options\" para só administradores."
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "← Back to %s"
+msgstr "← Voltar para %s"
