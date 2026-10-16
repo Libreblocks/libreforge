@@ -26,6 +26,8 @@ final class Renderer {
 
 	private static bool $styles_printed = false;
 
+	private static bool $accordion_styles_printed = false;
+
 	private string $hint = '';
 
 	public function __construct(
@@ -227,35 +229,194 @@ final class Renderer {
 		}
 
 		$this->row_fields[] = $field ? $field->fields : [];
-		$tag               = in_array( $s['tag'] ?? 'div', [ 'ul', 'ol', 'div' ], true ) ? (string) ( $s['tag'] ?? 'div' ) : 'div';
-		$item_tag          = 'div' === $tag ? 'div' : 'li';
-		$html              = '';
 
 		try {
-			foreach ( array_values( $rows ) as $index => $row ) {
-				if ( ! is_array( $row ) ) {
-					continue;
-				}
+			$rows = array_values( array_filter( $rows, 'is_array' ) );
 
-				$inner = $this->context->with( $row, function () use ( $render_row, $row, $index, $s ) {
-					if ( $render_row ) {
-						return (string) $render_row( $row, $index );
-					}
-
-					// An editor left "empty" may still hold tags like <p></p>.
-					$format = (string) ( $s['format'] ?? '' );
-					$format = '' === trim( wp_strip_all_tags( $format ) ) && false === strpos( $format, '{{' ) ? '' : $format;
-
-					return '' === $format ? $this->auto_row( $row ) : wp_kses_post( (string) $this->values->get( 'token', $format ) );
-				} );
-
-				$html .= sprintf( '<%1$s class="lf-repeater__item">%2$s</%1$s>', $item_tag, $inner );
-			}
+			return 'accordion' === ( $s['layout'] ?? 'list' )
+				? $this->accordion( $rows, $s, $render_row )
+				: $this->rows_list( $rows, $s, $render_row );
 		} finally {
 			array_pop( $this->row_fields );
 		}
+	}
+
+	/**
+	 * @param array<int, array<string, mixed>> $rows
+	 * @param array<string, mixed>             $s
+	 */
+	private function rows_list( array $rows, array $s, ?callable $render_row ): string {
+		$tag      = in_array( $s['tag'] ?? 'div', [ 'ul', 'ol', 'div' ], true ) ? (string) ( $s['tag'] ?? 'div' ) : 'div';
+		$item_tag = 'div' === $tag ? 'div' : 'li';
+		$html     = '';
+
+		foreach ( $rows as $index => $row ) {
+			$inner = $this->context->with( $row, fn() => $render_row ? (string) $render_row( $row, $index ) : $this->row_content( $row, (string) ( $s['format'] ?? '' ), [], true ) );
+			$html .= sprintf( '<%1$s class="lf-repeater__item">%2$s</%1$s>', $item_tag, $inner );
+		}
 
 		return sprintf( '<%1$s class="%2$s">%3$s</%1$s>', $tag, esc_attr( trim( 'lf-repeater ' . ( $s['class'] ?? '' ) ) ), $html );
+	}
+
+	/**
+	 * Rows as an accordion: the title sub-field is the clickable header, the rest
+	 * opens below it. Built on <details>/<summary>, so it works without JavaScript
+	 * and with the keyboard; "only one open" uses the native name grouping.
+	 *
+	 * @param array<int, array<string, mixed>> $rows
+	 * @param array<string, mixed>             $s title_key, format (content), open_first, single_open,
+	 *                                            icon (chevron|plus|none), icon_position (left|right), faq_schema.
+	 */
+	private function accordion( array $rows, array $s, ?callable $render_row ): string {
+		$children  = end( $this->row_fields ) ?: [];
+		$title_key = (string) ( $s['title_key'] ?? '' );
+
+		if ( '' === $title_key ) {
+			$first     = array_values( array_filter( $children, fn( Field $child ) => ! in_array( $child->type, [ 'html', 'tab' ], true ) ) )[0] ?? null;
+			$title_key = $first ? $first->name : (string) ( array_keys( $rows[0] ?? [] )[0] ?? '' );
+		}
+
+		$group    = 'lf-acc-' . wp_unique_id();
+		$icon     = in_array( $s['icon'] ?? 'chevron', [ 'chevron', 'plus', 'none' ], true ) ? (string) ( $s['icon'] ?? 'chevron' ) : 'chevron';
+		$position = 'left' === ( $s['icon_position'] ?? 'right' ) ? 'left' : 'right';
+		$html     = '';
+		$faq      = [];
+
+		foreach ( $rows as $index => $row ) {
+			[ $title, $content ] = $this->context->with( $row, function () use ( $row, $index, $s, $render_row, $title_key ) {
+				$title = $this->is_empty( $row[ $title_key ] ?? null ) ? '' : Formatter::format( $row[ $title_key ], [ 'format' => 'text' ], $this->child_field( $title_key ) );
+
+				return [ $title, $render_row ? (string) $render_row( $row, $index ) : $this->row_content( $row, (string) ( $s['format'] ?? '' ), [ $title_key ], false ) ];
+			} );
+
+			if ( '' === $title && '' === trim( wp_strip_all_tags( $content ) ) ) {
+				continue;
+			}
+
+			$html .= sprintf(
+				'<details class="lf-accordion__item"%1$s%2$s><summary class="lf-accordion__title">%3$s<span class="lf-accordion__text">%4$s</span>%5$s</summary><div class="lf-accordion__content">%6$s</div></details>',
+				! empty( $s['single_open'] ) ? ' name="' . esc_attr( $group ) . '"' : '',
+				! empty( $s['open_first'] ) && 0 === $index ? ' open' : '',
+				'left' === $position ? $this->accordion_icon( $icon ) : '',
+				$title,
+				'right' === $position ? $this->accordion_icon( $icon ) : '',
+				$content
+			);
+
+			$faq[] = [ wp_strip_all_tags( $title ), trim( wp_strip_all_tags( $content ) ) ];
+		}
+
+		if ( '' === $html ) {
+			return '';
+		}
+
+		return $this->styles() . $this->accordion_styles() . sprintf(
+			'<div class="%1$s">%2$s</div>%3$s',
+			esc_attr( trim( 'lf-repeater lf-accordion lf-accordion--icon-' . $icon . ' lf-accordion--icon-' . $position . ' ' . ( $s['class'] ?? '' ) ) ),
+			$html,
+			! empty( $s['faq_schema'] ) ? $this->faq_schema( $faq ) : ''
+		);
+	}
+
+	/**
+	 * Content of a row: a custom format with tokens, or every sub-field automatically.
+	 *
+	 * @param array<string, mixed> $row
+	 * @param string[]             $skip       Sub-fields not to repeat (the accordion title).
+	 * @param bool                 $bold_first Show the first sub-field in bold (list mode).
+	 */
+	private function row_content( array $row, string $format, array $skip, bool $bold_first ): string {
+		// An editor left "empty" may still hold tags like <p></p>.
+		if ( '' !== trim( wp_strip_all_tags( $format ) ) || false !== strpos( $format, '{{' ) ) {
+			return wp_kses_post( (string) $this->values->get( 'token', $format ) );
+		}
+
+		$children = end( $this->row_fields ) ?: [];
+		$names    = $children ? array_map( fn( Field $child ) => $child->name, array_filter( $children, fn( Field $child ) => ! in_array( $child->type, [ 'html', 'tab' ], true ) ) ) : array_keys( $row );
+		$names    = array_values( array_diff( $names, $skip ) );
+		$html     = '';
+
+		foreach ( $names as $index => $name ) {
+			$value = $row[ $name ] ?? null;
+
+			if ( $this->is_empty( $value ) ) {
+				continue;
+			}
+
+			$tag   = $bold_first && 0 === $index ? 'strong' : 'div';
+			$html .= sprintf( '<%1$s class="lf-repeater__field lf-repeater__field--%2$s">%3$s</%1$s>', $tag, esc_attr( sanitize_html_class( $name ) ), Formatter::format( $value, [], $this->child_field( $name ) ) );
+		}
+
+		return $html;
+	}
+
+	private function child_field( string $name ): ?Field {
+		foreach ( end( $this->row_fields ) ?: [] as $child ) {
+			if ( $child->name === $name ) {
+				return $child;
+			}
+		}
+
+		return null;
+	}
+
+	private function accordion_icon( string $icon ): string {
+		return 'none' === $icon ? '' : '<span class="lf-accordion__icon" aria-hidden="true"></span>';
+	}
+
+	/**
+	 * Google "FAQPage" structured data from the accordion questions and answers.
+	 *
+	 * @param array<int, array{0: string, 1: string}> $items
+	 */
+	private function faq_schema( array $items ): string {
+		$entities = [];
+
+		foreach ( $items as [ $question, $answer ] ) {
+			if ( '' !== $question && '' !== $answer ) {
+				$entities[] = [ '@type' => 'Question', 'name' => $question, 'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $answer ] ];
+			}
+		}
+
+		if ( ! $entities ) {
+			return '';
+		}
+
+		$json = wp_json_encode( [ '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $entities ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG );
+
+		return '<script type="application/ld+json">' . $json . '</script>';
+	}
+
+	/**
+	 * Accordion CSS, printed once. Everything is a CSS variable so builders can restyle it.
+	 */
+	private function accordion_styles(): string {
+		if ( self::$accordion_styles_printed ) {
+			return '';
+		}
+
+		self::$accordion_styles_printed = true;
+
+		return '<style id="libreforge-accordion-css">'
+			. '.lf-accordion{display:flex;flex-direction:column;gap:var(--lf-acc-gap,10px)}'
+			. '.lf-accordion__item{border:var(--lf-acc-border-width,1px) solid var(--lf-acc-border,rgba(0,0,0,.12));border-radius:var(--lf-acc-radius,10px);background:var(--lf-acc-bg,transparent);overflow:hidden;interpolate-size:allow-keywords}'
+			. '.lf-accordion__title{display:flex;align-items:center;gap:12px;padding:var(--lf-acc-pad,16px 20px);cursor:pointer;list-style:none;font-weight:600;color:var(--lf-acc-title,inherit);background:var(--lf-acc-title-bg,transparent);transition:background .2s,color .2s}'
+			. '.lf-accordion__title::-webkit-details-marker{display:none}'
+			. '.lf-accordion__title:focus-visible{outline:2px solid currentColor;outline-offset:-4px}'
+			. '.lf-accordion__text{flex:1}'
+			. '.lf-accordion__item[open]>.lf-accordion__title{color:var(--lf-acc-title-open,var(--lf-acc-title,inherit));background:var(--lf-acc-title-bg-open,var(--lf-acc-title-bg,transparent))}'
+			. '.lf-accordion__content{padding:var(--lf-acc-content-pad,0 20px 18px);color:var(--lf-acc-content,inherit)}'
+			. '.lf-accordion__content>*:first-child{margin-top:0}.lf-accordion__content>*:last-child{margin-bottom:0}'
+			. '.lf-accordion__item::details-content{block-size:0;overflow:hidden;transition:block-size .25s ease,content-visibility .25s allow-discrete}'
+			. '.lf-accordion__item[open]::details-content{block-size:auto}'
+			. '.lf-accordion__icon{position:relative;flex:none;width:14px;height:14px;color:var(--lf-acc-icon,currentColor);transition:transform .25s ease}'
+			. '.lf-accordion--icon-chevron .lf-accordion__icon::before{content:"";position:absolute;inset:1px 3px 5px;border-right:2px solid;border-bottom:2px solid;transform:rotate(45deg)}'
+			. '.lf-accordion--icon-chevron .lf-accordion__item[open] .lf-accordion__icon{transform:rotate(180deg)}'
+			. '.lf-accordion--icon-plus .lf-accordion__icon::before,.lf-accordion--icon-plus .lf-accordion__icon::after{content:"";position:absolute;top:6px;left:0;width:14px;height:2px;background:currentColor;transition:transform .25s ease}'
+			. '.lf-accordion--icon-plus .lf-accordion__icon::after{transform:rotate(90deg)}'
+			. '.lf-accordion--icon-plus .lf-accordion__item[open] .lf-accordion__icon::after{transform:rotate(0)}'
+			. '@media (prefers-reduced-motion:reduce){.lf-accordion__item::details-content,.lf-accordion__icon,.lf-accordion__title{transition:none}}'
+			. '</style>';
 	}
 
 	/**
@@ -263,38 +424,6 @@ final class Renderer {
 	 */
 	public function hint(): string {
 		return $this->hint;
-	}
-
-	/**
-	 * Every sub-field of a repeater row, the first one in bold, when no row format was written.
-	 *
-	 * @param array<string, mixed> $row
-	 */
-	private function auto_row( array $row ): string {
-		$children = end( $this->row_fields ) ?: [];
-		$names    = $children ? array_map( fn( Field $child ) => $child->name, array_filter( $children, fn( Field $child ) => ! in_array( $child->type, [ 'html', 'tab' ], true ) ) ) : array_keys( $row );
-		$html     = '';
-
-		foreach ( array_values( $names ) as $index => $name ) {
-			$value = $row[ $name ] ?? null;
-
-			if ( $this->is_empty( $value ) ) {
-				continue;
-			}
-
-			$child = null;
-
-			foreach ( $children as $candidate ) {
-				if ( $candidate->name === $name ) {
-					$child = $candidate;
-				}
-			}
-
-			$tag   = 0 === $index ? 'strong' : 'div';
-			$html .= sprintf( '<%1$s class="lf-repeater__field lf-repeater__field--%2$s">%3$s</%1$s>', $tag, esc_attr( sanitize_html_class( $name ) ), Formatter::format( $value, [], $child ) );
-		}
-
-		return $html;
 	}
 
 	private function missing_hint( string $key, bool $known ): string {

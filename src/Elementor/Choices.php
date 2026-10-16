@@ -108,6 +108,23 @@ final class Choices {
 	}
 
 	/**
+	 * Sub-fields of every repeater ("faq → Question (question)"), for the accordion title.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function repeater_children(): array {
+		$options = [ '' => __( 'The first sub-field (automatic)', 'libreforge' ) ];
+
+		foreach ( self::data()['fields'] as $field ) {
+			foreach ( $field['children'] ?? [] as $child ) {
+				$options[ (string) $child['value'] ] = sprintf( '%s → %s (%s)', $field['label'], $child['label'], $child['value'] );
+			}
+		}
+
+		return $options;
+	}
+
+	/**
 	 * @return array<string, string>
 	 */
 	public static function options(): array {

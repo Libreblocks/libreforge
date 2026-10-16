@@ -2384,3 +2384,82 @@ msgstr "O item atual (página ou listagem)"
 
 msgid "The field \"%2$s\" of \"%1$s\" has no rows yet."
 msgstr "O campo \"%2$s\" de \"%1$s\" ainda não tem linhas."
+
+# Acordeão
+msgid "Accordion"
+msgstr "Acordeão"
+
+msgid "Accordion: content"
+msgstr "Acordeão: conteúdo"
+
+msgid "Accordion: items"
+msgstr "Acordeão: itens"
+
+msgid "Accordion: title"
+msgstr "Acordeão: título"
+
+msgid "Adds FAQ structured data so the questions can appear in Google results. Use it once per page, only for real questions and answers."
+msgstr "Adiciona dados estruturados de FAQ para as perguntas aparecerem nos resultados do Google. Use uma vez por página, só com perguntas e respostas de verdade."
+
+msgid "Arrow"
+msgstr "Seta"
+
+msgid "Border color"
+msgstr "Cor da borda"
+
+msgid "Border width"
+msgstr "Espessura da borda"
+
+msgid "Closed"
+msgstr "Fechado"
+
+msgid "Content of each row (optional)"
+msgstr "Conteúdo de cada linha (opcional)"
+
+msgid "Empty = the sub-fields are shown automatically (in the accordion: all except the title). To customize, use {{object.meta|sub_field_name}}."
+msgstr "Vazio = os subcampos aparecem automaticamente (no acordeão: todos menos o título). Para personalizar, use {{object.meta|nome_do_subcampo}}."
+
+msgid "FAQ for Google (schema)"
+msgstr "FAQ para o Google (schema)"
+
+msgid "First item starts open"
+msgstr "Primeiro item começa aberto"
+
+msgid "Icon"
+msgstr "Ícone"
+
+msgid "Icon color"
+msgstr "Cor do ícone"
+
+msgid "Icon position"
+msgstr "Posição do ícone"
+
+msgid "List"
+msgstr "Lista"
+
+msgid "No icon"
+msgstr "Sem ícone"
+
+msgid "Only one open at a time"
+msgstr "Só um aberto por vez"
+
+msgid "Open"
+msgstr "Aberto"
+
+msgid "Plus / minus"
+msgstr "Mais / menos"
+
+msgid "Space between items"
+msgstr "Espaço entre itens"
+
+msgid "The blocks inside become the content that opens below."
+msgstr "Os blocos de dentro viram o conteúdo que abre embaixo."
+
+msgid "The first sub-field (automatic)"
+msgstr "O primeiro subcampo (automático)"
+
+msgid "The sub-field shown in each header, e.g. the question."
+msgstr "O subcampo exibido em cada título, ex.: a pergunta."
+
+msgid "Title (clickable)"
+msgstr "Título (clicável)"

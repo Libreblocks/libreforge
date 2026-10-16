@@ -24,6 +24,7 @@ final class Shortcodes {
 		add_shortcode( 'libreforge_loop', [ $this, 'loop' ] );
 		add_shortcode( 'libreforge_field', [ $this, 'field' ] );
 		add_shortcode( 'libreforge_template', [ $this, 'template' ] );
+		add_shortcode( 'libreforge_repeater', [ $this, 'repeater' ] );
 	}
 
 	/**
@@ -95,6 +96,41 @@ final class Shortcodes {
 			'tag'         => sanitize_key( $a['tag'] ),
 			'link'        => filter_var( $a['link'], FILTER_VALIDATE_BOOLEAN ),
 			'object_id'   => absint( $a['item'] ),
+		] );
+	}
+
+	/**
+	 * [libreforge_repeater key="faq" layout="accordion" title="pergunta" single="yes" schema="yes"]
+	 *
+	 * @param array<string, string>|string $atts
+	 */
+	public function repeater( $atts ): string {
+		$a = shortcode_atts( [
+			'key'      => '',
+			'source'   => 'meta',
+			'item'     => 0,
+			'layout'   => 'list',
+			'title'    => '',
+			'single'   => 'yes',
+			'open'     => 'no',
+			'icon'     => 'chevron',
+			'position' => 'right',
+			'schema'   => 'no',
+			'tag'      => 'div',
+		], (array) $atts, 'libreforge_repeater' );
+
+		return $this->renderer->repeater( [
+			'key'           => 'option' === $a['source'] ? sanitize_text_field( $a['key'] ) : sanitize_key( $a['key'] ),
+			'source'        => 'option' === $a['source'] ? 'option' : 'meta',
+			'object_id'     => absint( $a['item'] ),
+			'layout'        => 'accordion' === $a['layout'] ? 'accordion' : 'list',
+			'title_key'     => sanitize_key( $a['title'] ),
+			'single_open'   => filter_var( $a['single'], FILTER_VALIDATE_BOOLEAN ),
+			'open_first'    => filter_var( $a['open'], FILTER_VALIDATE_BOOLEAN ),
+			'icon'          => sanitize_key( $a['icon'] ),
+			'icon_position' => sanitize_key( $a['position'] ),
+			'faq_schema'    => filter_var( $a['schema'], FILTER_VALIDATE_BOOLEAN ),
+			'tag'           => sanitize_key( $a['tag'] ),
 		] );
 	}
 

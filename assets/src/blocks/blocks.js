@@ -437,6 +437,54 @@ function RepeaterEdit( { attributes, setAttributes } ) {
 							onChange={ ( key ) => setAttributes( { key } ) }
 						/>
 					) }
+					<SelectControl
+						label={ __( 'Show as', 'libreforge' ) }
+						value={ attributes.layout }
+						options={ [
+							{ value: 'list', label: __( 'List', 'libreforge' ) },
+							{ value: 'accordion', label: __( 'Accordion', 'libreforge' ) },
+						] }
+						onChange={ ( layout ) => setAttributes( { layout } ) }
+						__nextHasNoMarginBottom
+					/>
+					{ attributes.layout === 'accordion' && (
+						<>
+							<SelectControl
+								label={ __( 'Title (clickable)', 'libreforge' ) }
+								help={ __( 'The blocks inside become the content that opens below.', 'libreforge' ) }
+								value={ attributes.titleKey }
+								options={ [ { value: '', label: __( 'The first sub-field (automatic)', 'libreforge' ) }, ...( chosen?.children || [] ).map( ( child ) => ( { value: child.value, label: child.label + ' (' + child.value + ')' } ) ) ] }
+								onChange={ ( titleKey ) => setAttributes( { titleKey } ) }
+								__nextHasNoMarginBottom
+							/>
+							<ToggleControl label={ __( 'Only one open at a time', 'libreforge' ) } checked={ attributes.singleOpen } onChange={ ( singleOpen ) => setAttributes( { singleOpen } ) } __nextHasNoMarginBottom />
+							<ToggleControl label={ __( 'First item starts open', 'libreforge' ) } checked={ attributes.openFirst } onChange={ ( openFirst ) => setAttributes( { openFirst } ) } __nextHasNoMarginBottom />
+							<SelectControl
+								label={ __( 'Icon', 'libreforge' ) }
+								value={ attributes.icon }
+								options={ [
+									{ value: 'chevron', label: __( 'Arrow', 'libreforge' ) },
+									{ value: 'plus', label: __( 'Plus / minus', 'libreforge' ) },
+									{ value: 'none', label: __( 'No icon', 'libreforge' ) },
+								] }
+								onChange={ ( icon ) => setAttributes( { icon } ) }
+								__nextHasNoMarginBottom
+							/>
+							{ attributes.icon !== 'none' && (
+								<SelectControl
+									label={ __( 'Icon position', 'libreforge' ) }
+									value={ attributes.iconPosition }
+									options={ [
+										{ value: 'right', label: __( 'Right', 'libreforge' ) },
+										{ value: 'left', label: __( 'Left', 'libreforge' ) },
+									] }
+									onChange={ ( iconPosition ) => setAttributes( { iconPosition } ) }
+									__nextHasNoMarginBottom
+								/>
+							) }
+							<ToggleControl label={ __( 'FAQ for Google (schema)', 'libreforge' ) } help={ __( 'Adds FAQ structured data so the questions can appear in Google results. Use it once per page, only for real questions and answers.', 'libreforge' ) } checked={ attributes.faqSchema } onChange={ ( faqSchema ) => setAttributes( { faqSchema } ) } __nextHasNoMarginBottom />
+						</>
+					) }
 					{ chosen?.children?.length > 0 && (
 						<Notice status="info" isDismissible={ false }>
 							{ sprintf( /* translators: %s: sub-field names */ __( 'Sub-fields: %s', 'libreforge' ), chosen.children.map( ( child ) => child.value ).join( ', ' ) ) }
@@ -447,6 +495,7 @@ function RepeaterEdit( { attributes, setAttributes } ) {
 			<div className="lf-block-repeater__label">
 				<span className="dashicons dashicons-controls-repeat" aria-hidden="true" />
 				{ attributes.key ? sprintf( /* translators: %s: field name */ __( 'Repeated for each row of "%s"', 'libreforge' ), attributes.key ) : __( 'Choose the repeater field in the sidebar', 'libreforge' ) }
+				{ attributes.layout === 'accordion' && ' · ' + __( 'Accordion', 'libreforge' ) }
 			</div>
 			<InnerBlocks
 				template={ [ [ 'libreforge/field', { source: 'meta', key: firstChild, tag: 'p' } ] ] }

@@ -121,3 +121,5 @@ function wp_trim_words( $text, $words = 55 ) { $parts = preg_split( '/\s+/', tri
 
 function get_the_title( $post = 0 ) { return is_object( $post ) ? (string) ( $post->post_title ?? '' ) : ''; }
 function sanitize_html_class( $class ) { return preg_replace( '/[^A-Za-z0-9_-]/', '', (string) $class ); }
+
+function wp_unique_id( $prefix = "" ) { static $id = 0; return $prefix . ( ++$id ); }

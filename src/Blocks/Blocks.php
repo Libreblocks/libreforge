@@ -163,7 +163,18 @@ final class Blocks {
 
 				case 'repeater':
 					$html = $this->renderer->repeater(
-						[ 'source' => $a['source'] ?? 'meta', 'key' => $a['key'] ?? '', 'tag' => $a['tag'] ?? 'div' ],
+						[
+							'source'        => $a['source'] ?? 'meta',
+							'key'           => $a['key'] ?? '',
+							'tag'           => $a['tag'] ?? 'div',
+							'layout'        => $a['layout'] ?? 'list',
+							'title_key'     => $a['titleKey'] ?? '',
+							'single_open'   => ! empty( $a['singleOpen'] ),
+							'open_first'    => ! empty( $a['openFirst'] ),
+							'icon'          => $a['icon'] ?? 'chevron',
+							'icon_position' => $a['iconPosition'] ?? 'right',
+							'faq_schema'    => ! empty( $a['faqSchema'] ),
+						],
 						$block instanceof \WP_Block ? fn() => $this->render_inner( $block ) : null
 					);
 					break;

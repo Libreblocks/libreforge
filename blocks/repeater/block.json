@@ -9,6 +9,7 @@
 	"keywords": [
 		"repeater",
 		"faq",
+		"accordion",
 		"list"
 	],
 	"textdomain": "libreforge",
@@ -24,6 +25,34 @@
 		"tag": {
 			"type": "string",
 			"default": "div"
+		},
+		"layout": {
+			"type": "string",
+			"default": "list"
+		},
+		"titleKey": {
+			"type": "string",
+			"default": ""
+		},
+		"singleOpen": {
+			"type": "boolean",
+			"default": true
+		},
+		"openFirst": {
+			"type": "boolean",
+			"default": false
+		},
+		"icon": {
+			"type": "string",
+			"default": "chevron"
+		},
+		"iconPosition": {
+			"type": "string",
+			"default": "right"
+		},
+		"faqSchema": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {
