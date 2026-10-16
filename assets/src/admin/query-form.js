@@ -221,7 +221,7 @@ export function querySections( { config, set, errors, environment, slug, setSlug
 						onChange={ ( value ) => set( { type: value, orderby: ORDERBY[ value ][ 0 ].value } ) }
 					/>
 					{ type === 'posts' && (
-						<SettingRow label={ __( 'Post types', 'libreforge' ) } help={ __( 'Which content to show.', 'libreforge' ) }>
+						<SettingRow label={ __( 'Post Types', 'libreforge' ) } help={ __( 'Which content to show.', 'libreforge' ) }>
 							<CheckboxList options={ postTypes } value={ config.post_types || [] } onChange={ ( post_types ) => set( { post_types } ) } />
 						</SettingRow>
 					) }

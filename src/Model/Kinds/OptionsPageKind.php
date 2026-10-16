@@ -28,7 +28,7 @@ final class OptionsPageKind extends Kind {
 	}
 
 	public function label(): string {
-		return __( 'Options pages', 'libreforge' );
+		return __( 'Options Pages', 'libreforge' );
 	}
 
 	/**

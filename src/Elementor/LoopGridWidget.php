@@ -33,11 +33,11 @@ final class LoopGridWidget extends Widget {
 		$this->start_controls_section( 'query_section', [ 'label' => __( 'What to list', 'libreforge' ) ] );
 
 		$this->add_control( 'query_id', [
-			'label'       => __( 'Saved query', 'libreforge' ),
+			'label'       => __( 'Query', 'libreforge' ),
 			'type'        => Controls_Manager::SELECT,
 			'options'     => Choices::queries(),
 			'default'     => '',
-			'description' => __( 'Built in LibreForge → Queries. Or leave empty and pick a post type below.', 'libreforge' ),
+			'description' => __( 'Built in LibreForge → Query Builder. Or leave empty and pick a post type below.', 'libreforge' ),
 		] );
 
 		$this->add_control( 'post_type', [
@@ -81,7 +81,7 @@ final class LoopGridWidget extends Widget {
 			'type'        => Controls_Manager::SELECT,
 			'options'     => Choices::templates(),
 			'default'     => '',
-			'description' => __( 'The card repeated for every item. Create one in LibreForge → Item templates.', 'libreforge' ),
+			'description' => __( 'The card repeated for every item. Create one in LibreForge → Listings.', 'libreforge' ),
 		] );
 
 		$this->add_responsive_control( 'columns', [

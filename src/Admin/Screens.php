@@ -29,14 +29,14 @@ final class Screens {
 	public static function pages(): array {
 		return [
 			self::MENU                 => [ 'section' => 'dashboard', 'title' => __( 'Dashboard', 'libreforge' ), 'icon' => 'dashboard' ],
-			'libreforge-post-types'    => [ 'section' => 'post_type', 'title' => __( 'Post types', 'libreforge' ), 'icon' => 'admin-post' ],
+			'libreforge-post-types'    => [ 'section' => 'post_type', 'title' => __( 'Post Types', 'libreforge' ), 'icon' => 'admin-post' ],
 			'libreforge-taxonomies'    => [ 'section' => 'taxonomy', 'title' => __( 'Taxonomies', 'libreforge' ), 'icon' => 'tag' ],
-			'libreforge-field-groups'  => [ 'section' => 'field_group', 'title' => __( 'Field groups', 'libreforge' ), 'icon' => 'forms' ],
-			'libreforge-options-pages' => [ 'section' => 'options_page', 'title' => __( 'Options pages', 'libreforge' ), 'icon' => 'admin-settings' ],
+			'libreforge-field-groups'  => [ 'section' => 'field_group', 'title' => __( 'Meta Boxes', 'libreforge' ), 'icon' => 'forms' ],
+			'libreforge-options-pages' => [ 'section' => 'options_page', 'title' => __( 'Options Pages', 'libreforge' ), 'icon' => 'admin-settings' ],
 			'libreforge-glossaries'    => [ 'section' => 'glossary', 'title' => __( 'Glossaries', 'libreforge' ), 'icon' => 'list-view' ],
 			'libreforge-relations'     => [ 'section' => 'relation', 'title' => __( 'Relations', 'libreforge' ), 'icon' => 'networking' ],
-			'libreforge-queries'       => [ 'section' => 'query', 'title' => __( 'Queries', 'libreforge' ), 'icon' => 'filter' ],
-			'libreforge-templates'     => [ 'section' => 'templates', 'title' => __( 'Item templates', 'libreforge' ), 'icon' => 'layout' ],
+			'libreforge-queries'       => [ 'section' => 'query', 'title' => __( 'Query Builder', 'libreforge' ), 'icon' => 'filter' ],
+			'libreforge-templates'     => [ 'section' => 'templates', 'title' => __( 'Listings', 'libreforge' ), 'icon' => 'layout' ],
 		];
 	}
 

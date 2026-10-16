@@ -359,7 +359,7 @@ export function fieldGroupSections( { config, set, errors, environment, slug, se
 			content: (
 				<>
 					<Text
-						label={ __( 'Group title', 'libreforge' ) }
+						label={ __( 'Meta Box title', 'libreforge' ) }
 						help={ __( 'Title of the box with the fields. Ex.: Property details', 'libreforge' ) }
 						value={ config.title }
 						placeholder={ __( 'Property details', 'libreforge' ) }
@@ -381,7 +381,7 @@ export function fieldGroupSections( { config, set, errors, environment, slug, se
 						onChange={ ( value ) => set( { object: value } ) }
 					/>
 					{ object === 'post' && (
-						<Chips label={ __( 'Post types', 'libreforge' ) } options={ environment.post_types.filter( ( type ) => ! HIDDEN_TYPES.includes( type.value ) ) } value={ config.post_types } onChange={ ( post_types ) => set( { post_types } ) } error={ errors.post_types } />
+						<Chips label={ __( 'Post Types', 'libreforge' ) } options={ environment.post_types.filter( ( type ) => ! HIDDEN_TYPES.includes( type.value ) ) } value={ config.post_types } onChange={ ( post_types ) => set( { post_types } ) } error={ errors.post_types } />
 					) }
 					{ object === 'term' && <Chips label={ __( 'Taxonomies', 'libreforge' ) } options={ environment.taxonomies } value={ config.taxonomies } onChange={ ( taxonomies ) => set( { taxonomies } ) } error={ errors.taxonomies } /> }
 					{ object === 'user' && <Chips label={ __( 'Only for these roles', 'libreforge' ) } help={ __( 'Leave empty to show on every profile.', 'libreforge' ) } options={ environment.roles } value={ config.roles } onChange={ ( roles ) => set( { roles } ) } /> }

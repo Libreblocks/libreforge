@@ -28,7 +28,7 @@ final class PostTypeKind extends Kind {
 	}
 
 	public function label(): string {
-		return __( 'Post types', 'libreforge' );
+		return __( 'Post Types', 'libreforge' );
 	}
 
 	public function sanitize( array $input ): array {

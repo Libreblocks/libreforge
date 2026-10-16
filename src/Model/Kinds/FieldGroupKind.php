@@ -27,7 +27,7 @@ final class FieldGroupKind extends Kind {
 	}
 
 	public function label(): string {
-		return __( 'Field groups', 'libreforge' );
+		return __( 'Meta Boxes', 'libreforge' );
 	}
 
 	public function sanitize( array $input ): array {

@@ -73,7 +73,7 @@ final class Templates {
 	public function register(): void {
 		register_post_type( self::POST_TYPE, [
 			'labels'              => [
-				'name'          => __( 'Item templates', 'libreforge' ),
+				'name'          => __( 'Listings', 'libreforge' ),
 				'singular_name' => __( 'Item template', 'libreforge' ),
 				'edit_item'     => __( 'Edit item template', 'libreforge' ),
 				'add_new_item'  => __( 'New item template', 'libreforge' ),

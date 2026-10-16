@@ -37,7 +37,7 @@ final class QueryKind extends Kind {
 	}
 
 	public function label(): string {
-		return __( 'Queries', 'libreforge' );
+		return __( 'Query Builder', 'libreforge' );
 	}
 
 	public function sanitize( array $input ): array {

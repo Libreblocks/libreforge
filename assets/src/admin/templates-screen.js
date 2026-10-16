@@ -93,7 +93,7 @@ export default function TemplatesScreen() {
 		<>
 			<PageHeader
 				icon="layout"
-				title={ __( 'Item templates', 'libreforge' ) }
+				title={ __( 'Listings', 'libreforge' ) }
 				subtitle={ __( 'The design of each item in your listings.', 'libreforge' ) }
 				actions={
 					! creating && (
@@ -112,7 +112,7 @@ export default function TemplatesScreen() {
 			{ data && ! creating && data.templates.length === 0 && (
 				<EmptyState
 					icon="layout"
-					title={ __( 'Create your first item template', 'libreforge' ) }
+					title={ __( 'Create your first listing item', 'libreforge' ) }
 					text={ __( 'Design how one item looks (photo, title, price…). Then the Loop Grid block repeats it for every item of a query.', 'libreforge' ) }
 					action={
 						<Button variant="primary" icon="plus-alt2" onClick={ () => setCreating( true ) }>

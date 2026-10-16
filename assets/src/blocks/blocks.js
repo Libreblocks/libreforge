@@ -126,8 +126,8 @@ function LoopGridEdit( { attributes, setAttributes, name } ) {
 					) : (
 						<>
 							<SelectControl
-								label={ __( 'Saved query', 'libreforge' ) }
-								help={ __( 'Built in LibreForge → Queries. Or leave empty and pick a post type below.', 'libreforge' ) }
+								label={ __( 'Query', 'libreforge' ) }
+								help={ __( 'Built in LibreForge → Query Builder. Or leave empty and pick a post type below.', 'libreforge' ) }
 								value={ String( attributes.queryId || '' ) }
 								options={ [ { value: '', label: __( '— Simple mode (post type) —', 'libreforge' ) }, ...data.queries.map( ( query ) => ( { value: String( query.value ), label: query.label } ) ) ] }
 								onChange={ ( value ) => setAttributes( { queryId: Number( value ) || 0 } ) }

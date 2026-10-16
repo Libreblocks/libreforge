@@ -84,7 +84,7 @@ msgid "Another item already uses this slug."
 msgstr "Outro item já usa este slug."
 
 msgid "Another plugin or theme already registers a post type with this slug."
-msgstr "Outro plugin ou tema já registra um tipo de post com este slug."
+msgstr "Outro plugin ou tema já registra um post type com este slug."
 
 msgid "Another plugin or theme already registers a taxonomy with this slug."
 msgstr "Outro plugin ou tema já registra uma taxonomia com este slug."
@@ -123,7 +123,7 @@ msgid "Choice"
 msgstr "Escolha"
 
 msgid "Choose at least one post type."
-msgstr "Escolha pelo menos um tipo de post."
+msgstr "Escolha pelo menos um post type."
 
 msgid "Choose at least one taxonomy."
 msgstr "Escolha pelo menos uma taxonomia."
@@ -153,7 +153,7 @@ msgid "Create %s"
 msgstr "Criar %s"
 
 msgid "Create a field group to add custom fields to posts, terms or users."
-msgstr "Crie um grupo de campos para adicionar campos personalizados a posts, termos ou usuários."
+msgstr "Crie uma Meta Box para adicionar campos personalizados a posts, termos ou usuários."
 
 msgid "Create a glossary to reuse the same list of options in many fields."
 msgstr "Crie um glossário para reutilizar a mesma lista de opções em vários campos."
@@ -162,10 +162,10 @@ msgid "Create a taxonomy to classify content, for example \"Cities\" or \"Proper
 msgstr "Crie uma taxonomia para classificar conteúdo, por exemplo \"Cidades\" ou \"Tipos de imóvel\"."
 
 msgid "Create an options page for site-wide settings, like contact details or social links."
-msgstr "Crie uma página de opções para configurações gerais do site, como contatos ou redes sociais."
+msgstr "Crie uma Options Page para configurações gerais do site, como contatos ou redes sociais."
 
 msgid "Create your first post type, for example \"Properties\" or \"Courses\"."
-msgstr "Crie seu primeiro tipo de post, por exemplo \"Imóveis\" ou \"Cursos\"."
+msgstr "Crie seu primeiro post type, por exemplo \"Imóveis\" ou \"Cursos\"."
 
 msgid "Custom fields panel (needed for fields in the REST API)"
 msgstr "Painel de campos personalizados (necessário para campos na API REST)"
@@ -215,11 +215,11 @@ msgstr "Imagem destacada"
 msgid "Features"
 msgstr "Recursos"
 
-msgid "field group"
-msgstr "grupo de campos"
+msgid "meta box"
+msgstr "meta box"
 
-msgid "Field groups"
-msgstr "Grupos de campos"
+msgid "Meta Boxes"
+msgstr "Meta Boxes"
 
 msgid "Fields"
 msgstr "Campos"
@@ -405,10 +405,10 @@ msgid "Options come from"
 msgstr "As opções vêm de"
 
 msgid "options page"
-msgstr "página de opções"
+msgstr "options page"
 
-msgid "Options pages"
-msgstr "Páginas de opções"
+msgid "Options Pages"
+msgstr "Options Pages"
 
 msgid "Order and parent"
 msgstr "Ordem e item pai"
@@ -441,16 +441,13 @@ msgid "Position"
 msgstr "Posição"
 
 msgid "post type"
-msgstr "tipo de post"
+msgstr "post type"
 
 msgid "Post Types"
-msgstr "Tipos de post"
-
-msgid "Post types"
-msgstr "Tipos de post"
+msgstr "Post Types"
 
 msgid "Posts / post types"
-msgstr "Posts / tipos de post"
+msgstr "Posts / post types"
 
 msgid "Prefix with the permalink base (with_front)"
 msgstr "Prefixar com a base dos links permanentes (with_front)"
@@ -585,7 +582,7 @@ msgid "The title is required."
 msgstr "O título é obrigatório."
 
 msgid "This options page does not exist."
-msgstr "Esta página de opções não existe."
+msgstr "Esta Options Page não existe."
 
 msgid "This slug is reserved by WordPress. Choose another one."
 msgstr "Este slug é reservado pelo WordPress. Escolha outro."
@@ -739,7 +736,7 @@ msgid "Block editor and REST API"
 msgstr "Editor de blocos e API REST"
 
 msgid "Build the content structure of your site: post types, taxonomies, fields and settings pages."
-msgstr "Monte a estrutura de conteúdo do seu site: tipos de post, taxonomias, campos e páginas de configurações."
+msgstr "Monte a estrutura de conteúdo do seu site: post types, taxonomias, campos e páginas de configurações."
 
 msgid "Calendar"
 msgstr "Calendário"
@@ -775,34 +772,34 @@ msgid "Create"
 msgstr "Criar"
 
 msgid "Create a post type"
-msgstr "Crie um tipo de post"
+msgstr "Crie um post type"
 
-msgid "Create field group"
-msgstr "Criar grupo de campos"
+msgid "Create Meta Box"
+msgstr "Criar Meta Box"
 
 msgid "Create glossary"
 msgstr "Criar glossário"
 
-msgid "Create options page"
-msgstr "Criar página de opções"
+msgid "Create Options Page"
+msgstr "Criar Options Page"
 
-msgid "Create post type"
-msgstr "Criar tipo de post"
+msgid "Create Post Type"
+msgstr "Criar Post Type"
 
 msgid "Create taxonomy"
 msgstr "Criar taxonomia"
 
-msgid "Create your first field group"
-msgstr "Crie seu primeiro grupo de campos"
+msgid "Create your first Meta Box"
+msgstr "Crie sua primeira Meta Box"
 
 msgid "Create your first glossary"
 msgstr "Crie seu primeiro glossário"
 
-msgid "Create your first options page"
-msgstr "Crie sua primeira página de opções"
+msgid "Create your first Options Page"
+msgstr "Crie sua primeira Options Page"
 
-msgid "Create your first post type"
-msgstr "Crie seu primeiro tipo de post"
+msgid "Create your first Post Type"
+msgstr "Crie seu primeiro Post Type"
 
 msgid "Create your first taxonomy"
 msgstr "Crie sua primeira taxonomia"
@@ -825,8 +822,8 @@ msgstr "Cada termo tem sua própria página de arquivo."
 msgid "Favorites and compare"
 msgstr "Favoritos e comparação"
 
-msgid "Field groups add custom fields, like price, gallery or address, to posts, terms or user profiles."
-msgstr "Grupos de campos adicionam campos personalizados, como preço, galeria ou endereço, a posts, termos ou perfis de usuário."
+msgid "Meta Boxes add custom fields, like price, gallery or address, to posts, terms or user profiles."
+msgstr "Meta Boxes adicionam campos personalizados, como preço, galeria ou endereço, a posts, termos ou perfis de usuário."
 
 msgid "Fields (%d)"
 msgstr "Campos (%d)"
@@ -849,8 +846,8 @@ msgstr "Comece em três passos"
 msgid "Glossaries are option lists, like States or Amenities, reused by many fields."
 msgstr "Glossários são listas de opções, como Estados ou Comodidades, reutilizadas por vários campos."
 
-msgid "Group title"
-msgstr "Título do grupo"
+msgid "Meta Box title"
+msgstr "Título da Meta Box"
 
 msgid "Hierarchical"
 msgstr "Hierárquico"
@@ -910,22 +907,22 @@ msgid "Modules"
 msgstr "Módulos"
 
 msgid "Names and identity of the post type."
-msgstr "Nomes e identidade do tipo de post."
+msgstr "Nomes e identidade do post type."
 
 msgid "Names and where the taxonomy is used."
 msgstr "Nomes e onde a taxonomia é usada."
 
-msgid "New field group"
-msgstr "Novo grupo de campos"
+msgid "New Meta Box"
+msgstr "Nova Meta Box"
 
 msgid "New glossary"
 msgstr "Novo glossário"
 
-msgid "New options page"
-msgstr "Nova página de opções"
+msgid "New Options Page"
+msgstr "Nova Options Page"
 
-msgid "New post type"
-msgstr "Novo tipo de post"
+msgid "New Post Type"
+msgstr "Novo Post Type"
 
 msgid "New taxonomy"
 msgstr "Nova taxonomia"
@@ -948,8 +945,8 @@ msgstr "Abrir os itens"
 msgid "Options (%d)"
 msgstr "Opções (%d)"
 
-msgid "Options pages hold site-wide settings, like contact details, social links or a promo banner."
-msgstr "Páginas de opções guardam configurações gerais, como contatos, redes sociais ou um banner promocional."
+msgid "Options Pages hold site-wide settings, like contact details, social links or a promo banner."
+msgstr "Options Pages guardam configurações gerais do site, como contatos, redes sociais ou um banner promocional."
 
 msgid "Parent item"
 msgstr "Item pai"
@@ -961,7 +958,7 @@ msgid "Position on the screen"
 msgstr "Posição na tela"
 
 msgid "Post types are content of their own, like Properties, Courses or Team members, each with its own menu."
-msgstr "Tipos de post são conteúdos próprios, como Imóveis, Cursos ou Equipe, cada um com seu menu."
+msgstr "Post Types são conteúdos próprios, como Imóveis, Cursos ou Equipe, cada um com seu menu."
 
 msgid "Price, gallery, address: everything each item needs."
 msgstr "Preço, galeria, endereço: tudo o que cada item precisa."
@@ -985,7 +982,7 @@ msgid "REST base"
 msgstr "Base REST"
 
 msgid "Relations"
-msgstr "Relações"
+msgstr "Relations"
 
 msgid "Remove"
 msgstr "Remover"
@@ -1030,7 +1027,7 @@ msgid "The custom fields panel is needed to read fields through the REST API."
 msgstr "O painel de campos personalizados é necessário para ler os campos pela API REST."
 
 msgid "Turn queries into tables and charts."
-msgstr "Transforme consultas em tabelas e gráficos."
+msgstr "Transforme queries em tabelas e gráficos."
 
 msgid "Use the permalink base"
 msgstr "Usar a base dos links permanentes"
@@ -1051,7 +1048,7 @@ msgid "Where the page appears in the admin menu and who can open it."
 msgstr "Onde a página aparece no menu do painel e quem pode abri-la."
 
 msgid "Where this group of fields appears."
-msgstr "Onde este grupo de campos aparece."
+msgstr "Onde esta Meta Box aparece."
 
 msgid "Who can see the items and where they appear."
 msgstr "Quem pode ver os itens e onde eles aparecem."
@@ -1295,7 +1292,7 @@ msgid "One third (33%)"
 msgstr "Um terço (33%)"
 
 msgid "Only on post type lists."
-msgstr "Somente nas listas de tipos de post."
+msgstr "Somente nas listas de post types."
 
 msgid "Part of the URL before each item: %s"
 msgstr "Parte da URL antes de cada item: %s"
@@ -1455,7 +1452,7 @@ msgid "A link or button to the current item, a field or any address."
 msgstr "Um link ou botão para o item atual, um campo ou qualquer endereço."
 
 msgid "A query picks which items a listing shows, like \"the 6 newest properties in São Paulo\". Build it once, reuse it in any page."
-msgstr "Uma consulta escolhe quais itens uma listagem mostra, como \"os 6 imóveis mais recentes em São Paulo\". Monte uma vez e reutilize em qualquer página."
+msgstr "Uma Query escolhe quais itens uma listagem mostra, como \"os 6 imóveis mais recentes em São Paulo\". Monte uma vez e reutilize em qualquer página."
 
 msgid "A template is the design of one item (a card). Listings repeat it for every item."
 msgstr "Um template é o design de um item (um card). As listagens o repetem para cada item."
@@ -1479,7 +1476,7 @@ msgid "All items"
 msgstr "Todos os itens"
 
 msgid "An options page field"
-msgstr "Um campo de página de opções"
+msgstr "Um campo de Options Page"
 
 msgid "Ascending (oldest, A→Z, lowest first)"
 msgstr "Crescente (mais antigos, A→Z, menores primeiro)"
@@ -1505,8 +1502,8 @@ msgstr "Etiquetas"
 msgid "Blocks"
 msgstr "Blocos"
 
-msgid "Built in LibreForge → Queries. Or leave empty and pick a post type below."
-msgstr "Criada em LibreForge → Consultas. Ou deixe vazio e escolha um tipo de post abaixo."
+msgid "Built in LibreForge → Query Builder. Or leave empty and pick a post type below."
+msgstr "Criada em LibreForge → Query Builder. Ou deixe vazio e escolha um post type abaixo."
 
 msgid "Bulleted list"
 msgstr "Lista com marcadores"
@@ -1527,7 +1524,7 @@ msgid "Children of term"
 msgstr "Filhos do termo"
 
 msgid "Choose a query or a post type for this listing."
-msgstr "Escolha uma consulta ou um tipo de post para esta listagem."
+msgstr "Escolha uma Query ou um post type para esta listagem."
 
 msgid "Choose the field used to sort."
 msgstr "Escolha o campo usado para ordenar."
@@ -1536,7 +1533,7 @@ msgid "Choose the repeater field in the sidebar"
 msgstr "Escolha o campo repetidor na barra lateral"
 
 msgid "Choose what to list in the sidebar: a saved query or a post type."
-msgstr "Escolha o que listar na barra lateral: uma consulta salva ou um tipo de post."
+msgstr "Escolha o que listar na barra lateral: uma Query salva ou um post type."
 
 msgid "Color"
 msgstr "Cor"
@@ -1560,25 +1557,25 @@ msgid "Compare as"
 msgstr "Comparar como"
 
 msgid "Content (posts, pages, post types)"
-msgstr "Conteúdo (posts, páginas, tipos de post)"
+msgstr "Conteúdo (posts, páginas, post types)"
 
 msgid "Content type"
 msgstr "Tipo de conteúdo"
 
 msgid "Create a query with filters"
-msgstr "Criar uma consulta com filtros"
+msgstr "Criar uma Query com filtros"
 
 msgid "Create and open the editor"
 msgstr "Criar e abrir o editor"
 
-msgid "Create query"
-msgstr "Criar consulta"
+msgid "Create Query"
+msgstr "Criar Query"
 
-msgid "Create your first item template"
-msgstr "Crie seu primeiro template de item"
+msgid "Create your first listing item"
+msgstr "Crie seu primeiro listing item"
 
-msgid "Create your first query"
-msgstr "Crie sua primeira consulta"
+msgid "Create your first Query"
+msgstr "Crie sua primeira Query"
 
 msgid "Currency symbol"
 msgstr "Símbolo da moeda"
@@ -1605,7 +1602,7 @@ msgid "Descending (newest, Z→A, highest first)"
 msgstr "Decrescente (mais recentes, Z→A, maiores primeiro)"
 
 msgid "Design how one item looks (photo, title, price…). Then the Loop Grid block repeats it for every item of a query."
-msgstr "Desenhe como um item aparece (foto, título, preço…). Depois o bloco Loop Grid o repete para cada item de uma consulta."
+msgstr "Desenhe como um item aparece (foto, título, preço…). Depois o bloco Loop Grid o repete para cada item de uma Query."
 
 msgid "Design with"
 msgstr "Desenhar com"
@@ -1739,8 +1736,8 @@ msgstr "Design do item"
 msgid "Item template"
 msgstr "Template de item"
 
-msgid "Item templates"
-msgstr "Templates de item"
+msgid "Listings"
+msgstr "Listings"
 
 msgid "Items must match"
 msgstr "Os itens devem atender a"
@@ -1808,8 +1805,8 @@ msgstr "Nome do campo personalizado, ex.: preco."
 msgid "New item template"
 msgstr "Novo template de item"
 
-msgid "New query"
-msgstr "Nova consulta"
+msgid "New Query"
+msgstr "Nova Query"
 
 msgid "New template"
 msgstr "Novo template"
@@ -1881,7 +1878,7 @@ msgid "Option label"
 msgstr "Rótulo da opção"
 
 msgid "Options page"
-msgstr "Página de opções"
+msgstr "Options Page"
 
 msgid "Order"
 msgstr "Ordem"
@@ -1908,7 +1905,7 @@ msgid "Plain text"
 msgstr "Texto simples"
 
 msgid "Post type"
-msgstr "Tipo de post"
+msgstr "Post Type"
 
 msgid "Previous / next"
 msgstr "Anterior / próxima"
@@ -1925,14 +1922,14 @@ msgstr "Data de publicação"
 msgid "Published"
 msgstr "Publicado"
 
-msgid "Queries"
-msgstr "Consultas"
+msgid "Query Builder"
+msgstr "Query Builder"
 
 msgid "Query name"
-msgstr "Nome da consulta"
+msgstr "Nome da Query"
 
 msgid "Quick start: post type"
-msgstr "Início rápido: tipo de post"
+msgstr "Início rápido: post type"
 
 msgid "Random"
 msgstr "Aleatório"
@@ -1950,7 +1947,7 @@ msgid "Repeater field"
 msgstr "Campo repetidor"
 
 msgid "Repeats an item template for every item of a query."
-msgstr "Repete um template de item para cada item de uma consulta."
+msgstr "Repete um template de item para cada item de uma Query."
 
 msgid "Repeats the blocks inside it for every row of a repeater field."
 msgstr "Repete os blocos de dentro para cada linha de um campo repetidor."
@@ -1967,8 +1964,8 @@ msgstr "Cantos arredondados"
 msgid "Rows"
 msgstr "Linhas"
 
-msgid "Saved query"
-msgstr "Consulta salva"
+msgid "Query"
+msgstr "Query"
 
 msgid "Scheduled"
 msgstr "Agendado"
@@ -2072,8 +2069,8 @@ msgstr "O editor do WordPress (Gutenberg)."
 msgid "The blocks inside are repeated for each row. Use Dynamic Field blocks with \"Custom field\" and the sub-field name."
 msgstr "Os blocos de dentro se repetem para cada linha. Use blocos Campo dinâmico com \"Campo personalizado\" e o nome do subcampo."
 
-msgid "The card repeated for every item. Create one in LibreForge → Item templates."
-msgstr "O card repetido para cada item. Crie um em LibreForge → Templates de item."
+msgid "The card repeated for every item. Create one in LibreForge → Listings."
+msgstr "O card repetido para cada item. Crie um em LibreForge → Listings."
 
 msgid "The card repeated for every item. Without one, only the title is shown."
 msgstr "O card repetido para cada item. Sem ele, só o título aparece."
@@ -2184,7 +2181,7 @@ msgid "name"
 msgstr "nome"
 
 msgid "query"
-msgstr "consulta"
+msgstr "query"
 
 msgid "slug"
 msgstr "slug"
@@ -2196,7 +2193,7 @@ msgid "— Only the title —"
 msgstr "— Só o título —"
 
 msgid "— Simple mode (post type) —"
-msgstr "— Modo simples (tipo de post) —"
+msgstr "— Modo simples (post type) —"
 
 msgid "← Previous"
 msgstr "← Anterior"
@@ -2269,7 +2266,7 @@ msgid "How many on each side"
 msgstr "Quantos de cada lado"
 
 msgid "IDs of the related items of the current item, for queries and texts."
-msgstr "IDs dos itens relacionados ao item atual, para consultas e textos."
+msgstr "IDs dos itens relacionados ao item atual, para queries e textos."
 
 msgid "In plain words"
 msgstr "Em palavras simples"
