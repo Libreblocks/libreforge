@@ -9,6 +9,10 @@ namespace LibreBlocks\Forge;
 
 use LibreBlocks\Core\Plugin as Core;
 use LibreBlocks\Forge\Admin\Screens;
+use LibreBlocks\Forge\Blocks\Blocks;
+use LibreBlocks\Forge\Render\Renderer;
+use LibreBlocks\Forge\Render\Values;
+use LibreBlocks\Forge\Rest\BlocksController;
 use LibreBlocks\Forge\Content\ContentTypes;
 use LibreBlocks\Forge\Fields\FieldGroups;
 use LibreBlocks\Forge\Glossaries\Glossaries;
@@ -17,7 +21,10 @@ use LibreBlocks\Forge\Model\FieldList;
 use LibreBlocks\Forge\Model\Kind;
 use LibreBlocks\Forge\Model\Kinds;
 use LibreBlocks\Forge\Options\OptionsPages;
+use LibreBlocks\Forge\Queries\QueryRunner;
 use LibreBlocks\Forge\Rest\DefinitionsController;
+use LibreBlocks\Forge\Rest\TemplatesController;
+use LibreBlocks\Forge\Templates\Templates;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -60,6 +67,7 @@ final class Plugin {
 			new Kinds\FieldGroupKind( $field_list ),
 			new Kinds\OptionsPageKind( $field_list ),
 			new Kinds\GlossaryKind(),
+			new Kinds\QueryKind(),
 		] as $kind ) {
 			$this->kinds[ $kind->id() ] = $kind;
 		}
@@ -72,13 +80,35 @@ final class Plugin {
 		$glossaries = new Glossaries( $this->repository );
 
 		$core->set( 'forge.glossaries', fn() => $glossaries );
+		$core->set( 'forge.queries', fn( Core $c ) => new QueryRunner( $this->repository, $c->tokens() ) );
 
 		( new ContentTypes( $this->repository ) )->hook();
 		$glossaries->hook();
-		( new FieldGroups( $this->repository, $core->fields() ) )->hook();
+		$field_groups = new FieldGroups( $this->repository, $core->fields() );
+		$core->set( 'forge.fields', fn() => $field_groups );
+		$field_groups->hook();
 		( new OptionsPages( $this->repository, $core->fields() ) )->hook();
 
+		$templates = new Templates( $core->context() );
+		$core->set( 'forge.templates', fn() => $templates );
+		$templates->hook();
+
 		$core->rest()->add( DefinitionsController::class );
+		$core->rest()->add( TemplatesController::class );
+		$core->rest()->add( BlocksController::class );
+
+		$core->set( 'forge.renderer', fn( Core $c ) => new Renderer(
+			$c->context(),
+			new Values( $c->context(), $c->tokens() ),
+			$this->queries(),
+			$templates,
+			$field_groups
+		) );
+
+		( new Blocks( $core->get( 'forge.renderer' ), $templates, $core->context() ) )->hook();
+
+		// Elementor loads after plugins_loaded; its integration hooks in on its own action.
+		add_action( 'elementor/init', [ $this, 'boot_elementor' ] );
 
 		if ( is_admin() ) {
 			( new Screens( $core ) )->hook();
@@ -97,6 +127,18 @@ final class Plugin {
 	public function activate(): void {
 		$this->core?->schema()->install();
 		ContentTypes::request_flush();
+	}
+
+	public function boot_elementor(): void {
+		( new Elementor\Integration( $this->core ) )->hook();
+	}
+
+	public function renderer(): Renderer {
+		return $this->core->get( 'forge.renderer' );
+	}
+
+	public function queries(): QueryRunner {
+		return $this->core->get( 'forge.queries' );
 	}
 
 	public function repository(): DefinitionRepository {

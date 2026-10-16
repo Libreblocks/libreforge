@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "libreforge/terms",
+	"title": "Dynamic Terms",
+	"category": "libreforge",
+	"icon": "tag",
+	"description": "Lists the categories, tags or terms of the current item.",
+	"keywords": [
+		"categories",
+		"tags",
+		"taxonomy"
+	],
+	"textdomain": "libreforge",
+	"attributes": {
+		"taxonomy": {
+			"type": "string",
+			"default": "category"
+		},
+		"separator": {
+			"type": "string",
+			"default": ", "
+		},
+		"link": {
+			"type": "boolean",
+			"default": true
+		},
+		"limit": {
+			"type": "number",
+			"default": 0
+		},
+		"style": {
+			"type": "string",
+			"default": "text"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		}
+	},
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"editorScript": "libreforge-blocks",
+	"editorStyle": "libreforge-blocks"
+}

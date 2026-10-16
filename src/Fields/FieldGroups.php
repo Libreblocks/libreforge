@@ -110,6 +110,34 @@ final class FieldGroups {
 	}
 
 	/**
+	 * Definition of the field $name shown for $object (used to format values:
+	 * option labels, dates...). Options pages are looked up with object "options:{slug}".
+	 *
+	 * @param mixed $object WP_Post, WP_Term or WP_User.
+	 */
+	public function field_for( $object, string $name ): ?Field {
+		if ( $object instanceof \WP_Post ) {
+			$groups = $this->groups_for( 'post', $object->post_type );
+		} elseif ( $object instanceof \WP_Term ) {
+			$groups = $this->groups_for( 'term', $object->taxonomy );
+		} elseif ( $object instanceof \WP_User ) {
+			$groups = $this->groups_for( 'user' );
+		} else {
+			return null;
+		}
+
+		foreach ( $groups as $group ) {
+			foreach ( $this->fields_of( $group ) as $field ) {
+				if ( $field->name === $name ) {
+					return $field;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
 	 * @return Field[]
 	 */
 	public function fields_of( Definition $group ): array {

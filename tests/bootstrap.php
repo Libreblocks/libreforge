@@ -78,3 +78,13 @@ final class FakeWpdb {
 
 WPStub::$registered = [];
 LibreBlocks\Core\Plugin::boot();
+
+function is_singular( ...$args ) { return WPStub::$registered['singular'] ?? false; }
+function get_queried_object_id() { return WPStub::$registered['queried_id'] ?? 0; }
+function esc_html( $text ) { return htmlspecialchars( (string) $text, ENT_QUOTES, 'UTF-8' ); }
+function esc_attr( $text ) { return esc_html( $text ); }
+function esc_url( $url ) { return (string) $url; }
+function esc_html__( $text, $domain = null ) { return esc_html( $text ); }
+function wpautop( $text ) { return '<p>' . trim( (string) $text ) . '</p>'; }
+function wp_strip_all_tags( $text ) { return strip_tags( (string) $text ); }
+function wp_trim_words( $text, $words = 55 ) { $parts = preg_split( '/\s+/', trim( $text ) ); return implode( ' ', array_slice( $parts, 0, $words ) ) . ( count( $parts ) > $words ? '…' : '' ); }

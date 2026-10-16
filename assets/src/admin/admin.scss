@@ -676,3 +676,124 @@
 .lf-children {
 	margin: 12px 0 16px;
 }
+
+// ---------------------------------------------------------------- query builder
+
+.lf-rules {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: flex-start;
+
+	> .components-base-control {
+		width: 260px;
+	}
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		align-items: center;
+		width: 100%;
+		padding: 10px;
+		background: var(--lb-canvas);
+		border-radius: 8px;
+
+		> .components-base-control {
+			flex: 1 1 150px;
+		}
+
+		> .components-button {
+			flex: 0 0 auto;
+		}
+	}
+}
+
+.lf-intro--tip {
+	padding: 10px 12px;
+	background: var(--lb-accent-soft);
+	border-radius: 8px;
+	color: var(--lb-text);
+}
+
+.lf-preview {
+	h3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.components-spinner {
+			margin: 0;
+		}
+	}
+
+	&__total {
+		margin: 0 0 10px;
+		font-size: 22px;
+		font-weight: 600;
+	}
+
+	&__list {
+		margin: 0 0 0 18px;
+
+		li {
+			margin: 0 0 6px;
+		}
+
+		span {
+			display: block;
+			font-weight: 500;
+		}
+
+		small {
+			color: var(--lb-muted);
+		}
+	}
+}
+
+// ---------------------------------------------------------------- templates
+
+.lf-builder-choice {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+
+	button {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4px;
+		padding: 14px;
+		background: var(--lb-surface);
+		border: 1px solid var(--lb-border);
+		border-radius: 10px;
+		font: inherit;
+		text-align: left;
+		cursor: pointer;
+
+		&.is-selected {
+			border-color: var(--lb-accent);
+			box-shadow: 0 0 0 1px var(--lb-accent);
+			background: var(--lb-accent-soft);
+		}
+
+		&[aria-disabled="true"] {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+
+		.dashicons {
+			color: var(--lb-accent);
+		}
+
+		small {
+			color: var(--lb-muted);
+		}
+	}
+}
+
+.lf-form-actions {
+	display: flex;
+	gap: 8px;
+	padding-top: 6px;
+}

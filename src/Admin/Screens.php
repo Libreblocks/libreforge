@@ -34,6 +34,8 @@ final class Screens {
 			'libreforge-field-groups'  => [ 'section' => 'field_group', 'title' => __( 'Field groups', 'libreforge' ), 'icon' => 'forms' ],
 			'libreforge-options-pages' => [ 'section' => 'options_page', 'title' => __( 'Options pages', 'libreforge' ), 'icon' => 'admin-settings' ],
 			'libreforge-glossaries'    => [ 'section' => 'glossary', 'title' => __( 'Glossaries', 'libreforge' ), 'icon' => 'list-view' ],
+			'libreforge-queries'       => [ 'section' => 'query', 'title' => __( 'Queries', 'libreforge' ), 'icon' => 'filter' ],
+			'libreforge-templates'     => [ 'section' => 'templates', 'title' => __( 'Item templates', 'libreforge' ), 'icon' => 'layout' ],
 		];
 	}
 

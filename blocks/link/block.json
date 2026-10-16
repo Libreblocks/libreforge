@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "libreforge/link",
+	"title": "Dynamic Link",
+	"category": "libreforge",
+	"icon": "admin-links",
+	"description": "A link or button to the current item, a field or any address.",
+	"keywords": [
+		"button",
+		"link",
+		"dynamic"
+	],
+	"textdomain": "libreforge",
+	"attributes": {
+		"urlSource": {
+			"type": "string",
+			"default": "item"
+		},
+		"urlKey": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"newTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"style": {
+			"type": "string",
+			"default": "button"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		}
+	},
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"editorScript": "libreforge-blocks",
+	"editorStyle": "libreforge-blocks"
+}

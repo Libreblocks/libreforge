@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "libreforge/image",
+	"title": "Dynamic Image",
+	"category": "libreforge",
+	"icon": "format-image",
+	"description": "Shows the featured image or an image field of the current item.",
+	"keywords": [
+		"image",
+		"photo",
+		"dynamic"
+	],
+	"textdomain": "libreforge",
+	"attributes": {
+		"source": {
+			"type": "string",
+			"default": "featured"
+		},
+		"key": {
+			"type": "string",
+			"default": ""
+		},
+		"size": {
+			"type": "string",
+			"default": "medium_large"
+		},
+		"link": {
+			"type": "string",
+			"default": "none"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		}
+	},
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"editorScript": "libreforge-blocks",
+	"editorStyle": "libreforge-blocks"
+}

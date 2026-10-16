@@ -13,6 +13,8 @@ import { AppShell, Badge, CardGrid, Collapsible, EditorColumns, EmptyState, Icon
 
 import { deleteDefinition, getDefinition, getEnvironment, listDefinitions, saveDefinition } from './api';
 import { MenuPreview } from './components';
+import { QueryPreview, querySections } from './query-form';
+import TemplatesScreen from './templates-screen';
 import { fieldGroupSections, glossarySections, optionsPageSections, postTypeSections, taxonomySections } from './forms';
 import './admin.scss';
 
@@ -95,6 +97,27 @@ const KINDS = {
 		/* translators: %d: number of fields */
 		describe: ( item ) => sprintf( _n( '%d field', '%d fields', item.summary.fields || 0, 'libreforge' ), item.summary.fields || 0 ),
 		defaults: { title: '', menu_title: '', parent: '', icon: 'dashicons-admin-generic', capability: 'manage_options', autoload: true, fields: [] },
+	},
+	query: {
+		title: __( 'Queries', 'libreforge' ),
+		singular: __( 'query', 'libreforge' ),
+		icon: 'filter',
+		addLabel: __( 'New query', 'libreforge' ),
+		createLabel: __( 'Create query', 'libreforge' ),
+		emptyTitle: __( 'Create your first query', 'libreforge' ),
+		empty: __( 'A query picks which items a listing shows, like "the 6 newest properties in São Paulo". Build it once, reuse it in any page.', 'libreforge' ),
+		sections: querySections,
+		aside: ( definition ) => <QueryPreview config={ definition.config } />,
+		itemIcon: ( item ) => ( { posts: 'admin-post', terms: 'tag', users: 'admin-users' }[ item.config.type ] || 'filter' ),
+		describe: ( item ) =>
+			[
+				{ posts: ( item.config.post_types || [] ).join( ', ' ), terms: ( item.config.taxonomies || [] ).join( ', ' ), users: __( 'Users', 'libreforge' ) }[ item.config.type ],
+				/* translators: %d: items per page */
+				item.config.per_page > 0 ? sprintf( __( '%d per page', 'libreforge' ), item.config.per_page ) : __( 'All items', 'libreforge' ),
+			]
+				.filter( Boolean )
+				.join( ' · ' ),
+		defaults: { title: '', type: 'posts', post_types: [ 'post' ], statuses: [ 'publish' ], per_page: 6, orderby: 'date', order: 'DESC', exclude_current: true, ignore_sticky: true, tax_rules: [], meta_rules: [], tax_relation: 'AND', meta_relation: 'AND' },
 	},
 	glossary: {
 		title: __( 'Glossaries', 'libreforge' ),
@@ -489,6 +512,7 @@ function Editor( { kind, id, onBack, onCreated } ) {
 				aside={
 					<>
 						{ actions }
+						{ meta.aside && meta.aside( definition ) }
 						{ kind === 'post_type' && (
 							<div className="lb-card lf-aside-card">
 								<h3>{ __( 'Menu preview', 'libreforge' ) }</h3>
@@ -522,7 +546,9 @@ function KindScreen( { kind } ) {
 function App( { section } ) {
 	return (
 		<AppShell product={ { name: 'LibreForge', icon: data.icon || 'hammer' } } tabs={ data.tabs } current={ section }>
-			{ section === 'dashboard' ? <Dashboard /> : <KindScreen kind={ section } /> }
+			{ section === 'dashboard' && <Dashboard /> }
+			{ section === 'templates' && <TemplatesScreen /> }
+			{ KINDS[ section ] && <KindScreen kind={ section } /> }
 		</AppShell>
 	);
 }
@@ -530,7 +556,7 @@ function App( { section } ) {
 const mount = document.getElementById( 'libreforge-app' );
 const section = mount?.dataset.section;
 
-if ( mount && ( section === 'dashboard' || KINDS[ section ] ) ) {
+if ( mount && ( [ 'dashboard', 'templates' ].includes( section ) || KINDS[ section ] ) ) {
 	createRoot( mount ).render( <App section={ section } /> );
 }
 

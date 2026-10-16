@@ -1,0 +1,93 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "libreforge/loop-grid",
+	"title": "Loop Grid",
+	"category": "libreforge",
+	"icon": "grid-view",
+	"description": "Repeats an item template for every item of a query.",
+	"keywords": [
+		"listing",
+		"query",
+		"loop",
+		"grid",
+		"cards"
+	],
+	"textdomain": "libreforge",
+	"attributes": {
+		"queryId": {
+			"type": "number",
+			"default": 0
+		},
+		"postType": {
+			"type": "string",
+			"default": ""
+		},
+		"perPage": {
+			"type": "number",
+			"default": 6
+		},
+		"orderby": {
+			"type": "string",
+			"default": "date"
+		},
+		"order": {
+			"type": "string",
+			"default": "DESC"
+		},
+		"templateId": {
+			"type": "number",
+			"default": 0
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"columnsTablet": {
+			"type": "number",
+			"default": 2
+		},
+		"columnsMobile": {
+			"type": "number",
+			"default": 1
+		},
+		"gap": {
+			"type": "number",
+			"default": 24
+		},
+		"pagination": {
+			"type": "string",
+			"default": "none"
+		},
+		"emptyText": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		}
+	},
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"editorScript": "libreforge-blocks",
+	"editorStyle": "libreforge-blocks"
+}

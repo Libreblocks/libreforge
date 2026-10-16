@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       LibreForge
  * Plugin URI:        https://libreblocks.com/libreforge
- * Description:       Post types, taxonomies, custom fields, options pages and glossaries without code.
- * Version:           0.3.0
+ * Description:       Post types, custom fields, queries, item templates and dynamic listings for Gutenberg and Elementor, without code.
+ * Version:           0.4.1
  * Requires at least: 6.6
  * Requires PHP:      8.0
  * Requires Plugins:  libreblocks-core
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LIBREFORGE_VERSION', '0.3.0' );
+define( 'LIBREFORGE_VERSION', '0.4.1' );
 define( 'LIBREFORGE_FILE', __FILE__ );
 define( 'LIBREFORGE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LIBREFORGE_URL', plugin_dir_url( __FILE__ ) );

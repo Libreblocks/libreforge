@@ -21,6 +21,7 @@ use LibreBlocks\Forge\Model\Kinds\FieldGroupKind;
 use LibreBlocks\Forge\Model\Kinds\GlossaryKind;
 use LibreBlocks\Forge\Model\Kinds\OptionsPageKind;
 use LibreBlocks\Forge\Model\Kinds\PostTypeKind;
+use LibreBlocks\Forge\Model\Kinds\QueryKind;
 use LibreBlocks\Forge\Model\Kinds\TaxonomyKind;
 use LibreBlocks\Forge\Modules\Catalog;
 use LibreBlocks\Forge\Plugin;
@@ -69,6 +70,12 @@ final class DefinitionsController extends Controller {
 		$this->route( '/forge/overview', [
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => [ $this, 'overview' ],
+			'permission_callback' => [ $this, 'can_manage' ],
+		] );
+
+		$this->route( '/forge/queries/preview', [
+			'methods'             => WP_REST_Server::CREATABLE,
+			'callback'            => [ $this, 'preview_query' ],
 			'permission_callback' => [ $this, 'can_manage' ],
 		] );
 
@@ -159,6 +166,31 @@ final class DefinitionsController extends Controller {
 		$this->forge()->repository()->delete( $definition );
 
 		return new WP_REST_Response( [ 'deleted' => true, 'id' => $definition->id ] );
+	}
+
+	/**
+	 * Runs an unsaved query config and returns the first items, for the editor preview.
+	 */
+	public function preview_query( WP_REST_Request $request ): WP_REST_Response {
+		$config = $this->forge()->kinds()[ QueryKind::ID ]->sanitize( (array) $request['config'] );
+		$result = $this->forge()->queries()->run( array_merge( $config, [ 'per_page' => min( 10, max( 1, (int) $config['per_page'] ) ) ] ) );
+		$items  = [];
+
+		foreach ( $result->items as $item ) {
+			if ( $item instanceof \WP_Post ) {
+				$items[] = [ 'id' => $item->ID, 'label' => get_the_title( $item ) ?: '#' . $item->ID, 'meta' => get_post_type_object( $item->post_type )->labels->singular_name ?? $item->post_type ];
+			} elseif ( $item instanceof \WP_Term ) {
+				$items[] = [ 'id' => $item->term_id, 'label' => $item->name, 'meta' => $item->taxonomy ];
+			} elseif ( $item instanceof \WP_User ) {
+				$items[] = [ 'id' => $item->ID, 'label' => $item->display_name, 'meta' => implode( ', ', $item->roles ) ];
+			}
+		}
+
+		return new WP_REST_Response( [
+			'total' => $result->total,
+			'items' => $items,
+			'args'  => $this->forge()->queries()->build_args( $config ),
+		] );
 	}
 
 	/**
@@ -259,7 +291,10 @@ final class DefinitionsController extends Controller {
 		$post_types = [];
 
 		foreach ( get_post_types( [ 'show_ui' => true ], 'objects' ) as $type ) {
-			$post_types[] = [ 'value' => $type->name, 'label' => $type->labels->singular_name ?: $type->label ];
+			// Item templates are LibreForge's own building blocks, not content.
+			if ( \LibreBlocks\Forge\Templates\Templates::POST_TYPE !== $type->name ) {
+				$post_types[] = [ 'value' => $type->name, 'label' => $type->labels->singular_name ?: $type->label ];
+			}
 		}
 
 		$taxonomies = [];
@@ -295,7 +330,13 @@ final class DefinitionsController extends Controller {
 			}
 		}
 
+		$queries = array_map(
+			fn( Definition $query ) => [ 'value' => $query->id, 'label' => $query->title(), 'type' => $query->get( 'type' ) ],
+			$this->forge()->repository()->active( QueryKind::ID )
+		);
+
 		return new WP_REST_Response( [
+			'queries'        => $queries,
 			'post_types'     => $post_types,
 			'taxonomies'     => $taxonomies,
 			'roles'          => $roles,

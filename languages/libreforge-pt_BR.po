@@ -1428,3 +1428,784 @@ msgstr "Sim"
 
 msgid "← Back to %s"
 msgstr "← Voltar para %s"
+
+# Fase 1b: consultas, templates, blocos e Elementor
+msgid "%d per page"
+msgstr "%d por página"
+
+msgid "(no title)"
+msgstr "(sem título)"
+
+msgid "-1 shows all of them at once."
+msgstr "-1 mostra todos de uma vez."
+
+msgid "A custom address"
+msgstr "Um endereço personalizado"
+
+msgid "A custom field (number)"
+msgstr "Um campo personalizado (número)"
+
+msgid "A custom field (text)"
+msgstr "Um campo personalizado (texto)"
+
+msgid "A field (URL, e-mail or phone)"
+msgstr "Um campo (URL, e-mail ou telefone)"
+
+msgid "A link or button to the current item, a field or any address."
+msgstr "Um link ou botão para o item atual, um campo ou qualquer endereço."
+
+msgid "A query picks which items a listing shows, like \"the 6 newest properties in São Paulo\". Build it once, reuse it in any page."
+msgstr "Uma consulta escolhe quais itens uma listagem mostra, como \"os 6 imóveis mais recentes em São Paulo\". Monte uma vez e reutilize em qualquer página."
+
+msgid "A template is the design of one item (a card). Listings repeat it for every item."
+msgstr "Um template é o design de um item (um card). As listagens o repetem para cada item."
+
+msgid "Add field rule"
+msgstr "Adicionar regra de campo"
+
+msgid "Add taxonomy rule"
+msgstr "Adicionar regra de taxonomia"
+
+msgid "Address"
+msgstr "Endereço"
+
+msgid "Address (URL)"
+msgstr "Endereço (URL)"
+
+msgid "Alignment"
+msgstr "Alinhamento"
+
+msgid "All items"
+msgstr "Todos os itens"
+
+msgid "An options page field"
+msgstr "Um campo de página de opções"
+
+msgid "Ascending (oldest, A→Z, lowest first)"
+msgstr "Crescente (mais antigos, A→Z, menores primeiro)"
+
+msgid "Author name"
+msgstr "Nome do autor"
+
+msgid "Automatic (recommended)"
+msgstr "Automático (recomendado)"
+
+msgid "Avatar URL (users)"
+msgstr "URL do avatar (usuários)"
+
+msgid "Background"
+msgstr "Fundo"
+
+msgid "Badge background"
+msgstr "Fundo das etiquetas"
+
+msgid "Badges"
+msgstr "Etiquetas"
+
+msgid "Blocks"
+msgstr "Blocos"
+
+msgid "Built in LibreForge → Queries. Or leave empty and pick a post type below."
+msgstr "Criada em LibreForge → Consultas. Ou deixe vazio e escolha um tipo de post abaixo."
+
+msgid "Bulleted list"
+msgstr "Lista com marcadores"
+
+msgid "Button"
+msgstr "Botão"
+
+msgid "By custom field"
+msgstr "Por campo personalizado"
+
+msgid "By taxonomy"
+msgstr "Por taxonomia"
+
+msgid "Center"
+msgstr "Centro"
+
+msgid "Children of term"
+msgstr "Filhos do termo"
+
+msgid "Choose a query or a post type for this listing."
+msgstr "Escolha uma consulta ou um tipo de post para esta listagem."
+
+msgid "Choose the field used to sort."
+msgstr "Escolha o campo usado para ordenar."
+
+msgid "Choose the repeater field in the sidebar"
+msgstr "Escolha o campo repetidor na barra lateral"
+
+msgid "Choose what to list in the sidebar: a saved query or a post type."
+msgstr "Escolha o que listar na barra lateral: uma consulta salva ou um tipo de post."
+
+msgid "Color"
+msgstr "Cor"
+
+msgid "Columns"
+msgstr "Colunas"
+
+msgid "Columns on phones"
+msgstr "Colunas no celular"
+
+msgid "Columns on tablets"
+msgstr "Colunas no tablet"
+
+msgid "Comma separated."
+msgstr "Separados por vírgula."
+
+msgid "Comma separated. Empty = any."
+msgstr "Separados por vírgula. Vazio = qualquer um."
+
+msgid "Compare as"
+msgstr "Comparar como"
+
+msgid "Content (posts, pages, post types)"
+msgstr "Conteúdo (posts, páginas, tipos de post)"
+
+msgid "Content type"
+msgstr "Tipo de conteúdo"
+
+msgid "Create a query with filters"
+msgstr "Criar uma consulta com filtros"
+
+msgid "Create and open the editor"
+msgstr "Criar e abrir o editor"
+
+msgid "Create query"
+msgstr "Criar consulta"
+
+msgid "Create your first item template"
+msgstr "Crie seu primeiro template de item"
+
+msgid "Create your first query"
+msgstr "Crie sua primeira consulta"
+
+msgid "Currency symbol"
+msgstr "Símbolo da moeda"
+
+msgid "Custom field"
+msgstr "Campo personalizado"
+
+msgid "Data"
+msgstr "Dado"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Date format"
+msgstr "Formato da data"
+
+msgid "Decimal number"
+msgstr "Número decimal"
+
+msgid "Decimals"
+msgstr "Casas decimais"
+
+msgid "Descending (newest, Z→A, highest first)"
+msgstr "Decrescente (mais recentes, Z→A, maiores primeiro)"
+
+msgid "Design how one item looks (photo, title, price…). Then the Loop Grid block repeats it for every item of a query."
+msgstr "Desenhe como um item aparece (foto, título, preço…). Depois o bloco Loop Grid o repete para cada item de uma consulta."
+
+msgid "Design with"
+msgstr "Desenhar com"
+
+msgid "Drag-and-drop page builder."
+msgstr "Construtor de páginas de arrastar e soltar."
+
+msgid "Dynamic Field"
+msgstr "Campo dinâmico"
+
+msgid "Dynamic Image"
+msgstr "Imagem dinâmica"
+
+msgid "Dynamic Link"
+msgstr "Link dinâmico"
+
+msgid "Dynamic Repeater"
+msgstr "Repetidor dinâmico"
+
+msgid "Dynamic Terms"
+msgstr "Termos dinâmicos"
+
+msgid "Each row"
+msgstr "Cada linha"
+
+msgid "Edit design"
+msgstr "Editar design"
+
+msgid "Edit item template"
+msgstr "Editar template de item"
+
+msgid "Edit this template"
+msgstr "Editar este template"
+
+msgid "Ex.: Hello {{user.meta|first_name}}!"
+msgstr "Ex.: Olá, {{user.meta|first_name}}!"
+
+msgid "Ex.: Latest properties, Featured team members."
+msgstr "Ex.: Imóveis recentes, Equipe em destaque."
+
+msgid "Ex.: Price: "
+msgstr "Ex.: Preço: "
+
+msgid "Ex.: Property card"
+msgstr "Ex.: Card de imóvel"
+
+msgid "Ex.: d/m/Y. Empty = site default."
+msgstr "Ex.: d/m/Y. Vazio = padrão do site."
+
+msgid "Ex.: only properties in the city \"sao-paulo\"."
+msgstr "Ex.: só imóveis na cidade \"sao-paulo\"."
+
+msgid "Ex.: price less than 500000."
+msgstr "Ex.: preço menor que 500000."
+
+msgid "Except these IDs"
+msgstr "Exceto estes IDs"
+
+msgid "Excerpt / description"
+msgstr "Resumo / descrição"
+
+msgid "Field name"
+msgstr "Nome do campo"
+
+msgid "Field used to sort"
+msgstr "Campo usado para ordenar"
+
+msgid "Filters"
+msgstr "Filtros"
+
+msgid "Format"
+msgstr "Formato"
+
+msgid "Formatted text (HTML)"
+msgstr "Texto formatado (HTML)"
+
+msgid "Full content"
+msgstr "Conteúdo completo"
+
+msgid "Give the template a name."
+msgstr "Dê um nome ao template."
+
+msgid "Goes to"
+msgstr "Vai para"
+
+msgid "HTML tag"
+msgstr "Tag HTML"
+
+msgid "Height"
+msgstr "Altura"
+
+msgid "Hide empty terms"
+msgstr "Ocultar termos vazios"
+
+msgid "Hide the item being viewed"
+msgstr "Ocultar o item que está sendo visto"
+
+msgid "How many"
+msgstr "Quantos"
+
+msgid "How many per page"
+msgstr "Quantos por página"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "If empty, show"
+msgstr "Se estiver vazio, mostrar"
+
+msgid "Ignore sticky posts"
+msgstr "Ignorar posts fixados"
+
+msgid "Image"
+msgstr "Imagem"
+
+msgid "Image field"
+msgstr "Campo de imagem"
+
+msgid "Install Elementor to use it."
+msgstr "Instale o Elementor para usar."
+
+msgid "It shows"
+msgstr "Ele mostra"
+
+msgid "Item data (title, date…)"
+msgstr "Dados do item (título, data…)"
+
+msgid "Item design"
+msgstr "Design do item"
+
+msgid "Item template"
+msgstr "Template de item"
+
+msgid "Item templates"
+msgstr "Templates de item"
+
+msgid "Items must match"
+msgstr "Os itens devem atender a"
+
+msgid "Last update"
+msgstr "Última atualização"
+
+msgid "Latest properties"
+msgstr "Imóveis recentes"
+
+msgid "Leave empty for every user."
+msgstr "Deixe vazio para todos os usuários."
+
+msgid "Left"
+msgstr "Esquerda"
+
+msgid "LibreForge field"
+msgstr "Campo LibreForge"
+
+msgid "LibreForge image"
+msgstr "Imagem LibreForge"
+
+msgid "LibreForge link"
+msgstr "Link LibreForge"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Link each term"
+msgstr "Link em cada termo"
+
+msgid "Link to the item"
+msgstr "Link para o item"
+
+msgid "List type"
+msgstr "Tipo de lista"
+
+msgid "Lists the categories, tags or terms of the current item."
+msgstr "Lista as categorias, tags ou termos do item atual."
+
+msgid "Live preview"
+msgstr "Prévia ao vivo"
+
+msgid "Loop Grid"
+msgstr "Loop Grid"
+
+msgid "Manual order"
+msgstr "Ordem manual"
+
+msgid "Maximum (0 = all)"
+msgstr "Máximo (0 = todos)"
+
+msgid "Message when empty"
+msgstr "Mensagem quando estiver vazio"
+
+msgid "Money"
+msgstr "Dinheiro"
+
+msgid "Move this template to the trash? Listings using it will show nothing until you pick another one."
+msgstr "Mover este template para a lixeira? As listagens que o usam não mostrarão nada até você escolher outro."
+
+msgid "Name of the custom field, e.g. price."
+msgstr "Nome do campo personalizado, ex.: preco."
+
+msgid "New item template"
+msgstr "Novo template de item"
+
+msgid "New query"
+msgstr "Nova consulta"
+
+msgid "New template"
+msgstr "Novo template"
+
+msgid "Newest first"
+msgstr "Mais recentes primeiro"
+
+msgid "Next →"
+msgstr "Próxima →"
+
+msgid "No"
+msgstr "Não"
+
+msgid "No link"
+msgstr "Sem link"
+
+msgid "None"
+msgstr "Nenhuma"
+
+msgid "Nothing found."
+msgstr "Nada encontrado."
+
+msgid "Nothing matches yet. Try removing a filter."
+msgstr "Nada encontrado ainda. Tente remover um filtro."
+
+msgid "Nothing to show for this item yet."
+msgstr "Nada para mostrar neste item ainda."
+
+msgid "Number"
+msgstr "Número"
+
+msgid "Number of comments"
+msgstr "Número de comentários"
+
+msgid "Number of items"
+msgstr "Número de itens"
+
+msgid "Number of items (terms)"
+msgstr "Número de itens (termos)"
+
+msgid "Number of items to skip (offset)."
+msgstr "Quantidade de itens a pular (offset)."
+
+msgid "Number of posts"
+msgstr "Número de posts"
+
+msgid "Numbered list"
+msgstr "Lista numerada"
+
+msgid "Oldest first"
+msgstr "Mais antigos primeiro"
+
+msgid "On an item page, do not list that same item (\"related items\")."
+msgstr "Na página de um item, não listar o próprio item (\"itens relacionados\")."
+
+msgid "Only items containing this text."
+msgstr "Só itens que contêm este texto."
+
+msgid "Only these IDs"
+msgstr "Só estes IDs"
+
+msgid "Open in a new tab"
+msgstr "Abrir em nova aba"
+
+msgid "Option"
+msgstr "Opção"
+
+msgid "Option label"
+msgstr "Rótulo da opção"
+
+msgid "Options page"
+msgstr "Página de opções"
+
+msgid "Order"
+msgstr "Ordem"
+
+msgid "Order of the IDs typed below"
+msgstr "Ordem dos IDs digitados abaixo"
+
+msgid "Other (type the name)…"
+msgstr "Outro (digite o nome)…"
+
+msgid "Padding"
+msgstr "Espaçamento interno"
+
+msgid "Page numbers"
+msgstr "Números de página"
+
+msgid "Pagination"
+msgstr "Paginação"
+
+msgid "Parent term ID. 0 = only top level."
+msgstr "ID do termo pai. 0 = só o primeiro nível."
+
+msgid "Plain text"
+msgstr "Texto simples"
+
+msgid "Post type"
+msgstr "Tipo de post"
+
+msgid "Previous / next"
+msgstr "Anterior / próxima"
+
+msgid "Private"
+msgstr "Privado"
+
+msgid "Property card"
+msgstr "Card de imóvel"
+
+msgid "Publication date"
+msgstr "Data de publicação"
+
+msgid "Published"
+msgstr "Publicado"
+
+msgid "Queries"
+msgstr "Consultas"
+
+msgid "Query name"
+msgstr "Nome da consulta"
+
+msgid "Quick start: post type"
+msgstr "Início rápido: tipo de post"
+
+msgid "Random"
+msgstr "Aleatório"
+
+msgid "Registration date"
+msgstr "Data de cadastro"
+
+msgid "Repeated for each row of \"%s\""
+msgstr "Repetido para cada linha de \"%s\""
+
+msgid "Repeater"
+msgstr "Repetidor"
+
+msgid "Repeater field"
+msgstr "Campo repetidor"
+
+msgid "Repeats an item template for every item of a query."
+msgstr "Repete um template de item para cada item de uma consulta."
+
+msgid "Repeats the blocks inside it for every row of a repeater field."
+msgstr "Repete os blocos de dentro para cada linha de um campo repetidor."
+
+msgid "Right"
+msgstr "Direita"
+
+msgid "Roles"
+msgstr "Funções"
+
+msgid "Rounded corners"
+msgstr "Cantos arredondados"
+
+msgid "Rows"
+msgstr "Linhas"
+
+msgid "Saved query"
+msgstr "Consulta salva"
+
+msgid "Scheduled"
+msgstr "Agendado"
+
+msgid "Search text"
+msgstr "Texto de busca"
+
+msgid "See more"
+msgstr "Ver mais"
+
+msgid "Separator"
+msgstr "Separador"
+
+msgid "Short text (limit words)"
+msgstr "Texto curto (limitar palavras)"
+
+msgid "Show as"
+msgstr "Mostrar como"
+
+msgid "Show only the items that match. Leave empty to show everything."
+msgstr "Mostre só os itens que atendem. Deixe vazio para mostrar tudo."
+
+msgid "Shows a value of the current item: title, custom field, option..."
+msgstr "Mostra um valor do item atual: título, campo personalizado, opção..."
+
+msgid "Shows the featured image or an image field of the current item."
+msgstr "Mostra a imagem destacada ou um campo de imagem do item atual."
+
+msgid "Size"
+msgstr "Tamanho"
+
+msgid "Skip the first"
+msgstr "Pular os primeiros"
+
+msgid "Sort by"
+msgstr "Ordenar por"
+
+msgid "Source"
+msgstr "Origem"
+
+msgid "Space between items (px)"
+msgstr "Espaço entre itens (px)"
+
+msgid "Space between rows"
+msgstr "Espaço entre linhas"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Style"
+msgstr "Estilo"
+
+msgid "Sub-fields: %s"
+msgstr "Subcampos: %s"
+
+msgid "Taxonomy"
+msgstr "Taxonomia"
+
+msgid "Template name"
+msgstr "Nome do template"
+
+msgid "Terms"
+msgstr "Termos"
+
+msgid "Terms by"
+msgstr "Termos por"
+
+msgid "Terms of a taxonomy (e.g. cities)"
+msgstr "Termos de uma taxonomia (ex.: cidades)"
+
+msgid "Terms without any item."
+msgstr "Termos sem nenhum item."
+
+msgid "Terms: %s"
+msgstr "Termos: %s"
+
+msgid "Text"
+msgstr "Texto"
+
+msgid "Text after"
+msgstr "Texto depois"
+
+msgid "Text before"
+msgstr "Texto antes"
+
+msgid "Text color"
+msgstr "Cor do texto"
+
+msgid "Text link"
+msgstr "Link de texto"
+
+msgid "Text with separator"
+msgstr "Texto com separador"
+
+msgid "Text with tokens"
+msgstr "Texto com tokens"
+
+msgid "The WordPress editor (Gutenberg)."
+msgstr "O editor do WordPress (Gutenberg)."
+
+msgid "The blocks inside are repeated for each row. Use Dynamic Field blocks with \"Custom field\" and the sub-field name."
+msgstr "Os blocos de dentro se repetem para cada linha. Use blocos Campo dinâmico com \"Campo personalizado\" e o nome do subcampo."
+
+msgid "The card repeated for every item. Create one in LibreForge → Item templates."
+msgstr "O card repetido para cada item. Crie um em LibreForge → Templates de item."
+
+msgid "The card repeated for every item. Without one, only the title is shown."
+msgstr "O card repetido para cada item. Sem ele, só o título aparece."
+
+msgid "The design of each item in your listings."
+msgstr "O design de cada item das suas listagens."
+
+msgid "The item page"
+msgstr "A página do item"
+
+msgid "Tip: values can use tokens, like {{user.id}} (logged-in user) or {{url.param|city}} (from the address)."
+msgstr "Dica: os valores aceitam tokens, como {{user.id}} (usuário logado) ou {{url.param|cidade}} (do endereço)."
+
+msgid "Title / name"
+msgstr "Título / nome"
+
+msgid "Title A→Z"
+msgstr "Título A→Z"
+
+msgid "Title Z→A"
+msgstr "Título Z→A"
+
+msgid "To the image file"
+msgstr "Para o arquivo da imagem"
+
+msgid "To the item"
+msgstr "Para o item"
+
+msgid "Tokens allowed, e.g. See {{object.prop|post_title}}"
+msgstr "Aceita tokens, ex.: Ver {{object.prop|post_title}}"
+
+msgid "Used to show a real example while you design."
+msgstr "Usado para mostrar um exemplo real enquanto você desenha."
+
+msgid "User ID or token, e.g. {{user.id}} for \"my items\"."
+msgstr "ID do usuário ou token, ex.: {{user.id}} para \"meus itens\"."
+
+msgid "What to list"
+msgstr "O que listar"
+
+msgid "What to show"
+msgstr "O que mostrar"
+
+msgid "Which content to show."
+msgstr "Qual conteúdo mostrar."
+
+msgid "Whole number"
+msgstr "Número inteiro"
+
+msgid "Words"
+msgstr "Palavras"
+
+msgid "Write how each row looks. {{object.meta|sub_field_name}} shows a sub-field of the row."
+msgstr "Escreva como cada linha aparece. {{object.meta|nome_do_subcampo}} mostra um subcampo da linha."
+
+msgid "all rules"
+msgstr "todas as regras"
+
+msgid "any rule"
+msgstr "qualquer regra"
+
+msgid "does not contain"
+msgstr "não contém"
+
+msgid "field name, e.g. price"
+msgstr "nome do campo, ex.: preco"
+
+msgid "has all of"
+msgstr "tem todos de"
+
+msgid "has any term"
+msgstr "tem algum termo"
+
+msgid "has no term"
+msgstr "não tem termo"
+
+msgid "is between (two values, comma)"
+msgstr "está entre (dois valores, vírgula)"
+
+msgid "is different from"
+msgstr "é diferente de"
+
+msgid "is equal to"
+msgstr "é igual a"
+
+msgid "is filled"
+msgstr "está preenchido"
+
+msgid "is greater or equal to"
+msgstr "é maior ou igual a"
+
+msgid "is greater than"
+msgstr "é maior que"
+
+msgid "is less or equal to"
+msgstr "é menor ou igual a"
+
+msgid "is less than"
+msgstr "é menor que"
+
+msgid "is none of"
+msgstr "não é nenhum de"
+
+msgid "is one of"
+msgstr "é um de"
+
+msgid "name"
+msgstr "nome"
+
+msgid "query"
+msgstr "consulta"
+
+msgid "slug"
+msgstr "slug"
+
+msgid "— Choose —"
+msgstr "— Escolha —"
+
+msgid "— Only the title —"
+msgstr "— Só o título —"
+
+msgid "— Simple mode (post type) —"
+msgstr "— Modo simples (tipo de post) —"
+
+msgid "← Previous"
+msgstr "← Anterior"
+
+msgid "%d result"
+msgid_plural "%d results"
+msgstr[0] "%d resultado"
+msgstr[1] "%d resultados"
+
+# Prévia
+msgid "Create at least one item of this content type to see a real preview here."
+msgstr "Crie pelo menos um item deste tipo de conteúdo para ver uma prévia real aqui."

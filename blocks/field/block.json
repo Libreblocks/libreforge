@@ -1,0 +1,91 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "libreforge/field",
+	"title": "Dynamic Field",
+	"category": "libreforge",
+	"icon": "editor-textcolor",
+	"description": "Shows a value of the current item: title, custom field, option...",
+	"keywords": [
+		"meta",
+		"custom field",
+		"dynamic"
+	],
+	"textdomain": "libreforge",
+	"attributes": {
+		"source": {
+			"type": "string",
+			"default": "object"
+		},
+		"key": {
+			"type": "string",
+			"default": "title"
+		},
+		"format": {
+			"type": "string",
+			"default": "auto"
+		},
+		"dateFormat": {
+			"type": "string",
+			"default": ""
+		},
+		"decimals": {
+			"type": "number",
+			"default": 0
+		},
+		"currency": {
+			"type": "string",
+			"default": "R$"
+		},
+		"words": {
+			"type": "number",
+			"default": 20
+		},
+		"tag": {
+			"type": "string",
+			"default": "div"
+		},
+		"before": {
+			"type": "string",
+			"default": ""
+		},
+		"after": {
+			"type": "string",
+			"default": ""
+		},
+		"fallback": {
+			"type": "string",
+			"default": ""
+		},
+		"link": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		}
+	},
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"editorScript": "libreforge-blocks",
+	"editorStyle": "libreforge-blocks"
+}

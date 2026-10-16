@@ -5,7 +5,7 @@ Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: libreblocks-core
-Stable tag: 0.3.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,17 @@ Requires the LibreBlocks Core plugin.
 No. Definitions are kept so a reinstall brings everything back. Add `define( 'LIBREFORGE_DELETE_DATA', true );` to wp-config.php before uninstalling to remove them.
 
 == Changelog ==
+
+= 0.4.1 =
+* Fix: blocks inside an item template now preview a real item in the editor.
+* Item templates no longer appear as a content type in lists.
+
+= 0.4.0 =
+* Query Builder: saved queries of posts, terms or users with taxonomy and field filters, sorting, tokens and a live preview.
+* Item templates designed with the block editor or Elementor, previewed with a real item.
+* Blocks: Loop Grid, Dynamic Field, Dynamic Image, Dynamic Link, Dynamic Terms and Dynamic Repeater.
+* Elementor widgets for the same six elements plus dynamic tags (field, link, image).
+* Values are formatted automatically: option labels, dates, money, rich text.
 
 = 0.3.0 =
 * Custom fields are created right inside each post type and taxonomy.

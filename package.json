@@ -1,11 +1,11 @@
 {
   "name": "libreforge",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "private": true,
   "license": "GPL-2.0-or-later",
   "scripts": {
-    "build": "wp-scripts build assets/src/admin/admin.js --output-path=build",
-    "start": "wp-scripts start assets/src/admin/admin.js --output-path=build"
+    "build": "wp-scripts build assets/src/admin/admin.js assets/src/blocks/blocks.js --output-path=build",
+    "start": "wp-scripts start assets/src/admin/admin.js assets/src/blocks/blocks.js --output-path=build"
   },
   "devDependencies": {
     "@wordpress/scripts": "^30.0.0"
