@@ -28,6 +28,8 @@ final class FakeWpdb {
 	public string $prefix = 'wp_';
 	public int $insert_id = 0;
 	public array $rows    = [];
+	public array $links   = [];
+	private int $link_id  = 0;
 
 	public function prepare( $sql, ...$args ) {
 		return [ $sql, $args ];
@@ -41,6 +43,17 @@ final class FakeWpdb {
 		}
 
 		return array_values( array_filter( $this->rows, fn( $row ) => $row['kind'] === $args[0] ) );
+	}
+
+	public function get_col( $query ) {
+		[ $sql, $args ] = $query;
+		$by    = false !== strpos( $sql, 'AND parent_id' ) ? 'parent_id' : 'child_id';
+		$want  = 'parent_id' === $by ? 'child_id' : 'parent_id';
+		$rows  = array_filter( $this->links, fn( $row ) => (int) $row['relation_id'] === (int) $args[0] && (int) $row[ $by ] === (int) $args[1] );
+		// Same ORDER BY as RelationStore: children by position, parents by id.
+		usort( $rows, fn( $a, $b ) => 'parent_id' === $by ? [ $a['position'], $a['id'] ] <=> [ $b['position'], $b['id'] ] : $a['id'] <=> $b['id'] );
+
+		return array_map( fn( $row ) => $row[ $want ], array_values( $rows ) );
 	}
 
 	public function get_row( $query, $output = null ) {
@@ -60,6 +73,11 @@ final class FakeWpdb {
 	}
 
 	public function insert( $table, $data ) {
+		if ( str_ends_with( $table, 'lbforge_relations' ) ) {
+			$this->links[ ++$this->link_id ] = [ 'id' => $this->link_id ] + $data;
+			return 1;
+		}
+
 		$this->insert_id = count( $this->rows ) + 1;
 		$this->rows[ $this->insert_id ] = [ 'id' => $this->insert_id ] + $data;
 		return 1;
@@ -70,7 +88,19 @@ final class FakeWpdb {
 		return 1;
 	}
 
-	public function delete( $table, $where ) {
+	public function delete( $table, $where, $format = null ) {
+		if ( str_ends_with( $table, 'lbforge_relations' ) ) {
+			$this->links = array_filter( $this->links, function ( $row ) use ( $where ) {
+				foreach ( $where as $key => $value ) {
+					if ( (int) $row[ $key ] !== (int) $value ) {
+						return true;
+					}
+				}
+				return false;
+			} );
+			return 1;
+		}
+
 		unset( $this->rows[ $where['id'] ] );
 		return 1;
 	}

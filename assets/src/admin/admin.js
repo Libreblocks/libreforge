@@ -15,6 +15,7 @@ import { deleteDefinition, getDefinition, getEnvironment, listDefinitions, saveD
 import { MenuPreview } from './components';
 import { QueryPreview, querySections } from './query-form';
 import TemplatesScreen from './templates-screen';
+import { relationSections } from './relation-form';
 import { fieldGroupSections, glossarySections, optionsPageSections, postTypeSections, taxonomySections } from './forms';
 import './admin.scss';
 
@@ -97,6 +98,19 @@ const KINDS = {
 		/* translators: %d: number of fields */
 		describe: ( item ) => sprintf( _n( '%d field', '%d fields', item.summary.fields || 0, 'libreforge' ), item.summary.fields || 0 ),
 		defaults: { title: '', menu_title: '', parent: '', icon: 'dashicons-admin-generic', capability: 'manage_options', autoload: true, fields: [] },
+	},
+	relation: {
+		title: __( 'Relations', 'libreforge' ),
+		singular: __( 'relation', 'libreforge' ),
+		icon: 'networking',
+		addLabel: __( 'New relation', 'libreforge' ),
+		createLabel: __( 'Create relation', 'libreforge' ),
+		emptyTitle: __( 'Create your first relation', 'libreforge' ),
+		empty: __( 'Relations connect content: a broker and their properties, a course and its lessons. Then a listing can show "the properties of this broker".', 'libreforge' ),
+		sections: relationSections,
+		itemIcon: () => 'networking',
+		describe: ( item ) => `${ item.config.parent_object || '…' } → ${ item.config.child_object || '…' }`,
+		defaults: { title: '', parent_object: '', child_object: '', type: 'one_to_many', parent_label: '', child_label: '', show_in_parent: true, show_in_child: true },
 	},
 	query: {
 		title: __( 'Queries', 'libreforge' ),

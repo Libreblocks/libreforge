@@ -142,6 +142,8 @@ final class QueryRunner {
 			}
 		}
 
+		$this->apply_relation( $args, $config, $type );
+
 		if ( $meta ) {
 			$args['meta_query'] = $meta; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 		}
@@ -151,6 +153,31 @@ final class QueryRunner {
 		}
 
 		return array_filter( $args, fn( $value ) => [] !== $value && '' !== $value );
+	}
+
+	/**
+	 * Limits the results to the items related to the current object. With no related
+	 * items the query returns nothing (not everything).
+	 *
+	 * @param array<string, mixed> $args
+	 * @param array<string, mixed> $config
+	 */
+	private function apply_relation( array &$args, array $config, string $type ): void {
+		$relation = (string) ( $config['relation'] ?? '' );
+
+		if ( '' === $relation ) {
+			return;
+		}
+
+		$side = 'parents' === ( $config['relation_side'] ?? '' ) ? 'parents' : 'children';
+		$ids  = $this->ids( '{{relation.' . $side . '|' . $relation . '}}' );
+		$key  = 'posts' === $type ? 'post__in' : 'include';
+
+		if ( ! empty( $args[ $key ] ) ) {
+			$ids = array_values( array_intersect( (array) $args[ $key ], $ids ) );
+		}
+
+		$args[ $key ] = $ids ?: [ 0 ];
 	}
 
 	/**

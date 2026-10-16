@@ -73,6 +73,9 @@ final class QueryKind extends Kind {
 			'tax_rules'       => $this->tax_rules( $input['tax_rules'] ?? [] ),
 			'meta_relation'   => 'OR' === ( $input['meta_relation'] ?? '' ) ? 'OR' : 'AND',
 			'meta_rules'      => $this->meta_rules( $input['meta_rules'] ?? [] ),
+			// "Related to the current item": e.g. the properties of the broker being viewed.
+			'relation'        => sanitize_key( self::text( $input, 'relation' ) ),
+			'relation_side'   => 'parents' === ( $input['relation_side'] ?? '' ) ? 'parents' : 'children',
 		];
 	}
 

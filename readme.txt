@@ -5,7 +5,7 @@ Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: libreblocks-core
-Stable tag: 0.4.1
+Stable tag: 0.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,11 @@ Requires the LibreBlocks Core plugin.
 No. Definitions are kept so a reinstall brings everything back. Add `define( 'LIBREFORGE_DELETE_DATA', true );` to wp-config.php before uninstalling to remove them.
 
 == Changelog ==
+
+= 0.5.0 =
+* Relations: one to one, one to many and many to many between post types, terms and users, with a picker box on each side.
+* Queries can list the items related to the current item (e.g. the properties of this broker).
+* New tokens {{relation.children|slug}} and {{relation.parents|slug}}.
 
 = 0.4.1 =
 * Fix: blocks inside an item template now preview a real item in the editor.

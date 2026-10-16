@@ -2209,3 +2209,136 @@ msgstr[1] "%d resultados"
 # Prévia
 msgid "Create at least one item of this content type to see a real preview here."
 msgstr "Crie pelo menos um item deste tipo de conteúdo para ver uma prévia real aqui."
+
+# Fase 1c: relações
+msgid "A box appears on the edit screen to pick the related items."
+msgstr "Uma caixa aparece na tela de edição para escolher os itens relacionados."
+
+msgid "Box on the child"
+msgstr "Caixa no filho"
+
+msgid "Box on the parent"
+msgstr "Caixa no pai"
+
+msgid "Broker"
+msgstr "Corretor"
+
+msgid "Broker → Properties"
+msgstr "Corretor → Imóveis"
+
+msgid "Child content"
+msgstr "Conteúdo filho"
+
+msgid "Choose one item."
+msgstr "Escolha um item."
+
+msgid "Choose one or more items."
+msgstr "Escolha um ou mais itens."
+
+msgid "Choose the child content."
+msgstr "Escolha o conteúdo filho."
+
+msgid "Choose the parent content."
+msgstr "Escolha o conteúdo pai."
+
+msgid "Create relation"
+msgstr "Criar relação"
+
+msgid "Create your first relation"
+msgstr "Crie sua primeira relação"
+
+msgid "Each item of %1$s can have many items of %2$s; each item of %2$s belongs to one %1$s."
+msgstr "Cada item de %1$s pode ter vários itens de %2$s; cada item de %2$s pertence a um item de %1$s."
+
+msgid "Each item of %1$s is linked to one item of %2$s, and vice versa."
+msgstr "Cada item de %1$s se liga a um item de %2$s, e vice-versa."
+
+msgid "Ex.: Broker → Properties, Course → Lessons."
+msgstr "Ex.: Corretor → Imóveis, Curso → Aulas."
+
+msgid "Ex.: on a broker page, list only their properties."
+msgstr "Ex.: na página de um corretor, listar só os imóveis dele."
+
+msgid "Ex.: on each broker, pick their properties."
+msgstr "Ex.: em cada corretor, escolher os imóveis dele."
+
+msgid "Ex.: on each property, pick its broker."
+msgstr "Ex.: em cada imóvel, escolher o corretor."
+
+msgid "How many on each side"
+msgstr "Quantos de cada lado"
+
+msgid "IDs of the related items of the current item, for queries and texts."
+msgstr "IDs dos itens relacionados ao item atual, para consultas e textos."
+
+msgid "In plain words"
+msgstr "Em palavras simples"
+
+msgid "Items of %1$s can have many items of %2$s, and each of them can belong to many %1$s."
+msgstr "Itens de %1$s podem ter vários itens de %2$s, e cada um deles pode pertencer a vários itens de %1$s."
+
+msgid "Its children (e.g. the properties of this broker)"
+msgstr "Os filhos dele (ex.: os imóveis deste corretor)"
+
+msgid "Its parents (e.g. the broker of this property)"
+msgstr "Os pais dele (ex.: o corretor deste imóvel)"
+
+msgid "Many to many (students and courses)"
+msgstr "Muitos para muitos (alunos e cursos)"
+
+msgid "New relation"
+msgstr "Nova relação"
+
+msgid "One to many (a broker has many properties)"
+msgstr "Um para muitos (um corretor tem vários imóveis)"
+
+msgid "One to one (a person and a profile)"
+msgstr "Um para um (uma pessoa e um perfil)"
+
+msgid "Parent content"
+msgstr "Conteúdo pai"
+
+msgid "Related children of the current item"
+msgstr "Filhos relacionados ao item atual"
+
+msgid "Related parents of the current item"
+msgstr "Pais relacionados ao item atual"
+
+msgid "Related to the current item"
+msgstr "Relacionados ao item atual"
+
+msgid "Relation name"
+msgstr "Nome da relação"
+
+msgid "Relation slug"
+msgstr "Slug da relação"
+
+msgid "Relations connect content: a broker and their properties, a course and its lessons. Then a listing can show \"the properties of this broker\"."
+msgstr "Relações conectam conteúdos: um corretor e seus imóveis, um curso e suas aulas. Depois uma listagem pode mostrar \"os imóveis deste corretor\"."
+
+msgid "The \"owner\" side. Ex.: Brokers."
+msgstr "O lado \"dono\". Ex.: Corretores."
+
+msgid "The side that belongs to the parent. Ex.: Properties."
+msgstr "O lado que pertence ao pai. Ex.: Imóveis."
+
+msgid "Title of the box on the child"
+msgstr "Título da caixa no filho"
+
+msgid "Title of the box on the parent"
+msgstr "Título da caixa no pai"
+
+msgid "Tokens"
+msgstr "Tokens"
+
+msgid "Where to connect items"
+msgstr "Onde conectar os itens"
+
+msgid "Which side"
+msgstr "Qual lado"
+
+msgid "relation"
+msgstr "relação"
+
+msgid "— Any item —"
+msgstr "— Qualquer item —"

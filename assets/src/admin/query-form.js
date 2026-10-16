@@ -270,6 +270,28 @@ export function querySections( { config, set, errors, environment, slug, setSlug
 					<SettingRow label={ __( 'By custom field', 'libreforge' ) } help={ __( 'Ex.: price less than 500000.', 'libreforge' ) } stacked>
 						<MetaRules rules={ config.meta_rules } relation={ config.meta_relation } onChange={ ( meta_rules ) => set( { meta_rules } ) } onRelation={ ( meta_relation ) => set( { meta_relation } ) } />
 					</SettingRow>
+					{ environment.relations.length > 0 && (
+						<>
+							<Choose
+								label={ __( 'Related to the current item', 'libreforge' ) }
+								help={ __( 'Ex.: on a broker page, list only their properties.', 'libreforge' ) }
+								value={ config.relation || '' }
+								options={ [ { value: '', label: __( '— Any item —', 'libreforge' ) }, ...environment.relations ] }
+								onChange={ ( relation ) => set( { relation } ) }
+							/>
+							{ config.relation && (
+								<Choose
+									label={ __( 'Which side', 'libreforge' ) }
+									value={ config.relation_side || 'children' }
+									options={ [
+										{ value: 'children', label: __( 'Its children (e.g. the properties of this broker)', 'libreforge' ) },
+										{ value: 'parents', label: __( 'Its parents (e.g. the broker of this property)', 'libreforge' ) },
+									] }
+									onChange={ ( relation_side ) => set( { relation_side } ) }
+								/>
+							) }
+						</>
+					) }
 					<Text label={ __( 'Search text', 'libreforge' ) } help={ __( 'Only items containing this text.', 'libreforge' ) } value={ config.search } onChange={ ( search ) => set( { search } ) } />
 					<p className="lf-intro lf-intro--tip">{ TOKEN_HELP }</p>
 				</>

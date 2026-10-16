@@ -22,6 +22,8 @@ use LibreBlocks\Forge\Model\Kind;
 use LibreBlocks\Forge\Model\Kinds;
 use LibreBlocks\Forge\Options\OptionsPages;
 use LibreBlocks\Forge\Queries\QueryRunner;
+use LibreBlocks\Forge\Relations\Relations;
+use LibreBlocks\Forge\Relations\RelationStore;
 use LibreBlocks\Forge\Rest\DefinitionsController;
 use LibreBlocks\Forge\Rest\TemplatesController;
 use LibreBlocks\Forge\Templates\Templates;
@@ -31,6 +33,8 @@ defined( 'ABSPATH' ) || exit;
 final class Plugin {
 
 	private const SCHEMA_VERSION = '1';
+
+	private const RELATIONS_SCHEMA_VERSION = '1';
 
 	private static ?Plugin $instance = null;
 
@@ -58,6 +62,7 @@ final class Plugin {
 		$this->repository = new DefinitionRepository( $core->cache() );
 
 		$core->schema()->register_table( DefinitionRepository::TABLE, DefinitionRepository::columns(), self::SCHEMA_VERSION, 'libreforge' );
+		$core->schema()->register_table( RelationStore::TABLE, RelationStore::columns(), self::RELATIONS_SCHEMA_VERSION, 'libreforge' );
 
 		$field_list = new FieldList( $core->fields() );
 
@@ -68,6 +73,7 @@ final class Plugin {
 			new Kinds\OptionsPageKind( $field_list ),
 			new Kinds\GlossaryKind(),
 			new Kinds\QueryKind(),
+			new Kinds\RelationKind(),
 		] as $kind ) {
 			$this->kinds[ $kind->id() ] = $kind;
 		}
@@ -92,6 +98,10 @@ final class Plugin {
 		$templates = new Templates( $core->context() );
 		$core->set( 'forge.templates', fn() => $templates );
 		$templates->hook();
+
+		$relations = new Relations( $this->repository, new RelationStore() );
+		$core->set( 'forge.relations', fn() => $relations );
+		$relations->hook();
 
 		$core->rest()->add( DefinitionsController::class );
 		$core->rest()->add( TemplatesController::class );

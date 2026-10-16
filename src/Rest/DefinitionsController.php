@@ -22,6 +22,7 @@ use LibreBlocks\Forge\Model\Kinds\GlossaryKind;
 use LibreBlocks\Forge\Model\Kinds\OptionsPageKind;
 use LibreBlocks\Forge\Model\Kinds\PostTypeKind;
 use LibreBlocks\Forge\Model\Kinds\QueryKind;
+use LibreBlocks\Forge\Model\Kinds\RelationKind;
 use LibreBlocks\Forge\Model\Kinds\TaxonomyKind;
 use LibreBlocks\Forge\Modules\Catalog;
 use LibreBlocks\Forge\Plugin;
@@ -335,7 +336,30 @@ final class DefinitionsController extends Controller {
 			$this->forge()->repository()->active( QueryKind::ID )
 		);
 
+		// Objects a relation can connect: each post type, each taxonomy, users.
+		$objects = [];
+
+		foreach ( $post_types as $type ) {
+			if ( ! in_array( $type['value'], [ 'attachment', 'wp_block', 'wp_navigation', 'wp_template', 'wp_template_part' ], true ) ) {
+				$objects[] = [ 'value' => 'post:' . $type['value'], 'label' => $type['label'] ];
+			}
+		}
+
+		foreach ( $taxonomies as $taxonomy ) {
+			/* translators: %s: taxonomy name */
+			$objects[] = [ 'value' => 'term:' . $taxonomy['value'], 'label' => sprintf( __( 'Terms: %s', 'libreforge' ), $taxonomy['label'] ) ];
+		}
+
+		$objects[] = [ 'value' => 'user', 'label' => __( 'Users', 'libreforge' ) ];
+
+		$relations = array_map(
+			fn( Definition $relation ) => [ 'value' => $relation->slug, 'label' => $relation->title(), 'parent' => $relation->get( 'parent_object' ), 'child' => $relation->get( 'child_object' ) ],
+			$this->forge()->repository()->active( RelationKind::ID )
+		);
+
 		return new WP_REST_Response( [
+			'objects'        => $objects,
+			'relations'      => $relations,
 			'queries'        => $queries,
 			'post_types'     => $post_types,
 			'taxonomies'     => $taxonomies,
