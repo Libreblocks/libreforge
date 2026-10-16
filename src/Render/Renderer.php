@@ -71,6 +71,11 @@ final class Renderer {
 			$html = sprintf( '<a href="%s">%s</a>', esc_url( $url ), $html );
 		}
 
+		// "none": the bare value, for places that are not HTML (Elementor color or number controls).
+		if ( 'none' === ( $s['tag'] ?? 'div' ) ) {
+			return $html;
+		}
+
 		return $this->wrap( (string) ( $s['tag'] ?? 'div' ), 'lf-field ' . ( $s['class'] ?? '' ), $html );
 	}
 

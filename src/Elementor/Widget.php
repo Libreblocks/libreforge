@@ -9,7 +9,6 @@ namespace LibreBlocks\Forge\Elementor;
 
 use LibreBlocks\Forge\Plugin;
 use LibreBlocks\Forge\Render\Renderer;
-use LibreBlocks\Forge\Templates\Templates;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -26,28 +25,12 @@ abstract class Widget extends \Elementor\Widget_Base {
 	}
 
 	/**
-	 * In the Elementor editor of an item template there is no loop yet:
-	 * show a real sample item so widgets display data.
+	 * Inside templates being designed, show a real item (see EditorPreview).
 	 *
 	 * @param callable(): string $render
 	 */
 	protected function with_preview( callable $render ): string {
-		$context = libreblocks()->context();
-		$sample  = null;
-
-		if ( 0 === $context->depth() && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			$post = get_post();
-
-			if ( $post && Templates::POST_TYPE === $post->post_type ) {
-				$sample = libreblocks()->get( 'forge.templates' )->sample_object( $post->ID );
-			}
-		}
-
-		if ( ! $sample ) {
-			return $render();
-		}
-
-		return $context->with( $sample, $render );
+		return (string) EditorPreview::wrap( $render );
 	}
 
 	/**

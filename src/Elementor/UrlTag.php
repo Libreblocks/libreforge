@@ -46,6 +46,10 @@ final class UrlTag extends Data_Tag {
 	 * @param array<string, mixed> $options
 	 */
 	public function get_value( array $options = [] ): string {
+		return EditorPreview::wrap( fn() => $this->value() );
+	}
+
+	private function value(): string {
 		$s      = $this->get_settings();
 		$source = (string) ( $s['source'] ?? 'object' );
 		$key    = Choices::key( $s );

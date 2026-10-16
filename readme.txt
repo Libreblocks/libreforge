@@ -5,7 +5,7 @@ Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: libreblocks-core
-Stable tag: 0.8.0
+Stable tag: 0.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ For themes and builders other than the block editor and Elementor:
 No. Definitions are kept so a reinstall brings everything back. Add `define( 'LIBREFORGE_DELETE_DATA', true );` to wp-config.php before uninstalling to remove them.
 
 == Changelog ==
+
+= 0.8.1 =
+* Elementor Pro theme templates (single post, archive): widgets and dynamic tags preview the item chosen in "Preview settings".
+* Fix: the "LibreForge field" dynamic tag returns the bare value, so it works in color and number controls (e.g. a background color from a field).
 
 = 0.8.0 =
 * Dynamic Repeater as an accordion: clickable title sub-field, content below, only one open, first open, arrow or plus icon, full Elementor styling.

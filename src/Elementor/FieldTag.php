@@ -48,11 +48,11 @@ final class FieldTag extends Tag {
 	public function render(): void {
 		$s = $this->get_settings();
 
-		echo Plugin::instance()->renderer()->field( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by the Renderer.
+		echo EditorPreview::wrap( fn() => Plugin::instance()->renderer()->field( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by the Renderer.
 			'source' => (string) ( $s['source'] ?? 'object' ),
 			'key'    => Choices::key( $s ),
 			'format' => (string) ( $s['format'] ?? 'auto' ),
-			'tag'    => 'span',
-		] );
+			'tag'    => 'none',
+		] ) );
 	}
 }

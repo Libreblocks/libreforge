@@ -121,6 +121,15 @@ final class RepeaterRenderTest extends TestCase {
 		$this->assertStringNotContainsString( 'ld+json', $html );
 	}
 
+	public function test_bare_values_for_dynamic_tags(): void {
+		WPStub::$meta['post'][5]['cor'] = '#1a3cb4';
+
+		$post = new WP_Post( [ 'ID' => 5, 'post_type' => 'teste' ] );
+
+		$this->assertSame( '#1a3cb4', libreblocks()->context()->with( $post, fn() => $this->renderer->field( [ 'source' => 'meta', 'key' => 'cor', 'tag' => 'none' ] ) ) );
+		$this->assertSame( '<span class="lf-field">#1a3cb4</span>', libreblocks()->context()->with( $post, fn() => $this->renderer->field( [ 'source' => 'meta', 'key' => 'cor', 'tag' => 'span' ] ) ) );
+	}
+
 	public function test_explains_why_nothing_shows_on_a_page(): void {
 		$html = libreblocks()->context()->with(
 			new WP_Post( [ 'ID' => 9, 'post_type' => 'page', 'post_title' => 'Home' ] ),

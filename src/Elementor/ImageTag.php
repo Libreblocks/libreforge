@@ -49,6 +49,10 @@ final class ImageTag extends Data_Tag {
 	 * @return array{id: int, url: string}
 	 */
 	public function get_value( array $options = [] ): array {
+		return EditorPreview::wrap( fn() => $this->value() );
+	}
+
+	private function value(): array {
 		$s      = $this->get_settings();
 		$source = (string) ( $s['source'] ?? 'featured' );
 		$values = new Values( libreblocks()->context(), libreblocks()->tokens() );
