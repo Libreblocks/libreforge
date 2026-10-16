@@ -1,7 +1,7 @@
 <?php
 /**
- * Optional LibreForge modules shown on the dashboard. None ships in 0.1;
- * they are listed so users see what is coming and which ones are Pro.
+ * Optional LibreForge modules shown on the dashboard. Ready modules get an
+ * on/off switch (on by default); the others show what is coming next.
  *
  * @package LibreBlocks\Forge
  */
@@ -12,12 +12,15 @@ defined( 'ABSPATH' ) || exit;
 
 final class Catalog {
 
+	public const OPTION = 'libreforge_modules';
+
+
 	/**
 	 * @return array<int, array{id: string, title: string, description: string, icon: string, pro: bool, available: bool}>
 	 */
 	public static function all(): array {
 		$modules = [
-			[ 'id' => 'relations', 'title' => __( 'Relations', 'libreforge' ), 'description' => __( 'Connect posts, terms and users to each other.', 'libreforge' ), 'icon' => 'networking', 'pro' => true ],
+			[ 'id' => 'relations', 'title' => __( 'Relations', 'libreforge' ), 'description' => __( 'Connect posts, terms and users to each other.', 'libreforge' ), 'icon' => 'networking', 'pro' => false, 'available' => true ],
 			[ 'id' => 'dynamic_visibility', 'title' => __( 'Dynamic visibility', 'libreforge' ), 'description' => __( 'Show or hide any block by rules.', 'libreforge' ), 'icon' => 'visibility', 'pro' => true ],
 			[ 'id' => 'content_tables', 'title' => __( 'Content tables', 'libreforge' ), 'description' => __( 'Large datasets in their own fast database table.', 'libreforge' ), 'icon' => 'database', 'pro' => true ],
 			[ 'id' => 'calendar', 'title' => __( 'Calendar', 'libreforge' ), 'description' => __( 'List items by date in a monthly calendar.', 'libreforge' ), 'icon' => 'calendar-alt', 'pro' => true ],
@@ -34,6 +37,28 @@ final class Catalog {
 		 */
 		$modules = (array) apply_filters( 'libreforge/modules', $modules );
 
-		return array_map( fn( array $module ) => $module + [ 'available' => false ], $modules );
+		return array_map( function ( array $module ) {
+			$module += [ 'available' => false, 'pro' => false ];
+
+			$module['enabled'] = $module['available'] && self::enabled( (string) $module['id'] );
+
+			return $module;
+		}, $modules );
+	}
+
+	/**
+	 * Whether a module is switched on. Safe to call early (no translations involved).
+	 */
+	public static function enabled( string $id ): bool {
+		$saved = (array) get_option( self::OPTION, [] );
+
+		return ! isset( $saved[ $id ] ) || (bool) $saved[ $id ];
+	}
+
+	public static function set_enabled( string $id, bool $enabled ): void {
+		$saved        = (array) get_option( self::OPTION, [] );
+		$saved[ $id ] = $enabled;
+
+		update_option( self::OPTION, $saved );
 	}
 }

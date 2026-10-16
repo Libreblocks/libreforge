@@ -102,7 +102,10 @@ final class Plugin {
 
 		$relations = new Relations( $this->repository, new RelationStore() );
 		$core->set( 'forge.relations', fn() => $relations );
-		$relations->hook();
+
+		if ( Modules\Catalog::enabled( 'relations' ) ) {
+			$relations->hook();
+		}
 
 		$core->rest()->add( DefinitionsController::class );
 		$core->rest()->add( TemplatesController::class );

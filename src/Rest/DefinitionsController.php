@@ -74,6 +74,16 @@ final class DefinitionsController extends Controller {
 			'permission_callback' => [ $this, 'can_manage' ],
 		] );
 
+		$this->route( '/forge/modules', [
+			'methods'             => WP_REST_Server::CREATABLE,
+			'callback'            => [ $this, 'toggle_module' ],
+			'permission_callback' => [ $this, 'can_manage' ],
+			'args'                => [
+				'id'      => [ 'type' => 'string', 'required' => true ],
+				'enabled' => [ 'type' => 'boolean', 'required' => true ],
+			],
+		] );
+
 		$this->route( '/forge/queries/preview', [
 			'methods'             => WP_REST_Server::CREATABLE,
 			'callback'            => [ $this, 'preview_query' ],
@@ -225,6 +235,24 @@ final class DefinitionsController extends Controller {
 			'post_types' => $recent,
 			'modules'    => Catalog::all(),
 		] );
+	}
+
+	/**
+	 * Switches a ready module on or off.
+	 *
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public function toggle_module( WP_REST_Request $request ) {
+		$id     = sanitize_key( (string) $request['id'] );
+		$module = current( array_filter( Catalog::all(), fn( array $m ) => $m['id'] === $id ) );
+
+		if ( ! $module || ! $module['available'] ) {
+			return $this->error( 'module_unavailable', __( 'This module is not available yet.', 'libreforge' ), 404 );
+		}
+
+		Catalog::set_enabled( $id, (bool) $request['enabled'] );
+
+		return new WP_REST_Response( [ 'modules' => Catalog::all() ] );
 	}
 
 	/**

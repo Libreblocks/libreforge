@@ -185,6 +185,23 @@ function Dashboard() {
 			.catch( ( err ) => setError( err.message ) );
 	}, [] );
 
+	const [ moduleError, setModuleError ] = useState( null );
+	const [ moduleChanged, setModuleChanged ] = useState( false );
+
+	const toggleModule = ( id, enabled ) => {
+		// Switch at once; undo if the server refuses.
+		setOverview( ( current ) => ( { ...current, modules: current.modules.map( ( m ) => ( m.id === id ? { ...m, enabled } : m ) ) } ) );
+		apiFetch( { path: '/libreblocks/v1/forge/modules', method: 'POST', data: { id, enabled } } )
+			.then( ( response ) => {
+				setOverview( ( current ) => ( { ...current, modules: response.modules } ) );
+				setModuleChanged( true );
+			} )
+			.catch( ( err ) => {
+				setModuleError( err.message );
+				setOverview( ( current ) => ( { ...current, modules: current.modules.map( ( m ) => ( m.id === id ? { ...m, enabled: ! enabled } : m ) ) } ) );
+			} );
+	};
+
 	const total = ( kind ) => overview?.counts[ kind ]?.total;
 	const isEmpty = overview && ! total( 'post_type' ) && ! total( 'field_group' );
 
@@ -195,7 +212,7 @@ function Dashboard() {
 			{ error && <Notice status="error" isDismissible={ false }>{ error }</Notice> }
 
 			<StatGrid>
-				{ Object.entries( KINDS ).map( ( [ kind, meta ] ) => (
+				{ Object.entries( KINDS ).filter( ( [ kind ] ) => data.tabs.some( ( tab ) => tab.key === kind ) ).map( ( [ kind, meta ] ) => (
 					<StatCard key={ kind } label={ meta.title } value={ total( kind ) } icon={ meta.icon } href={ tabUrl( kind ) } />
 				) ) }
 			</StatGrid>
@@ -257,9 +274,10 @@ function Dashboard() {
 
 			<h2 className="lb-section-title lf-spaced">
 				{ __( 'Modules', 'libreforge' ) }
-				<Badge tone="pro">{ __( 'Coming with LibreBlocks Pro', 'libreforge' ) }</Badge>
+				<Badge tone="pro">{ __( 'More coming with LibreBlocks Pro', 'libreforge' ) }</Badge>
 			</h2>
 			{ ! overview && ! error && <Spinner /> }
+			{ moduleError && <Notice status="error" onRemove={ () => setModuleError( null ) }>{ moduleError }</Notice> }
 			<CardGrid columns={ 3 }>
 				{ ( overview?.modules || [] ).map( ( module ) => (
 					<ModuleCard
@@ -267,10 +285,18 @@ function Dashboard() {
 						icon={ module.icon }
 						title={ module.title }
 						description={ module.description }
-						badge={ module.available ? <Badge tone="success">{ __( 'Active', 'libreforge' ) }</Badge> : <Badge>{ __( 'Coming soon', 'libreforge' ) }</Badge> }
+						checked={ module.enabled }
+						onToggle={ module.available ? ( enabled ) => toggleModule( module.id, enabled ) : undefined }
+						badge={ <Badge>{ module.pro ? __( 'Pro · coming soon', 'libreforge' ) : __( 'Coming soon', 'libreforge' ) }</Badge> }
 					/>
 				) ) }
 			</CardGrid>
+			{ moduleChanged && (
+				<p className="lf-module-hint">
+					{ __( 'Module updated. Reload the page to see the change in the menu.', 'libreforge' ) }{ ' ' }
+					<Button variant="link" onClick={ () => window.location.reload() }>{ __( 'Reload now', 'libreforge' ) }</Button>
+				</p>
+			) }
 		</>
 	);
 }

@@ -10,6 +10,7 @@ namespace LibreBlocks\Forge\Admin;
 
 use LibreBlocks\Core\Admin\Icons;
 use LibreBlocks\Core\Plugin as Core;
+use LibreBlocks\Forge\Modules\Catalog;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -27,7 +28,7 @@ final class Screens {
 	 * @return array<string, array{section: string, title: string, icon: string}>
 	 */
 	public static function pages(): array {
-		return [
+		$pages = [
 			self::MENU                 => [ 'section' => 'dashboard', 'title' => __( 'Dashboard', 'libreforge' ), 'icon' => 'dashboard' ],
 			'libreforge-post-types'    => [ 'section' => 'post_type', 'title' => __( 'Post Types', 'libreforge' ), 'icon' => 'admin-post' ],
 			'libreforge-taxonomies'    => [ 'section' => 'taxonomy', 'title' => __( 'Taxonomies', 'libreforge' ), 'icon' => 'tag' ],
@@ -38,6 +39,12 @@ final class Screens {
 			'libreforge-queries'       => [ 'section' => 'query', 'title' => __( 'Query Builder', 'libreforge' ), 'icon' => 'filter' ],
 			'libreforge-templates'     => [ 'section' => 'templates', 'title' => __( 'Listings', 'libreforge' ), 'icon' => 'layout' ],
 		];
+
+		if ( ! Catalog::enabled( 'relations' ) ) {
+			unset( $pages['libreforge-relations'] );
+		}
+
+		return $pages;
 	}
 
 	public static function url( string $section ): string {

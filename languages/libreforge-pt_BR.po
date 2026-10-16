@@ -2460,3 +2460,19 @@ msgstr "O subcampo exibido em cada título, ex.: a pergunta."
 
 msgid "Title (clickable)"
 msgstr "Título (clicável)"
+
+# LibreForge
+msgid "Module updated. Reload the page to see the change in the menu."
+msgstr "Módulo atualizado. Recarregue a página para ver a mudança no menu."
+
+msgid "More coming with LibreBlocks Pro"
+msgstr "Mais no LibreBlocks Pro"
+
+msgid "Pro · coming soon"
+msgstr "Pro · em breve"
+
+msgid "Reload now"
+msgstr "Recarregar agora"
+
+msgid "This module is not available yet."
+msgstr "Este módulo ainda não está disponível."
