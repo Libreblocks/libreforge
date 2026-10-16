@@ -81,6 +81,33 @@ final class Choices {
 	}
 
 	/**
+	 * Items of the post types that have LibreForge fields, for "From which item".
+	 *
+	 * @return array<string, string>
+	 */
+	public static function items(): array {
+		$types = [];
+
+		foreach ( self::data()['fields'] as $field ) {
+			if ( 'post' === $field['object'] ) {
+				$types = array_merge( $types, (array) $field['where'] );
+			}
+		}
+
+		$options = [ '' => __( 'The current item (page or listing)', 'libreforge' ) ];
+
+		foreach ( array_unique( $types ) as $type ) {
+			$object = get_post_type_object( $type );
+
+			foreach ( get_posts( [ 'post_type' => $type, 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+				$options[ (string) $post->ID ] = sprintf( '%s — %s', get_the_title( $post ) ?: '#' . $post->ID, $object ? $object->labels->singular_name : $type );
+			}
+		}
+
+		return $options;
+	}
+
+	/**
 	 * @return array<string, string>
 	 */
 	public static function options(): array {

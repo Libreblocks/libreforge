@@ -33,6 +33,7 @@ final class FieldWidget extends Widget {
 	protected function register_controls(): void {
 		$this->start_controls_section( 'content_section', [ 'label' => __( 'What to show', 'libreforge' ) ] );
 		$this->add_source_controls();
+		$this->add_item_control();
 		$this->end_controls_section();
 
 		$this->start_controls_section( 'format_section', [ 'label' => __( 'Format', 'libreforge' ) ] );
@@ -116,6 +117,7 @@ final class FieldWidget extends Widget {
 		$s = $this->get_settings_for_display();
 
 		$this->output( $this->with_preview( fn() => $this->renderer()->field( [
+			'object_id'   => (int) ( $s['object_id'] ?? 0 ),
 			'source'      => (string) ( $s['source'] ?? 'object' ),
 			'key'         => Choices::key( $s ),
 			'format'      => (string) ( $s['format'] ?? 'auto' ),

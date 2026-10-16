@@ -41,6 +41,8 @@ final class ImageWidget extends Widget {
 			[ 'media', 'gallery' ]
 		);
 
+		$this->add_item_control();
+
 		$this->add_control( 'size', [
 			'label'   => __( 'Size', 'libreforge' ),
 			'type'    => Controls_Manager::SELECT,
@@ -87,6 +89,7 @@ final class ImageWidget extends Widget {
 		$source = (string) ( $s['source'] ?? 'featured' );
 
 		$this->output( $this->with_preview( fn() => $this->renderer()->image( [
+			'object_id' => (int) ( $s['object_id'] ?? 0 ),
 			'source' => $source,
 			'key'    => 'featured' === $source ? '' : Choices::key( $s ),
 			'size'   => (string) ( $s['size'] ?? 'medium_large' ),

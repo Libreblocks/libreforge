@@ -118,3 +118,6 @@ function esc_html__( $text, $domain = null ) { return esc_html( $text ); }
 function wpautop( $text ) { return '<p>' . trim( (string) $text ) . '</p>'; }
 function wp_strip_all_tags( $text ) { return strip_tags( (string) $text ); }
 function wp_trim_words( $text, $words = 55 ) { $parts = preg_split( '/\s+/', trim( $text ) ); return implode( ' ', array_slice( $parts, 0, $words ) ) . ( count( $parts ) > $words ? '…' : '' ); }
+
+function get_the_title( $post = 0 ) { return is_object( $post ) ? (string) ( $post->post_title ?? '' ) : ''; }
+function sanitize_html_class( $class ) { return preg_replace( '/[^A-Za-z0-9_-]/', '', (string) $class ); }

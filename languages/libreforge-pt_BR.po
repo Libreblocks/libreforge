@@ -2359,3 +2359,28 @@ msgstr "ID da listagem (para filtros)"
 
 msgid "Optional. Give the same ID to the LibreSift filters that should control only this listing."
 msgstr "Opcional. Use o mesmo ID nos filtros do LibreSift que devem controlar só esta listagem."
+
+# De qual item
+msgid "Choose the repeater field."
+msgstr "Escolha o campo repetidor."
+
+msgid "Each row (optional)"
+msgstr "Cada linha (opcional)"
+
+msgid "Empty = every sub-field is shown automatically, the first one in bold. To customize, write the row using {{object.meta|sub_field_name}}."
+msgstr "Vazio = todos os subcampos aparecem automaticamente, o primeiro em negrito. Para personalizar, escreva a linha usando {{object.meta|nome_do_subcampo}}."
+
+msgid "From which item"
+msgstr "De qual item"
+
+msgid "Keep \"current item\" inside item templates and item pages. On a normal page, choose the item whose data you want to show."
+msgstr "Deixe \"item atual\" dentro de templates de item e páginas de item. Em uma página comum, escolha o item cujos dados você quer mostrar."
+
+msgid "The current item (\"%1$s\") does not have the field \"%2$s\". Use this element inside a template of the right content type, on the page of that item, or choose a specific item in \"From which item\"."
+msgstr "O item atual (\"%1$s\") não tem o campo \"%2$s\". Use este elemento dentro de um template do tipo de conteúdo certo, na página desse item, ou escolha um item específico em \"De qual item\"."
+
+msgid "The current item (page or listing)"
+msgstr "O item atual (página ou listagem)"
+
+msgid "The field \"%2$s\" of \"%1$s\" has no rows yet."
+msgstr "O campo \"%2$s\" de \"%1$s\" ainda não tem linhas."

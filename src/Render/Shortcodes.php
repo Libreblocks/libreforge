@@ -79,6 +79,7 @@ final class Shortcodes {
 			'fallback'    => '',
 			'tag'         => 'span',
 			'link'        => '',
+			'item'        => 0,
 		], (array) $atts, 'libreforge_field' );
 
 		return $this->renderer->field( [
@@ -93,6 +94,7 @@ final class Shortcodes {
 			'fallback'    => sanitize_text_field( $a['fallback'] ),
 			'tag'         => sanitize_key( $a['tag'] ),
 			'link'        => filter_var( $a['link'], FILTER_VALIDATE_BOOLEAN ),
+			'object_id'   => absint( $a['item'] ),
 		] );
 	}
 

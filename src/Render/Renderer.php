@@ -26,6 +26,8 @@ final class Renderer {
 
 	private static bool $styles_printed = false;
 
+	private string $hint = '';
+
 	public function __construct(
 		private ObjectStack $context,
 		private Values $values,
@@ -41,6 +43,10 @@ final class Renderer {
 	 *                                fallback, link (bool), class.
 	 */
 	public function field( array $s ): string {
+		if ( ! empty( $s['object_id'] ) ) {
+			return $this->for_object( (int) $s['object_id'], fn() => $this->field( array_diff_key( $s, [ 'object_id' => 1 ] ) ) );
+		}
+
 		$source = (string) ( $s['source'] ?? 'object' );
 		$key    = (string) ( $s['key'] ?? 'title' );
 		$value  = $this->values->get( $source, $key );
@@ -73,6 +79,10 @@ final class Renderer {
 	 *                                fallback_id, class.
 	 */
 	public function image( array $s ): string {
+		if ( ! empty( $s['object_id'] ) ) {
+			return $this->for_object( (int) $s['object_id'], fn() => $this->image( array_diff_key( $s, [ 'object_id' => 1 ] ) ) );
+		}
+
 		$source = (string) ( $s['source'] ?? 'featured' );
 		$value  = 'featured' === $source
 			? $this->values->get( 'object', 'featured_image' )
@@ -113,6 +123,10 @@ final class Renderer {
 	 *                                new_tab, style (link|button), class.
 	 */
 	public function link( array $s ): string {
+		if ( ! empty( $s['object_id'] ) ) {
+			return $this->for_object( (int) $s['object_id'], fn() => $this->link( array_diff_key( $s, [ 'object_id' => 1 ] ) ) );
+		}
+
 		$source = (string) ( $s['url_source'] ?? 'item' );
 		$key    = (string) ( $s['url_key'] ?? '' );
 
@@ -152,6 +166,10 @@ final class Renderer {
 	 * @param array<string, mixed> $s taxonomy, separator, link (bool), limit, style (text|badges), class.
 	 */
 	public function terms( array $s ): string {
+		if ( ! empty( $s['object_id'] ) ) {
+			return $this->for_object( (int) $s['object_id'], fn() => $this->terms( array_diff_key( $s, [ 'object_id' => 1 ] ) ) );
+		}
+
 		$object = $this->context->current();
 
 		if ( ! $object instanceof \WP_Post ) {
@@ -192,17 +210,24 @@ final class Renderer {
 	 * @param callable|null        $render_row Receives ( array $row, int $index ) and returns HTML.
 	 */
 	public function repeater( array $s, ?callable $render_row = null ): string {
+		if ( ! empty( $s['object_id'] ) ) {
+			return $this->for_object( (int) $s['object_id'], fn() => $this->repeater( array_diff_key( $s, [ 'object_id' => 1 ] ), $render_row ) );
+		}
+
 		$source = 'option' === ( $s['source'] ?? 'meta' ) ? 'option' : 'meta';
 		$key    = (string) ( $s['key'] ?? '' );
 		$rows   = $this->values->get( $source, $key );
 
+		$field      = 'meta' === $source ? $this->field_definition( $key ) : null;
+		$this->hint = '';
+
 		if ( ! is_array( $rows ) || ! $rows ) {
+			$this->hint = $this->missing_hint( $key, null !== $field );
 			return '';
 		}
 
-		$field             = 'meta' === $source ? $this->field_definition( $key ) : null;
 		$this->row_fields[] = $field ? $field->fields : [];
-		$tag               = in_array( $s['tag'] ?? 'div', [ 'ul', 'ol', 'div' ], true ) ? (string) $s['tag'] : 'div';
+		$tag               = in_array( $s['tag'] ?? 'div', [ 'ul', 'ol', 'div' ], true ) ? (string) ( $s['tag'] ?? 'div' ) : 'div';
 		$item_tag          = 'div' === $tag ? 'div' : 'li';
 		$html              = '';
 
@@ -217,7 +242,11 @@ final class Renderer {
 						return (string) $render_row( $row, $index );
 					}
 
-					return wp_kses_post( (string) $this->values->get( 'token', (string) ( $s['format'] ?? '' ) ) );
+					// An editor left "empty" may still hold tags like <p></p>.
+					$format = (string) ( $s['format'] ?? '' );
+					$format = '' === trim( wp_strip_all_tags( $format ) ) && false === strpos( $format, '{{' ) ? '' : $format;
+
+					return '' === $format ? $this->auto_row( $row ) : wp_kses_post( (string) $this->values->get( 'token', $format ) );
 				} );
 
 				$html .= sprintf( '<%1$s class="lf-repeater__item">%2$s</%1$s>', $item_tag, $inner );
@@ -227,6 +256,81 @@ final class Renderer {
 		}
 
 		return sprintf( '<%1$s class="%2$s">%3$s</%1$s>', $tag, esc_attr( trim( 'lf-repeater ' . ( $s['class'] ?? '' ) ) ), $html );
+	}
+
+	/**
+	 * Why the last element printed nothing (shown only to editors, e.g. in the Elementor editor).
+	 */
+	public function hint(): string {
+		return $this->hint;
+	}
+
+	/**
+	 * Every sub-field of a repeater row, the first one in bold, when no row format was written.
+	 *
+	 * @param array<string, mixed> $row
+	 */
+	private function auto_row( array $row ): string {
+		$children = end( $this->row_fields ) ?: [];
+		$names    = $children ? array_map( fn( Field $child ) => $child->name, array_filter( $children, fn( Field $child ) => ! in_array( $child->type, [ 'html', 'tab' ], true ) ) ) : array_keys( $row );
+		$html     = '';
+
+		foreach ( array_values( $names ) as $index => $name ) {
+			$value = $row[ $name ] ?? null;
+
+			if ( $this->is_empty( $value ) ) {
+				continue;
+			}
+
+			$child = null;
+
+			foreach ( $children as $candidate ) {
+				if ( $candidate->name === $name ) {
+					$child = $candidate;
+				}
+			}
+
+			$tag   = 0 === $index ? 'strong' : 'div';
+			$html .= sprintf( '<%1$s class="lf-repeater__field lf-repeater__field--%2$s">%3$s</%1$s>', $tag, esc_attr( sanitize_html_class( $name ) ), Formatter::format( $value, [], $child ) );
+		}
+
+		return $html;
+	}
+
+	private function missing_hint( string $key, bool $known ): string {
+		$object = $this->context->current();
+		$title  = (string) $this->values->builtin( $object, 'title' );
+
+		if ( '' === $key ) {
+			return __( 'Choose the repeater field.', 'libreforge' );
+		}
+
+		if ( ! $known ) {
+			return sprintf(
+				/* translators: 1: item title, 2: field name */
+				__( 'The current item ("%1$s") does not have the field "%2$s". Use this element inside a template of the right content type, on the page of that item, or choose a specific item in "From which item".', 'libreforge' ),
+				$title ?: '—',
+				$key
+			);
+		}
+
+		/* translators: 1: item title, 2: field name */
+		return sprintf( __( 'The field "%2$s" of "%1$s" has no rows yet.', 'libreforge' ), $title ?: '—', $key );
+	}
+
+	/**
+	 * Renders $render with a specific post as the current object.
+	 *
+	 * @param callable(): string $render
+	 */
+	private function for_object( int $id, callable $render ): string {
+		$post = get_post( $id );
+
+		if ( ! $post || ( 'publish' !== $post->post_status && ! current_user_can( 'read_post', $id ) ) ) {
+			return '';
+		}
+
+		return $this->context->with( $post, $render );
 	}
 
 	/* ------------------------------------------------------------------ loop grid */

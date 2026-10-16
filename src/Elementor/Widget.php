@@ -55,7 +55,8 @@ abstract class Widget extends \Elementor\Widget_Base {
 	 */
 	protected function output( string $html ): void {
 		if ( '' === $html && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			$html = '<div class="lf-notice">' . esc_html__( 'Nothing to show for this item yet.', 'libreforge' ) . '</div>';
+			$hint = $this->renderer()->hint() ?: __( 'Nothing to show for this item yet.', 'libreforge' );
+			$html = '<div class="lf-notice">' . esc_html( $hint ) . '</div>';
 		}
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built and escaped by the Renderer.

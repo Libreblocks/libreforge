@@ -41,11 +41,13 @@ final class RepeaterWidget extends Widget {
 			[ 'repeater' ]
 		);
 
+		$this->add_item_control();
+
 		$this->add_control( 'row_format', [
-			'label'       => __( 'Each row', 'libreforge' ),
+			'label'       => __( 'Each row (optional)', 'libreforge' ),
 			'type'        => Controls_Manager::WYSIWYG,
-			'default'     => '<strong>{{object.meta|question}}</strong><p>{{object.meta|answer}}</p>',
-			'description' => __( 'Write how each row looks. {{object.meta|sub_field_name}} shows a sub-field of the row.', 'libreforge' ),
+			'default'     => '',
+			'description' => __( 'Empty = every sub-field is shown automatically, the first one in bold. To customize, write the row using {{object.meta|sub_field_name}}.', 'libreforge' ),
 		] );
 
 		$this->add_control( 'tag', [
@@ -75,6 +77,7 @@ final class RepeaterWidget extends Widget {
 		$s = $this->get_settings_for_display();
 
 		$this->output( $this->with_preview( fn() => $this->renderer()->repeater( [
+			'object_id' => (int) ( $s['object_id'] ?? 0 ),
 			'source' => (string) ( $s['source'] ?? 'meta' ),
 			'key'    => Choices::key( $s ),
 			'format' => (string) ( $s['row_format'] ?? '' ),

@@ -14,6 +14,19 @@ defined( 'ABSPATH' ) || exit;
 trait SourceControls {
 
 	/**
+	 * "From which item": the current one (default) or a specific post.
+	 */
+	protected function add_item_control(): void {
+		$this->add_control( 'object_id', [
+			'label'       => __( 'From which item', 'libreforge' ),
+			'type'        => Controls_Manager::SELECT,
+			'options'     => Choices::items(),
+			'default'     => '',
+			'description' => __( 'Keep "current item" inside item templates and item pages. On a normal page, choose the item whose data you want to show.', 'libreforge' ),
+		] );
+	}
+
+	/**
 	 * @param array<string, string>|null $sources     Allowed sources (defaults to all).
 	 * @param string[]|null              $field_types Field types offered for "Custom field".
 	 */
