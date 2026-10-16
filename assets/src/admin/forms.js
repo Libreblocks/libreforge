@@ -35,7 +35,7 @@ const HIDDEN_TYPES = [ 'wp_block', 'wp_navigation', 'wp_template', 'wp_template_
 
 /* -------------------------------------------------------------------------- row helpers */
 
-function Text( { label, help, value, onChange, placeholder, error, type = 'text', mono = false, maxLength } ) {
+export function Text( { label, help, value, onChange, placeholder, error, type = 'text', mono = false, maxLength } ) {
 	return (
 		<SettingRow label={ label } help={ help } error={ error }>
 			<TextControl
@@ -53,7 +53,7 @@ function Text( { label, help, value, onChange, placeholder, error, type = 'text'
 	);
 }
 
-function LongText( { label, help, value, onChange, placeholder } ) {
+export function LongText( { label, help, value, onChange, placeholder } ) {
 	return (
 		<SettingRow label={ label } help={ help }>
 			<TextareaControl label={ label } hideLabelFromVision value={ value ?? '' } placeholder={ placeholder } onChange={ onChange } rows={ 2 } __nextHasNoMarginBottom />
@@ -61,7 +61,7 @@ function LongText( { label, help, value, onChange, placeholder } ) {
 	);
 }
 
-function Toggle( { label, help, checked, onChange } ) {
+export function Toggle( { label, help, checked, onChange } ) {
 	return (
 		<SettingRow label={ label } help={ help }>
 			<ToggleControl label={ <span className="screen-reader-text">{ label }</span> } checked={ !! checked } onChange={ onChange } __nextHasNoMarginBottom />
@@ -69,7 +69,7 @@ function Toggle( { label, help, checked, onChange } ) {
 	);
 }
 
-function Choose( { label, help, value, options, onChange } ) {
+export function Choose( { label, help, value, options, onChange } ) {
 	return (
 		<SettingRow label={ label } help={ help }>
 			<SelectControl label={ label } hideLabelFromVision value={ value } options={ options } onChange={ onChange } __nextHasNoMarginBottom />
@@ -77,7 +77,7 @@ function Choose( { label, help, value, options, onChange } ) {
 	);
 }
 
-function Chips( { label, help, options, value, onChange, error } ) {
+export function Chips( { label, help, options, value, onChange, error } ) {
 	return (
 		<SettingRow label={ label } help={ help } error={ error }>
 			<CheckboxList options={ options } value={ value || [] } onChange={ onChange } />
@@ -89,7 +89,7 @@ function Chips( { label, help, options, value, onChange, error } ) {
  * Identifier (slug). It follows the name automatically while the item is new,
  * so beginners never have to think about it.
  */
-function Identifier( { slug, setSlug, errors, maxLength, isNew, help } ) {
+export function Identifier( { slug, setSlug, errors, maxLength, isNew, help } ) {
 	return (
 		<Text
 			label={ __( 'Identifier (slug)', 'libreforge' ) }
@@ -109,7 +109,7 @@ function Identifier( { slug, setSlug, errors, maxLength, isNew, help } ) {
 }
 
 /** Returns a setter for the name field that also keeps the slug in sync on new items. */
-const followSlug = ( { slug, setSlug, isNew, maxLength, previous } ) => ( value ) => {
+export const followSlug = ( { slug, setSlug, isNew, maxLength, previous } ) => ( value ) => {
 	if ( isNew && ( ! slug || slug === slugify( previous || '' ).slice( 0, maxLength ) ) ) {
 		setSlug( slugify( value ).slice( 0, maxLength ) );
 	}

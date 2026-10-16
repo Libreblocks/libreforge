@@ -5,7 +5,7 @@ Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: libreblocks-core
-Stable tag: 0.8.3
+Stable tag: 0.8.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ For themes and builders other than the block editor and Elementor:
 No. Definitions are kept so a reinstall brings everything back. Add `define( 'LIBREFORGE_DELETE_DATA', true );` to wp-config.php before uninstalling to remove them.
 
 == Changelog ==
+
+= 0.8.4 =
+* The list and editor screens can be reused by other LibreBlocks plugins (LibreForms).
 
 = 0.8.3 =
 * Dashboard modules: ready modules (Relations) show as active with an on/off switch.

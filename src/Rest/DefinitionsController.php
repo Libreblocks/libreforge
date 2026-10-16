@@ -303,7 +303,13 @@ final class DefinitionsController extends Controller {
 				return [ 'options' => count( (array) $definition->get( 'options', [] ) ) ];
 		}
 
-		return [];
+		/**
+		 * Numbers for the list card of definitions added by other plugins.
+		 *
+		 * @param array<string, mixed> $summary
+		 * @param Definition           $definition
+		 */
+		return (array) apply_filters( 'libreforge/definition/summary', [], $definition );
 	}
 
 	private function post_count( string $post_type ): int {
