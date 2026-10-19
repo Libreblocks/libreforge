@@ -168,6 +168,19 @@ final class Templates {
 	public function sample_object( int $template_id ) {
 		$source = $this->source( $template_id );
 
+		/**
+		 * Sample item of a source added by another plugin (e.g. a content table row).
+		 *
+		 * @param mixed  $sample Null = let LibreForge look for one.
+		 * @param string $source
+		 * @param int    $template_id
+		 */
+		$sample = apply_filters( 'libreforge/templates/sample_object', null, $source, $template_id );
+
+		if ( null !== $sample ) {
+			return $sample;
+		}
+
 		if ( 'user' === $source ) {
 			return wp_get_current_user();
 		}

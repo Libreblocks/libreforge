@@ -40,12 +40,33 @@ final class QueryKind extends Kind {
 		return __( 'Query Builder', 'libreforge' );
 	}
 
+	/**
+	 * Query types, including the ones added by other plugins (filter "libreforge/query/types").
+	 *
+	 * @return string[]
+	 */
+	public static function types(): array {
+		return array_values( array_unique( (array) apply_filters( 'libreforge/query/types', self::TYPES ) ) );
+	}
+
+	/**
+	 * Sort options of a type; other plugins add theirs with "libreforge/query/orderby".
+	 *
+	 * @return string[]
+	 */
+	public static function orderby( string $type ): array {
+		$orderby = (array) apply_filters( 'libreforge/query/orderby', self::ORDERBY[ $type ] ?? [], $type );
+
+		return $orderby ?: [ 'date' ];
+	}
+
 	public function sanitize( array $input ): array {
-		$type    = in_array( $input['type'] ?? '', self::TYPES, true ) ? $input['type'] : 'posts';
+		$type    = in_array( $input['type'] ?? '', self::types(), true ) ? $input['type'] : 'posts';
 		$orderby = (string) ( $input['orderby'] ?? '' );
 		$number  = $input['per_page'] ?? 10;
+		$sorts   = self::orderby( $type );
 
-		return [
+		$clean = [
 			'title'           => self::text( $input, 'title' ),
 			'type'            => $type,
 			// Posts.
@@ -63,7 +84,7 @@ final class QueryKind extends Kind {
 			// Shared.
 			'per_page'        => is_numeric( $number ) ? max( -1, min( 500, (int) $number ) ) : 10,
 			'offset'          => max( 0, (int) ( $input['offset'] ?? 0 ) ),
-			'orderby'         => in_array( $orderby, self::ORDERBY[ $type ], true ) ? $orderby : self::ORDERBY[ $type ][0],
+			'orderby'         => in_array( $orderby, $sorts, true ) ? $orderby : $sorts[0],
 			'order'           => 'ASC' === strtoupper( (string) ( $input['order'] ?? '' ) ) ? 'ASC' : 'DESC',
 			'order_meta_key'  => sanitize_key( self::text( $input, 'order_meta_key' ) ),
 			'search'          => self::text( $input, 'search' ),
@@ -77,6 +98,14 @@ final class QueryKind extends Kind {
 			'relation'        => sanitize_key( self::text( $input, 'relation' ) ),
 			'relation_side'   => 'parents' === ( $input['relation_side'] ?? '' ) ? 'parents' : 'children',
 		];
+
+		/**
+		 * Extra settings of query types added by other plugins (e.g. which content table).
+		 *
+		 * @param array<string, mixed> $clean
+		 * @param array<string, mixed> $input
+		 */
+		return (array) apply_filters( 'libreforge/query/sanitize', $clean, $input );
 	}
 
 	public function validate( Definition $definition, DefinitionRepository $repository ): array {

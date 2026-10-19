@@ -7,6 +7,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { Button, Notice, Spinner } from '@wordpress/components';
 import { createRoot, useEffect, useState } from '@wordpress/element';
 import { __, _n, sprintf } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 import { addQueryArgs } from '@wordpress/url';
 
 import { AppShell, Badge, CardGrid, IconTile, ModuleCard, PageHeader, Panel, StatCard, StatGrid } from '@libreblocks/ui';
@@ -21,7 +22,11 @@ import './admin.scss';
 const data = window.libreforgeAdmin || { tabs: [] };
 const tabUrl = ( key ) => data.tabs.find( ( tab ) => tab.key === key )?.href || '#';
 
-const KINDS = {
+/**
+ * Definition kinds with a list + editor screen. Module plugins add theirs with
+ * the JS filter "libreforge.kinds" (their script loads before this one).
+ */
+const KINDS = applyFilters( 'libreforge.kinds', {
 	post_type: {
 		title: __( 'Post Types', 'libreforge' ),
 		singular: __( 'post type', 'libreforge' ),
@@ -146,7 +151,7 @@ const KINDS = {
 		describe: ( item ) => sprintf( _n( '%d option', '%d options', item.summary.options || 0, 'libreforge' ), item.summary.options || 0 ),
 		defaults: { title: '', options: [] },
 	},
-};
+} );
 
 /* -------------------------------------------------------------------------- dashboard */
 

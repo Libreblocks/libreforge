@@ -142,7 +142,12 @@ final class TemplatesController extends Controller {
 
 		$sources[] = [ 'value' => 'user', 'label' => __( 'Users', 'libreforge' ) ];
 
-		return $sources;
+		/**
+		 * What templates can show; other plugins add theirs (e.g. "table:clients").
+		 *
+		 * @param array<int, array{value: string, label: string}> $sources
+		 */
+		return (array) apply_filters( 'libreforge/templates/sources', $sources );
 	}
 
 	/**

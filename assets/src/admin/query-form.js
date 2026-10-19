@@ -4,6 +4,7 @@
 import apiFetch from '@wordpress/api-fetch';
 import { Button, SelectControl, Spinner, TextControl, ToggleControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
+import { applyFilters } from '@wordpress/hooks';
 import { __, _n, sprintf } from '@wordpress/i18n';
 
 import { SettingRow } from '@libreblocks/ui';
@@ -190,8 +191,27 @@ function MetaRules( { rules = [], relation, onChange, onRelation } ) {
 	);
 }
 
+/**
+ * Query types and their sort options, extended by other plugins:
+ *
+ *     wp.hooks.addFilter( 'libreforge.queryTypes', 'my-plugin', ( types ) => [ ...types, { value, label, orderby: [ { value, label } ], General } ] );
+ *
+ * "General" is a component ( { config, set, environment } ) shown under "What to list".
+ */
+const queryTypes = () =>
+	applyFilters( 'libreforge.queryTypes', [
+		{ value: 'posts', label: __( 'Content (posts, pages, post types)', 'libreforge' ), orderby: ORDERBY.posts },
+		{ value: 'terms', label: __( 'Terms of a taxonomy (e.g. cities)', 'libreforge' ), orderby: ORDERBY.terms },
+		{ value: 'users', label: __( 'Users', 'libreforge' ), orderby: ORDERBY.users },
+	] );
+
 export function querySections( { config, set, errors, environment, slug, setSlug, isNew } ) {
 	const type = config.type || 'posts';
+	const types = queryTypes();
+	const current = types.find( ( item ) => item.value === type ) || types[ 0 ];
+	const sorts = current.orderby || ORDERBY.posts;
+	const General = current.General;
+	const builtIn = [ 'posts', 'terms', 'users' ].includes( type );
 	const postTypes = environment.post_types.filter( ( item ) => ! HIDDEN_TYPES.includes( item.value ) );
 	const syncTitle = ( title ) => {
 		if ( isNew && ( ! slug || slug === slugify( config.title || '' ).slice( 0, 64 ) ) ) {
@@ -213,13 +233,10 @@ export function querySections( { config, set, errors, environment, slug, setSlug
 					<Choose
 						label={ __( 'What to list', 'libreforge' ) }
 						value={ type }
-						options={ [
-							{ value: 'posts', label: __( 'Content (posts, pages, post types)', 'libreforge' ) },
-							{ value: 'terms', label: __( 'Terms of a taxonomy (e.g. cities)', 'libreforge' ) },
-							{ value: 'users', label: __( 'Users', 'libreforge' ) },
-						] }
-						onChange={ ( value ) => set( { type: value, orderby: ORDERBY[ value ][ 0 ].value } ) }
+						options={ types.map( ( item ) => ( { value: item.value, label: item.label } ) ) }
+						onChange={ ( value ) => set( { type: value, orderby: ( types.find( ( item ) => item.value === value )?.orderby || ORDERBY.posts )[ 0 ].value } ) }
 					/>
+					{ General && <General config={ config } set={ set } environment={ environment } errors={ errors } /> }
 					{ type === 'posts' && (
 						<SettingRow label={ __( 'Post Types', 'libreforge' ) } help={ __( 'Which content to show.', 'libreforge' ) }>
 							<CheckboxList options={ postTypes } value={ config.post_types || [] } onChange={ ( post_types ) => set( { post_types } ) } />
@@ -236,7 +253,7 @@ export function querySections( { config, set, errors, environment, slug, setSlug
 						</SettingRow>
 					) }
 					<Text label={ __( 'How many per page', 'libreforge' ) } help={ __( '-1 shows all of them at once.', 'libreforge' ) } type="number" value={ config.per_page ?? 10 } onChange={ ( value ) => set( { per_page: value === '' ? 10 : Number( value ) } ) } />
-					<Choose label={ __( 'Sort by', 'libreforge' ) } value={ config.orderby } options={ ORDERBY[ type ] } onChange={ ( orderby ) => set( { orderby } ) } />
+					<Choose label={ __( 'Sort by', 'libreforge' ) } value={ config.orderby } options={ sorts } onChange={ ( orderby ) => set( { orderby } ) } />
 					{ [ 'meta_value', 'meta_value_num' ].includes( config.orderby ) && (
 						<Text label={ __( 'Field used to sort', 'libreforge' ) } help={ __( 'Name of the custom field, e.g. price.', 'libreforge' ) } value={ config.order_meta_key } error={ errors.order_meta_key } onChange={ ( order_meta_key ) => set( { order_meta_key: slugify( order_meta_key ) } ) } />
 					) }
@@ -270,7 +287,7 @@ export function querySections( { config, set, errors, environment, slug, setSlug
 					<SettingRow label={ __( 'By custom field', 'libreforge' ) } help={ __( 'Ex.: price less than 500000.', 'libreforge' ) } stacked>
 						<MetaRules rules={ config.meta_rules } relation={ config.meta_relation } onChange={ ( meta_rules ) => set( { meta_rules } ) } onRelation={ ( meta_relation ) => set( { meta_relation } ) } />
 					</SettingRow>
-					{ environment.relations.length > 0 && (
+					{ builtIn && environment.relations.length > 0 && (
 						<>
 							<Choose
 								label={ __( 'Related to the current item', 'libreforge' ) }

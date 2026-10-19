@@ -48,6 +48,20 @@ final class QueryRunner {
 		 */
 		$args = (array) apply_filters( 'libreforge/query/args', array_replace_recursive( $args, $override ), $config, $query_id );
 
+		/**
+		 * Lets other plugins run their own query types (e.g. content tables).
+		 *
+		 * @param QueryResult|null     $result
+		 * @param array<string, mixed> $config
+		 * @param int                  $page
+		 * @param array<string, mixed> $args   The WordPress-style args after "libreforge/query/args".
+		 */
+		$custom = apply_filters( 'libreforge/query/run', null, $config, $page, $args );
+
+		if ( $custom instanceof QueryResult ) {
+			return $custom;
+		}
+
 		switch ( $type ) {
 			case 'terms':
 				return $this->run_terms( $args, $page );

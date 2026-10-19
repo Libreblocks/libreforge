@@ -44,7 +44,12 @@ final class Screens {
 			unset( $pages['libreforge-relations'] );
 		}
 
-		return $pages;
+		/**
+		 * LibreForge screens; module plugins add the screen of their own kind.
+		 *
+		 * @param array<string, array{section: string, title: string, icon: string}> $pages
+		 */
+		return (array) apply_filters( 'libreforge/admin/pages', $pages );
 	}
 
 	public static function url( string $section ): string {

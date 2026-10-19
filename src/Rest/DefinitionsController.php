@@ -194,6 +194,19 @@ final class DefinitionsController extends Controller {
 				$items[] = [ 'id' => $item->term_id, 'label' => $item->name, 'meta' => $item->taxonomy ];
 			} elseif ( $item instanceof \WP_User ) {
 				$items[] = [ 'id' => $item->ID, 'label' => $item->display_name, 'meta' => implode( ', ', $item->roles ) ];
+			} else {
+				/**
+				 * Preview line of an item from a query type added by another plugin.
+				 *
+				 * @param array{id: int, label: string, meta: string}|null $line
+				 * @param mixed                                            $item
+				 * @param array<string, mixed>                             $config
+				 */
+				$line = apply_filters( 'libreforge/query/preview_item', null, $item, $config );
+
+				if ( is_array( $line ) ) {
+					$items[] = $line;
+				}
 			}
 		}
 
@@ -396,7 +409,12 @@ final class DefinitionsController extends Controller {
 			libreblocks()->get( 'forge.templates' )->all()
 		);
 
-		return new WP_REST_Response( [
+		/**
+		 * Data for the admin screens; other plugins add their own (e.g. the content tables).
+		 *
+		 * @param array<string, mixed> $environment
+		 */
+		return new WP_REST_Response( apply_filters( 'libreforge/environment', [
 			'templates'      => $templates,
 			'objects'        => $objects,
 			'relations'      => $relations,
@@ -409,7 +427,7 @@ final class DefinitionsController extends Controller {
 			'field_types'    => array_values( array_filter( libreblocks()->fields()->describe(), fn( array $type ) => 'form' !== $type['category'] ) ),
 			'parents'        => $parents,
 			'option_prefix'  => OptionsPageKind::option_name( '' ),
-		] );
+		] ) );
 	}
 
 	/**
