@@ -249,7 +249,7 @@ function Dashboard() {
 
 			<h2 className="lb-section-title lf-spaced">
 				{ __( 'Modules', 'libreforge' ) }
-				<Badge tone="pro">{ __( 'More coming with LibreBlocks Pro', 'libreforge' ) }</Badge>
+				<Badge>{ __( 'Each module is its own plugin', 'libreforge' ) }</Badge>
 			</h2>
 			{ ! overview && ! error && <Spinner /> }
 			{ moduleError && <Notice status="error" onRemove={ () => setModuleError( null ) }>{ moduleError }</Notice> }
@@ -259,10 +259,15 @@ function Dashboard() {
 						key={ module.id }
 						icon={ module.icon }
 						title={ module.title }
-						description={ module.description }
+						description={
+							<>
+								{ module.description }
+								{ module.plugin && <small className="lf-module-plugin">{ module.available ? module.plugin : sprintf( /* translators: %s: plugin name */ __( 'Plugin: %s', 'libreforge' ), module.plugin ) }</small> }
+							</>
+						}
 						checked={ module.enabled }
 						onToggle={ module.available ? ( enabled ) => toggleModule( module.id, enabled ) : undefined }
-						badge={ <Badge>{ module.pro ? __( 'Pro · coming soon', 'libreforge' ) : __( 'Coming soon', 'libreforge' ) }</Badge> }
+						badge={ <Badge>{ __( 'Coming soon', 'libreforge' ) }</Badge> }
 					/>
 				) ) }
 			</CardGrid>

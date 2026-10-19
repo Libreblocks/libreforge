@@ -2480,3 +2480,31 @@ msgstr "Este módulo ainda não está disponível."
 # LibreForge 0.8.5
 msgid "Forms only"
 msgstr "Só para formulários"
+
+# LibreForge 0.8.6
+msgid "Each module is its own plugin"
+msgstr "Cada módulo é um plugin próprio"
+
+msgid "LibreForge – Calendar"
+msgstr "LibreForge – Calendário"
+
+msgid "LibreForge – Content Tables"
+msgstr "LibreForge – Tabelas de Conteúdo"
+
+msgid "LibreForge – Dynamic Visibility"
+msgstr "LibreForge – Visibilidade Dinâmica"
+
+msgid "LibreForge – Favorites and Compare"
+msgstr "LibreForge – Favoritos e Comparação"
+
+msgid "LibreForge – Maps"
+msgstr "LibreForge – Mapas"
+
+msgid "LibreForge – Tables and Charts"
+msgstr "LibreForge – Tabelas e Gráficos"
+
+msgid "LibreForge – User Profile"
+msgstr "LibreForge – Perfil de Usuário"
+
+msgid "Plugin: %s"
+msgstr "Plugin: %s"
