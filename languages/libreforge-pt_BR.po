@@ -2476,3 +2476,7 @@ msgstr "Recarregar agora"
 
 msgid "This module is not available yet."
 msgstr "Este módulo ainda não está disponível."
+
+# LibreForge 0.8.5
+msgid "Forms only"
+msgstr "Só para formulários"

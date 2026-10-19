@@ -24,6 +24,7 @@ const CATEGORY_LABELS = {
 	relational: __( 'Relational', 'libreforge' ),
 	structure: __( 'Structure', 'libreforge' ),
 	layout: __( 'Layout', 'libreforge' ),
+	form: __( 'Forms only', 'libreforge' ),
 };
 
 const OPERATORS = [

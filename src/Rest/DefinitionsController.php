@@ -405,7 +405,8 @@ final class DefinitionsController extends Controller {
 			'taxonomies'     => $taxonomies,
 			'roles'          => $roles,
 			'glossaries'     => $glossaries,
-			'field_types'    => libreblocks()->fields()->describe(),
+			// "form" types (booking dates...) only make sense in forms, not in Meta Boxes.
+			'field_types'    => array_values( array_filter( libreblocks()->fields()->describe(), fn( array $type ) => 'form' !== $type['category'] ) ),
 			'parents'        => $parents,
 			'option_prefix'  => OptionsPageKind::option_name( '' ),
 		] );
