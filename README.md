@@ -20,8 +20,8 @@ Baixe o zip pronto em [libreblocks.com.br](https://libreblocks.com.br) (ou no di
 Os plugins LibreBlocks são desenvolvidos lado a lado. Clone os repositórios na mesma pasta, com estes nomes:
 
 ```bash
-git clone https://github.com/USUARIO/libreblocks-core.git
-git clone https://github.com/USUARIO/libreforge.git
+git clone https://github.com/Libreblocks/libreblocks-core.git
+git clone https://github.com/Libreblocks/libreforge.git
 ```
 
 Depois, em `libreblocks-core/`, rode `npm install` e crie um link de `node_modules` em `libreforge/`. Então:
